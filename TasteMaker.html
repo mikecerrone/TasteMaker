@@ -32,17 +32,31 @@
 
 <template name="tasteTemplate">
   <p>lovely circle graph with weights and probably nice colours we hope</p>
-  <p>some preferred varietals</p>
+  {{#each topVarietals}}
+    {{varietal}}
+    {{score}}
+  {{/each}}
   {{>home}}
 </template>
 
 <template name="historyTemplate">
   <p>all the wines you've done drank</p>
+  {{#each wines}}
+    {{img}}
+    {{name}}
+    {{other stuff}}
+    {{info}}
+    {{ratings}}
+  {{/each}}
   {{>home}}
 </template>
 
 <template name="recTemplate">
   <p>oooo you gonna love this!</p>
+  {{img}}
+  {{name}}
+  {{price}}
+  {{shop}}
   {{>home}}
 </template>
 

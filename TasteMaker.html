@@ -3,12 +3,49 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
 
+<div id="helloDiv">
   {{> hello}}
+</div>
+
+<div class="hide" id="tasteDiv">
+  {{> tasteTemplate}}
+</div>
+
+<div id="historyDiv" class="hide">
+  {{> historyTemplate}}
+</div>
+
+<div id="recDiv" class="hide">
+  {{>recTemplate}}
+</div>
+
 </body>
 
 <template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+  <h1>Welcome to TasteMaker!</h1>
+  <p>SCANNER</p>
+  <button id="taste">Your Taste Profile</button>
+  <button id="history">Your Wine History</button>
+  <button id="rec">Your Reccomendations</button>
+</template>
+
+<template name="tasteTemplate">
+  <p>lovely circle graph with weights and probably nice colours we hope</p>
+  <p>some preferred varietals</p>
+  {{>home}}
+</template>
+
+<template name="historyTemplate">
+  <p>all the wines you've done drank</p>
+  {{>home}}
+</template>
+
+<template name="recTemplate">
+  <p>oooo you gonna love this!</p>
+  {{>home}}
+</template>
+
+<template name="home">
+  <button id="home">home</button>
 </template>

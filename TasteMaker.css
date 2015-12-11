@@ -1,1 +1,6 @@
 /* CSS declarations go here */
+
+.hide {
+  display: none;
+  background-color: yellow;
+}

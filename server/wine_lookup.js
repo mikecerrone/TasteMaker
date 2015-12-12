@@ -5,14 +5,11 @@ Factual.configure({
 
 
 Meteor.methods({
-upcDecoder: function (upcCode) {
-  console.log(upcCode.text)
-  Factual.get('/t/products-cpg',{q:upcCode.text},
-    function (error, res) {
-      console.log("hit me")
-       console.log(res);
-       console.log(error)
-       return res;
-    });
+  upcDecoder: function (upcCode) {
+    Factual.get('/t/products-cpg',{q:upcCode.text},
+      function (error, res) {
+        console.log("hit me")
+         console.log(res);
+      });
   }
 });

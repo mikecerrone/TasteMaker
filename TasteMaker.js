@@ -6,12 +6,7 @@ if (Meteor.isClient) {
   // console.log(Wines)
 
   Meteor.methods({
-    hideAll: function() {
-      document.querySelector("#recDiv").classList.add("hide")
-      document.querySelector("#historyDiv").classList.add("hide")
-      document.querySelector("#tasteDiv").classList.add("hide")
-      document.querySelector("#helloDiv").classList.toggle("hide")
-    }
+
   })
   // Meteor.call("getWines", function(error, results){
   //   console.log(results.content);
@@ -108,6 +103,11 @@ if (Meteor.isClient) {
 // }
 
 Meteor.methods({
-  
+  hideAll: function() {
+    document.querySelector("#recDiv").classList.add("hide")
+    document.querySelector("#historyDiv").classList.add("hide")
+    document.querySelector("#tasteDiv").classList.add("hide")
+    document.querySelector("#helloDiv").classList.toggle("hide")
+  }
 })
 

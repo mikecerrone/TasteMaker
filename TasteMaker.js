@@ -41,13 +41,13 @@ if (Meteor.isClient) {
 
   });
 
-  Template.historyTemplate.helpers({
-    yourWines: function(){
-      return Wines.find({
-        user: Meteor.userId()
-      })
-    }
-  });
+  // Template.historyTemplate.helpers({
+  //   yourWines: function(){
+  //     return Wines.find({
+  //       user: Meteor.userId()
+  //     })
+  //   }
+  // });
 
   // Template.recTemplate.events({
   //   'click #getRec': function() {

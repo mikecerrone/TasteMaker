@@ -1,0 +1,63 @@
+/* CSS declarations go here */
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.hide {
+  display: none;
+}
+
+.content {
+    max-width: 730px;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.top_row {
+    height: 30%;
+    width: 100%;
+}
+
+.center_row {
+    height: 40%;
+    width: 100%;
+}
+
+.bottom_row {
+    height: 30%;
+    width: 100%;
+}
+
+.bottom_row>.button {
+    width: 75%;
+    height: 75%;
+    margin-left: 12.5%;
+    margin-top: 12.5%;
+}
+
+.center_row>.button {
+    height: 50%;
+    margin-top: 17.5%;
+    width: 100%;
+}
+
+
+
+/*Atomic Colors*/
+.bg_cream {
+    background-color: #cfc39b;
+}
+
+.bg_purple {
+    background-color: #0e0c11;
+}
+
+.bg_white {
+    background-color: #dee1f0;
+}
+
+.text_white {
+    color: #dee1f0;
+}

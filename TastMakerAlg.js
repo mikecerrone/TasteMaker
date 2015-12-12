@@ -14,12 +14,10 @@ var varietalStyle = {'Big_and_Bold': [0,5], 'Earthy_and_Spicy': [5,0] }
   var wineStyleY = varietalStyle[wineStyle][1]
 
   // Creates wines specific taste profile coordinates
- var WineTC = [wineStyleX+wineVariatalX, wineStyleY+wineVariatalY]
+  var wineTC = [wineStyleX+wineVariatalX, wineStyleY+wineVariatalY]
+  return wineTC
 
 }
-
-// Driver test code
-// wineTasteCoordinates("Cabernet_Franc", "Big_and_Bold")
 
 
 
@@ -53,4 +51,4 @@ function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evalu
 }
 
 // Driver test code
-userEvaluation([30,30],'dislike',4,-5)
+ userEvaluation(wineTasteCoordinates("Cabernet_Franc", "Big_and_Bold"),50,4,-5)

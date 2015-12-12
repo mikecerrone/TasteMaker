@@ -5,19 +5,35 @@ if (Meteor.isClient) {
   Meteor.subscribe("wines");
   // console.log(Wines)
 
-
-  // counter starts at 0
-  Session.setDefault('counter', 0);
-
-  Template.home.events({
-    'click #home': function(){
+<<<<<<< HEAD
+=======
+  //   })
+  // })
+  
+  Meteor.methods({
+    hideAll: function() {
       document.querySelector("#recDiv").classList.add("hide")
       document.querySelector("#historyDiv").classList.add("hide")
       document.querySelector("#tasteDiv").classList.add("hide")
       document.querySelector("#helloDiv").classList.toggle("hide")
     }
   })
+>>>>>>> 534690b48f4731e1c2add16cf13d7cff251d1d4f
 
+  // Meteor.call("getWines", function(error, results){
+  //   console.log(results.content);
+  // })
+
+  // counter starts at 0
+  Session.setDefault('counter', 0);
+
+  Template.home.events({
+    'click #home': function(){
+      Meteor.call('hideAll');
+    }
+  })
+
+    
   Template.hello.helpers({
     wines: function(){
       return Wines.find({});
@@ -56,11 +72,24 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.recTemplate.events({
+    'click #getRec': function() {
+      Meteor.call("wineApiRecommendation", function(err, res) {
+        // console.log(test)
+        var results = res.data.Products.List[0]
+        // debugger;
+        // console.log(res.data.Products.List[0])
+        Blaze.renderWithData(Template.recReturned, {results: results}, document.querySelector('#recResult'))
+      })
+    }
+  })
+
 }
 
 
 
 
+<<<<<<< HEAD
 if (Meteor.isServer) {
       Meteor.publish("wines", function(){
         return Wines.find({})
@@ -87,3 +116,15 @@ Meteor.methods({
     });
   }
 })
+=======
+// if (Meteor.isServer) {
+//   Meteor.startup(function () {
+    // code to run on server at startup
+    // Meteor.methods({
+    //   getWines: function () {
+    //       return Meteor.http.call("GET", "https://services.wine.com/api/beta2/service.svc/json/catalog?search=apothic%20red&size=1&apikey=f6569a177b45d11f2e5dc5fee4bf9e82");
+    //   }
+//     });
+//   });
+// }
+>>>>>>> 534690b48f4731e1c2add16cf13d7cff251d1d4f

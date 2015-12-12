@@ -49,14 +49,14 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.recTemplate.events({
-    'click #getRec': function() {
-      Meteor.call("wineApiRecommendation", function(err, res) {
-        var results = res.data.Products.List[0]
-        Blaze.renderWithData(Template.recReturned, {results: results}, document.querySelector('#recResult'))
-      })
-    }
-  })
+  // Template.recTemplate.events({
+  //   'click #getRec': function() {
+  //     Meteor.call("wineApiRecommendation", function(err, res) {
+  //       var results = res.data.Products.List[0]
+  //       Blaze.renderWithData(Template.recReturned, {results: results}, document.querySelector('#recResult'))
+  //     })
+  //   }
+  // })
 
 }
 

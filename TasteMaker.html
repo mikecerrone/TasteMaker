@@ -3,26 +3,49 @@
 </head>
 
 <body>
-
-<div id="helloDiv">
-  {{> hello}}
-  {{>loginButtons}}
+<div id='pageDisplay' class='content hide'>
 </div>
+<div id='pageHome' class='content'>
+  <row class=''>
+      <div class='top_row columns small-12 bg_purple'>
+      <span class='text_white'><h1>TasteMaker</h1></span>
+      </div>
+  </row>
+  <row>
+      <div class='center_row columns small-12 bg_cream'>
+        <button class='button expand'>Scan It</button>
+      </div>
+  </row>
 
-<div class="hide" id="tasteDiv">
-  {{> tasteTemplate}}
-</div>
+  <row class=''>
+      <div class='bottom_row columns small-6 bg_purple'>
+        <button id='wineRec' class='button'>Recommend Me</button>
+      </div>
+      <div class='bottom_row columns small-6 bg_purple'>
+        <button id='wineHistory' class='button'>Wine History</button>
+      </div>
+  </row>
 
-<div id="historyDiv" class="hide">
-  {{> historyTemplate}}
-</div>
-
-<div id="recDiv" class="hide">
-  {{>recTemplate}}
-  <div id="recResult">
+<!-- 
+  <div id="helloDiv">
+    {{> hello}}
+    {{>loginButtons}}
   </div>
-</div>
 
+  <div class="hide" id="tasteDiv">
+    {{> tasteTemplate}}
+  </div>
+
+  <div id="historyDiv" class="hide">
+    {{> historyTemplate}}
+  </div>
+
+  <div id="recDiv" class="hide">
+    {{>recTemplate}}
+    <div id="recResult">
+    </div>
+  </div> -->
+</div>
 
 
 </body>

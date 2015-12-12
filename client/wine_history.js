@@ -1,14 +1,13 @@
 Template.body.events ({
-    'click #wineRec': function(event) {
-        event.preventDefault(); 
+    'click #wineHistory': function(event) {
+        event.preventDefault();
         $('#pageHome').toggleClass('hide');
         $('#pageDisplay').toggleClass('hide')
-        // Blaze.renderWithData(Template.recReturned, {results: results}, document.querySelector('#recResult'))
-        render = Blaze.render(Template.recWine, document.querySelector('#pageDisplay'))
+        render = Blaze.render(Template.wineHistory, document.querySelector('#pageDisplay'))
     }
-});
+})
 
-Template.recWine.events ({
+Template.wineHistory.events ({
     'click button': function(event) {
         event.preventDefault();
         $('#pageHome').toggleClass('hide');

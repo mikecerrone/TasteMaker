@@ -4,6 +4,8 @@
 
 <body>
 
+{{>loginButtons}}
+
 <div id="helloDiv">
   {{> hello}}
 </div>
@@ -18,48 +20,12 @@
 
 <div id="recDiv" class="hide">
   {{>recTemplate}}
+  <div id="recResult">
+  </div>
 </div>
 
 </body>
 
-<template name="hello">
-  <h1>Welcome to TasteMaker!</h1>
-  <p>SCANNER</p>
-  <button id="taste">Your Taste Profile</button>
-  <button id="history">Your Wine History</button>
-  <button id="rec">Your Reccomendations</button>
-</template>
 
-<template name="tasteTemplate">
-  <p>lovely circle graph with weights and probably nice colours we hope</p>
-  {{#each topVarietals}}
-    {{varietal}}
-    {{score}}
-  {{/each}}
-  {{>home}}
-</template>
 
-<template name="historyTemplate">
-  <p>all the wines you've done drank</p>
-  {{#each wines}}
-    {{img}}
-    {{name}}
-    {{other stuff}}
-    {{info}}
-    {{ratings}}
-  {{/each}}
-  {{>home}}
-</template>
 
-<template name="recTemplate">
-  <p>oooo you gonna love this!</p>
-  {{img}}
-  {{name}}
-  {{price}}
-  {{shop}}
-  {{>home}}
-</template>
-
-<template name="home">
-  <button id="home">home</button>
-</template>

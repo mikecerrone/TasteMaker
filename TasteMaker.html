@@ -8,6 +8,8 @@
 
 <div id="helloDiv">
   {{> hello}}
+  {{>loginButtons}}
+  {{>yourWines}}
 </div>
 
 <div class="hide" id="tasteDiv">
@@ -26,6 +28,11 @@
 
 </body>
 
-
-
+<template name="yourWines">
+  <ul>
+    {{#each yourWines}}
+    <li>{{wine}}</li>
+    {{/each}}
+  </ul>
+</template>
 

@@ -1,12 +1,14 @@
 if (Meteor.isClient) {
 
-  Template.tasteTemplate.rendered = function(){
+  Template.chart.rendered = function(){
     makeChart();
+    console.log("rendering a template")
   };
 
-  Template.tasteTemplate.helpers({
+  Template.chart.helpers({
 
     makeChart: function(){
+      console.log("making a chart")
       var context = document.getElementById("myChart").getContext("2d");
 
       var data = [

@@ -3,13 +3,16 @@
 </head>
 
 <body>
-
+<button id='add_thing'>Add</button>
 {{>loginButtons}}
+
+    {{#each users}}
+        {{Meteor.uemails}}
+    {{/each}}
 
 <div id="helloDiv">
   {{> hello}}
   {{>loginButtons}}
-  {{>yourWines}}
 </div>
 
 <div class="hide" id="tasteDiv">
@@ -26,13 +29,9 @@
   </div>
 </div>
 
+
+
 </body>
 
-<template name="yourWines">
-  <ul>
-    {{#each yourWines}}
-    <li>{{wine}}</li>
-    {{/each}}
-  </ul>
-</template>
+
 

@@ -1,11 +1,10 @@
 <template name="historyTemplate">
-  <p>all the wines you've done drank</p>
-  {{#each wines}}
-    {{img}}
-    {{name}}
-    {{other stuff}}
-    {{info}}
-    {{ratings}}
-  {{/each}}
+  
+  <ul>
+    {{#each yourWines}}
+    <li>{{wine}}</li>
+    {{/each}}
+  </ul>
+
   {{>home}}
 </template>

@@ -16,24 +16,41 @@ var varietalStyle = {'Big_and_Bold': [0,5], 'Earthy_and_Spicy': [5,0] }
   // Creates wines specific taste profile coordinates
  var WineTC = [wineStyleX+wineVariatalX, wineStyleY+wineVariatalY]
 
- console.log(WineTC)
 }
+
 // Driver test code
-wineTasteCoordinates("Cabernet_Franc", "Big_and_Bold")
+// wineTasteCoordinates("Cabernet_Franc", "Big_and_Bold")
 
 
+
+ // evalutaionWine= 'dislike' 10(like) or 50(love), evaluationX= fruit/earth, evaluationY is bold/light
 function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evaluationY ) {
   var userTaste = wineTasteCoordinates
+    if (evaluationWine != 'dislike'){
+     userTaste = [userTaste[0] + evaluationX, userTaste[1]]
+     userTaste = [userTaste[0],  userTaste[1] + evaluationY]
 
+     // add the userTaste array to user DB, n number of times depending on like(10x) or love(50x)
+     var step;
+      for (step = 0; step < evaluationWine; step++) {
+       console.log(userTaste);
+     }
 
+    } else {
+     userTaste = [userTaste[0] + evaluationX, userTaste[1]]
+     userTaste = [userTaste[0],  userTaste[1] + evaluationY]
 
+     // Inverts the users choice to the opposite side of the taste spectrum
+     userTaste = [userTaste[0] * -2  + userTaste[0], userTaste[1]]
+     userTaste = [userTaste[0], userTaste[1] + userTaste[1] * -2 ]
 
-
-
-   // if (evaluation = "like") {
-   //  var
-   // }
-
-
-
+      // add the inverted userTaste array to user DB, 2 times (hardcoded) due to 'dislike'
+     var step;
+      for (step = 0; step < 2; step++) {
+        console.log(userTaste);
+       }
+     }
 }
+
+// Driver test code
+userEvaluation([30,30],'dislike',4,-5)

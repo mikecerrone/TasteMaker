@@ -30,6 +30,10 @@
     width: 100%;
 }
 
+.rec_row {
+    height: 70%;
+}
+
 .bottom_row>.button {
     width: 75%;
     height: 75%;

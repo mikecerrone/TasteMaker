@@ -8,9 +8,13 @@
   display: none;
 }
 
+.tab-bar {
+    height: 8vh;
+}
+
 .content {
     width: 100%;
-    height: 100%;
+    height: 92vh;
     overflow: hidden;
 }
 

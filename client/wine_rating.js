@@ -11,8 +11,7 @@ Template.body.events ({
 Template.rateWine.events ({
     'click button': function(event) {
         event.preventDefault();
-        $('#pageHome').toggleClass('hide');
-        $('#pageDisplay').toggleClass('hide')
         Blaze.remove(render)
+        render = Blaze.render(Template.wineQuestions, document.querySelector('#pageDisplay'))
     }
 })

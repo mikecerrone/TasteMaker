@@ -13,5 +13,6 @@ Template.rateWine.events ({
         event.preventDefault();
         Blaze.remove(render)
         render = Blaze.render(Template.wineQuestions, document.querySelector('#pageDisplay'))
+        $(document).foundation();
     }
 })

@@ -15,3 +15,4 @@ Template.wineHistory.events ({
         Blaze.remove(render)
     }
 })
+

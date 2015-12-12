@@ -8,9 +8,9 @@ if (Meteor.isClient) {
   //   })
   // })
 
-  Meteor.call("getWines", function(error, results){
-    console.log(results.content);
-  })
+
+
+
 
   // counter starts at 0
   Session.setDefault('counter', 0);
@@ -34,6 +34,16 @@ if (Meteor.isClient) {
       // Session.set('counter', Session.get('counter') + 1);
       document.querySelector("#tasteDiv").classList.toggle("hide")
       document.querySelector("#helloDiv").classList.toggle("hide")
+
+
+      Meteor.call("getWine", function(error, results){
+      var wine = results.data.Products.List[0];})
+
+      Wines.insert( { wine: "wine" } )
+      console.log(Wines)
+
+
+
     },
     'click #history': function () {
       // increment the counter when button is clicked
@@ -58,7 +68,7 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
     Meteor.methods({
-      getWines: function () {
+      getWine: function () {
           return Meteor.http.call("GET", "https://services.wine.com/api/beta2/service.svc/json/catalog?search=apothic%20red&size=1&apikey=f6569a177b45d11f2e5dc5fee4bf9e82");
       }
     });

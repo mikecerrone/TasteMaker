@@ -1,3 +1,5 @@
+Taste = new Mongo.Collection("taste");
+
 Template.body.events ({
     'click #tasteProfile': function(event) {
         event.preventDefault();
@@ -51,12 +53,6 @@ if (Meteor.isClient){
             color: "#949FB1",
             highlight: "#A8B3C5",
             label: "Grey"
-        },
-        {
-            value: 120,
-            color: "#4D5360",
-            highlight: "#616774",
-            label: "Dark Grey"
         }
 
       ];

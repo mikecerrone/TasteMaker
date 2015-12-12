@@ -1,13 +1,10 @@
-// AllUsers = new Mongo.Collection("users");
+Wines = new Mongo.Collection("wines");
 
 if (Meteor.isClient) {
 
-  // Meteor.publish("wines", function(){
-  //   return Wines.find({
+  Meteor.subscribe("wines");
+  // console.log(Wines)
 
-  //   })
-  // })
-  
   Meteor.methods({
     hideAll: function() {
       document.querySelector("#recDiv").classList.add("hide")
@@ -16,13 +13,11 @@ if (Meteor.isClient) {
       document.querySelector("#helloDiv").classList.toggle("hide")
     }
   })
-
   // Meteor.call("getWines", function(error, results){
   //   console.log(results.content);
   // })
 
   // counter starts at 0
-  Session.setDefault('counter', 0);
 
   Template.home.events({
     'click #home': function(){
@@ -32,7 +27,17 @@ if (Meteor.isClient) {
 
     
   Template.hello.helpers({
+    wines: function(){
+      return Wines.find({});
+    }
 
+  });
+  Template.historyTemplate.helpers({
+    yourWines: function(){
+      return Wines.find({
+        user: Meteor.userId()
+      })
+    }
   });
 
   Template.hello.events({
@@ -41,6 +46,9 @@ if (Meteor.isClient) {
       // Session.set('counter', Session.get('counter') + 1);
       document.querySelector("#tasteDiv").classList.toggle("hide")
       document.querySelector("#helloDiv").classList.toggle("hide")
+
+      Meteor.call("addWine", "frank")
+
     },
     'click #history': function () {
       // increment the counter when button is clicked
@@ -68,12 +76,11 @@ if (Meteor.isClient) {
     }
   })
 
-  Template.body.helpers({
-    users: function() {
-      console.log('hit')
-        return Meteor.users.find({});
-    }
-  })
+  // Template.body.helpers({
+  //   users: function() {
+  //       return Meteor.users.find({});
+  //   }
+  // })
 
   Template.body.events({
     'click #add_thing': function() {
@@ -86,14 +93,21 @@ if (Meteor.isClient) {
 
 
 
-
 // if (Meteor.isServer) {
+//       Meteor.publish("wines", function(){
+//         return Wines.find({})
+//       })
 //   Meteor.startup(function () {
-    // code to run on server at startup
-    // Meteor.methods({
-    //   getWines: function () {
-    //       return Meteor.http.call("GET", "https://services.wine.com/api/beta2/service.svc/json/catalog?search=apothic%20red&size=1&apikey=f6569a177b45d11f2e5dc5fee4bf9e82");
-    //   }
+//     // code to run on server at startup
+//     Meteor.methods({
+//       getWine: function () {
+//           return Meteor.http.call("GET", "https://services.wine.com/api/beta2/service.svc/json/catalog?search=apothic%20red&size=1&apikey=f6569a177b45d11f2e5dc5fee4bf9e82");
+//       }
 //     });
 //   });
 // }
+
+Meteor.methods({
+  
+})
+

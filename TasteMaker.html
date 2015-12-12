@@ -7,6 +7,7 @@
 <div id="helloDiv">
   {{> hello}}
   {{>loginButtons}}
+  {{>yourWines}}
 </div>
 
 <div class="hide" id="tasteDiv">
@@ -26,6 +27,11 @@
 <template name="hello">
   <h1>Welcome to TasteMaker!</h1>
   <p>SCANNER</p>
+
+  {{#each wines}}
+    {{wine}}
+  {{/each}}
+
   <button id="taste">Your Taste Profile</button>
   <button id="history">Your Wine History</button>
   <button id="rec">Your Reccomendations</button>
@@ -33,9 +39,8 @@
 
 <template name="tasteTemplate">
   <p>lovely circle graph with weights and probably nice colours we hope</p>
-  {{#each topVarietals}}
-    {{varietal}}
-    {{score}}
+  {{#each wines}}
+    {{wine}}
   {{/each}}
   {{>home}}
 </template>
@@ -63,4 +68,12 @@
 
 <template name="home">
   <button id="home">home</button>
+</template>
+
+<template name="yourWines">
+  <ul>
+    {{#each yourWines}}
+    <li>{{wine}}</li>
+    {{/each}}
+  </ul>
 </template>

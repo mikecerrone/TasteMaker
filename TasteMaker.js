@@ -2,14 +2,8 @@ Wines = new Mongo.Collection("wines");
 
 if (Meteor.isClient) {
 
-  // Meteor.publish("wines", function(){
-  //   return Wines.find({
-
-  //   })
-  // })
-
-
-
+  Meteor.subscribe("wines");
+  // console.log(Wines)
 
 
   // counter starts at 0
@@ -25,7 +19,17 @@ if (Meteor.isClient) {
   })
 
   Template.hello.helpers({
+    wines: function(){
+      return Wines.find({});
+    }
 
+  });
+  Template.yourWines.helpers({
+    yourWines: function(){
+      return Wines.find({
+        user: Meteor.userId()
+      })
+    }
   });
 
   Template.hello.events({
@@ -35,14 +39,7 @@ if (Meteor.isClient) {
       document.querySelector("#tasteDiv").classList.toggle("hide")
       document.querySelector("#helloDiv").classList.toggle("hide")
 
-
-      Meteor.call("getWine", function(error, results){
-      var wine = results.data.Products.List[0];})
-
-      Wines.insert( { wine: "wine" } )
-      console.log(Wines)
-
-
+      Meteor.call("addWine", "frank")
 
     },
     'click #history': function () {
@@ -65,6 +62,9 @@ if (Meteor.isClient) {
 
 
 if (Meteor.isServer) {
+      Meteor.publish("wines", function(){
+        return Wines.find({})
+      })
   Meteor.startup(function () {
     // code to run on server at startup
     Meteor.methods({
@@ -74,3 +74,16 @@ if (Meteor.isServer) {
     });
   });
 }
+
+Meteor.methods({
+  addWine: function(wine){
+    if(! Meteor.userId()){
+      throw new Meteor.Error("gtfo you can't have wine")
+    }
+
+    Wines.insert({
+      wine: wine,
+      user: Meteor.userId()
+    });
+  }
+})

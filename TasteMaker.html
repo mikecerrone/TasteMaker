@@ -3,8 +3,12 @@
 </head>
 
 <body>
-
+<button id='add_thing'>Add</button>
 {{>loginButtons}}
+
+    {{#each users}}
+        {{Meteor.uemails}}
+    {{/each}}
 
 <div id="helloDiv">
   {{> hello}}
@@ -24,8 +28,13 @@
   </div>
 </div>
 
+
+
 </body>
 
+<template name="testtest">
+
+</template>
 
 
 

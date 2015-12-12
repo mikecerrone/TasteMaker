@@ -1,4 +1,4 @@
-Wines = new Mongo.Collection("wines");
+// AllUsers = new Mongo.Collection("users");
 
 if (Meteor.isClient) {
 
@@ -65,6 +65,20 @@ if (Meteor.isClient) {
         // console.log(res.data.Products.List[0])
         Blaze.renderWithData(Template.recReturned, {results: results}, document.querySelector('#recResult'))
       })
+    }
+  })
+
+  Template.body.helpers({
+    users: function() {
+      console.log('hit')
+        return Meteor.users.find({});
+    }
+  })
+
+  Template.body.events({
+    'click #add_thing': function() {
+      event.preventDefault();
+      
     }
   })
 

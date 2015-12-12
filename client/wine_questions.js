@@ -1,8 +1,3 @@
-Template.wineQuestions.onRendered(function () {
-    console.log('hit')
-    // $(document).foundation('reflow');
-});
-
 Template.wineQuestions.events ({
     'click button': function(event) {
         event.preventDefault();

@@ -31,7 +31,7 @@ function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evalu
      // add the userTaste array to user DB, n number of times depending on like(10x) or love(50x)
      var step;
       for (step = 0; step < evaluationWine; step++) {
-       console.log(userTaste);
+       // console.log(userTaste);
      }
 
     } else {

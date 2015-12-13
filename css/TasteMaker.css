@@ -36,16 +36,28 @@
 }
 
 
-.col-3>.single {
+/*.col-3>.single {
     margin-top: 3em;
-}
+    font-size: 6vw;
+}*/
 
 .col-3>.button:first-child {
     margin-top: 1em;
+    font-size: 6vw;
+}
+
+.bottom_row>.button {
+    height: 17vh;
+    font-size: 6vw;
 }
 
 .col-4 {
     height: 40vh;
+    font-size: 6vw;
+}
+
+.col-4>#love {
+    margin-top: .75em;
 }
 
 .col-5 {
@@ -53,8 +65,11 @@
 }
 
 .col-5>.scanIt {
-    margin-top: 5em;
+    margin-top: 2em;
     height: 25vh;
+    font-size: 10vw;
+    vertical-align: middle;
+
 }
 
 
@@ -75,9 +90,6 @@
 }
 
 
-.col-4>#love {
-    margin-top: .75em;
-}
 
 
 

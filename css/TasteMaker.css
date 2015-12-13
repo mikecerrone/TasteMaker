@@ -89,7 +89,13 @@
     height: 90vh;
 }
 
-
+ul .button {
+    margin: auto;
+    margin-left: 15%;
+    margin-top: 7.5vh;
+    height: 10vh;
+    width: 20vh;
+}
 
 
 

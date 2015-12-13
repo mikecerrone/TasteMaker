@@ -13,9 +13,11 @@
         </div>
       </nav>
       <aside class="left-off-canvas-menu">
-        <button id='wineHistory' class='button left-off-canvas-toggle'>Wine History</button><br>
-        <button id='aboutUs' class="button left-off-canvas-toggle">About TasteMaker</button><br>
-        <button id='logOut' class="button left-off-canvas-toggle">Logout</button><br>
+        <ul class='small-block-grid-1'>
+        <li><button id='wineHistory' class='button left-off-canvas-toggle'>Wine History</button><br></li>
+        <li><button id='aboutUs' class="button left-off-canvas-toggle">About TasteMaker</button><br></li>
+        <li><button id='logOut' class="button left-off-canvas-toggle">Logout</button><br></li>
+        </ul>
       </aside>
       <div id='pageDisplay' class='content hide'>
       </div>
@@ -46,7 +48,21 @@
        <nav class="tab-bar">
         <div class='text-center'>
           <h4 class='.text_white'>Taste Maker</h4>
-          {{> loginButtons}}
+          <row>
+            <div class='col-2 columns small-12 bg_purple'>
+            </div>
+          </row>
+          <row>
+            <div id='userBox' class='col-5 columns small-12 bg_cream'>
+              <div class='signUp'>
+              {{> signUp}}
+              </div>
+              <div class='logIn hide'>
+              {{> logIn}}
+              </div>
+            </div>
+          </row>
+          {{> accountBox}}
         </div>
       </nav>
     </div>

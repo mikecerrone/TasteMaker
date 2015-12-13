@@ -46,7 +46,21 @@
        <nav class="tab-bar">
         <div class='text-center'>
           <h4 class='.text_white'>Taste Maker</h4>
-          {{> loginButtons}}
+          <row>
+            <div class='col-2 columns small-12 bg_purple'>
+            </div>
+          </row>
+          <row>
+            <div id='userBox' class='col-5 columns small-12 bg_cream'>
+              <div class='signUp'>
+              {{> signUp}}
+              </div>
+              <div class='logIn hide'>
+              {{> logIn}}
+              </div>
+            </div>
+          </row>
+          {{> accountBox}}
         </div>
       </nav>
     </div>

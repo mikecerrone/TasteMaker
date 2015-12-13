@@ -33,20 +33,16 @@ Meteor.methods({
       } else {
         var rating = null
       }
-      console.log(i)
       wines[responseArray[i].Name] = {year: year, price: price, region: region, varietal: varietal, type: type, rating: rating}
-      wineNoYears.push(name)
-     var wineNoYearsDone = $.unique(wineNoYears);
-
+      wineNoYears[name] = 'test'
     }
-
     Meteor.call('resultLogic', wineNoYearsDone, wines, responseArray.length)
   },
 
   resultLogic: function(noYears, allWines, wineCount) {
     console.log(wineCount)
     console.log("here")
-    console.log(noYears.length)
+    console.log(Object.keys(noYears).length);
     console.log((wineCount - noYears.length) > wineCount * 0.6)
     // if ((wineCount - noYears.length) > wineCount * 0.6)
   },

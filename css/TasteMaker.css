@@ -64,6 +64,16 @@
     height: 50vh;
 }
 
+.col-5 input {
+    margin: auto;
+    width: 90%;
+}
+
+.col-5 h3 {
+    margin:auto;
+    width: 90%;
+}
+
 .col-5>.scanIt {
     margin-top: 2em;
     height: 25vh;
@@ -103,7 +113,7 @@ ul .button {
 }
 
 .bg_purple {
-    background-color: #0e0c11;
+    background-color: #580a31;
 }
 
 .bg_white {

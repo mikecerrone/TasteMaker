@@ -6,5 +6,4 @@ Template.hamburgerBar.events({
 
 Template.hamburgerBar.onRendered(()=>{
     $(document).foundation();
-    // debugger;
 })

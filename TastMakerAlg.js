@@ -10,7 +10,7 @@ var varietalTaste = {
   'Cabernet Sauvignon':[40,5],
   'Sangiovese':[28,35],
   'Barbera':[25,-38],
-  'Grenache'[12,-41],
+  'Grenache':[12,-41],
   'Malbec':[36,-31],
   'Merlot':[45,-16],
   "Nero d'Avola":[30,-32],
@@ -22,21 +22,21 @@ var varietalTaste = {
 //Whites
   'Chardonnay':[-13,-9],
   'Sauvignon Blanc':[-27,37],
-  'Pinot Gris/Grigio'[-31,0],
+  'Pinot Gris/Grigio':[-31,0],
   'Muscat':[7,45],
   'Riesling':[-25,-20],
-  'Viognier':[17,]
-
-
+  'Viognier':[17,-10]
 }
 
 var varietalStyle = {
-  'Big_&_Bold':[0,5],
+//Reds
+  'Big &amp; Bold':[0,5],
   'Earthy_&_Spicy':[5,3],
+  'Light_&_Fruity':[-3,-3],
   'Smooth_&_Supple':[-4,2],
+//Whites
   'Fruity_&_Smooth':[-5,2],
   'Rich_&_Creamy':[-3,1],
-  'Light_&_Fruity':[-3,-3],
   'Light_&_Crisp':[-3,-3]
 }
 
@@ -53,7 +53,6 @@ var varietalStyle = {
   return wineTC
 
 }
-
 
 
  // evalutaionWine= 'dislike' 10(like) or 50(love), evaluationX= fruit/earth, evaluationY is bold/light

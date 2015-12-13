@@ -19,9 +19,42 @@ function questionGenerator(flavorElement) {
  var x = Math.floor((Math.random() * 1));
   var question = questions[flavorElement][x].question;
   var values = questions[flavorElement][x].values;
-  var finalSelection = [question, values]
-    return finalSelection
+  var selection = [question, values]
+    return selection
 };
 
-// Test driver code
-// console.log(questionGenerator('bold'))
+function questionServer(wineCoordinates) {
+  var questionsFinal = []
+ if (wineCoordinates[0] >= 0) {
+    if (wineCoordinates[1] >= 0){
+      // return array with both question generators(earthy, bold)
+     console.log("return array with both question generators(earthy, bold)")
+      questionsFinal.push(questionGenerator("earthy"))
+      questionsFinal.push(questionGenerator("bold"))
+       return questionsFinal
+    } else {
+     // return array with both question generators (earthy, light)
+     console.log("return array with both question generators (earthy, light)")
+      questionsFinal.push(questionGenerator("earthy"))
+      questionsFinal.push(questionGenerator("light"))
+       return questionsFinal
+    }
+ } else {
+      if (wineCoordinates[1] >= 0){
+     // return array with both question generators(fruity, bold)
+     console.log("return array with both question generators(fruity, bold)")
+      questionsFinal.push(questionGenerator("fruity"))
+      questionsFinal.push(questionGenerator("bold"))
+       return questionsFinal
+    } else {
+     // return array with both question generators (fruity, light)
+     console.log("return array with both question generators (fruity, light)")
+      questionsFinal.push(questionGenerator("fruity"))
+      questionsFinal.push(questionGenerator("light"))
+       return questionsFinal
+    }
+  }
+}
+
+ var bobo = [30,-30]
+ console.log(questionServer(bobo))

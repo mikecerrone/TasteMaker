@@ -2,8 +2,43 @@
 function wineTasteCoordinates(varietal, wineStyle) {
 
  // Should be DB Collection or we can create static list since none of these numbers change
-var varietalTaste = {'Cabernet_Franc': [30,30],'Syrah': [50,18]}
-var varietalStyle = {'Big_&_Bold': [0,5], 'Earthy_&_Spicy': [5,3], 'Smooth_&_Supple':[-4,2], 'Fruity_&_Smooth': [-5,2], 'Rich_&_Creamy': [-3,1], 'Light_&_Fruity': [-3,-3], 'Light_&_Crisp': [-3,-3]}
+var varietalTaste = {
+//Reds
+  'Cabernet_Franc':[30,30],
+  'Syrah/Shiraz':[50,18],
+  'Pinot Noir':[-7,10],
+  'Cabernet Sauvignon':[40,5],
+  'Sangiovese':[28,35],
+  'Barbera':[25,-38],
+  'Grenache'[12,-41],
+  'Malbec':[36,-31],
+  'Merlot':[45,-16],
+  "Nero d'Avola":[30,-32],
+  'Petite Sirah':[15,3],
+  'Pinotage':[20,33],
+  'Zinfandel':[35,-35],
+  'Chianti':[15,40],
+  'Tempranillo':[28,30],
+//Whites
+  'Chardonnay':[-13,-9],
+  'Sauvignon Blanc':[-27,37],
+  'Pinot Gris/Grigio'[-31,0],
+  'Muscat':[7,45],
+  'Riesling':[-25,-20],
+  'Viognier':[17,]
+
+
+}
+
+var varietalStyle = {
+  'Big_&_Bold':[0,5],
+  'Earthy_&_Spicy':[5,3],
+  'Smooth_&_Supple':[-4,2],
+  'Fruity_&_Smooth':[-5,2],
+  'Rich_&_Creamy':[-3,1],
+  'Light_&_Fruity':[-3,-3],
+  'Light_&_Crisp':[-3,-3]
+}
 
   // Varietal default coordinates from our wine taste mapping work
   var wineVariatalX = varietalTaste[varietal][0]

@@ -3,7 +3,7 @@ function wineTasteCoordinates(varietal, wineStyle) {
 
  // Should be DB Collection or we can create static list since none of these numbers change
 var varietalTaste = {'Cabernet_Franc': [30,30],'Syrah': [50,18]}
-var varietalStyle = {'Big_&_Bold': [0,5], 'Earthy_&_Spicy': [5,0],   }
+var varietalStyle = {'Big_&_Bold': [0,5], 'Earthy_&_Spicy': [5,3], 'Smooth_&_Supple':[-4,2], 'Fruity_&_Smooth': [-5,2], 'Rich_&_Creamy': [-3,1], 'Light_&_Fruity': [-3,-3], 'Light_&_Crisp': [-3,-3]}
 
   // Varietal default coordinates from our wine taste mapping work
   var wineVariatalX = varietalTaste[varietal][0]

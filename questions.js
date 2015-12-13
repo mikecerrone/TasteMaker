@@ -1,3 +1,4 @@
+// Sample questions for the 2nd and 3rd user questions.
 var questions = {
 
 "bold": [{"question": "Did you like that this wine had bold flavors?", "values":[-5,5]}, {"question": "Did you think the wines flavors were too bold?", "values":[5,-5]}],
@@ -13,7 +14,7 @@ var questions = {
 
 }
 
-//chooses a random question from array when passed a flavorElement ('bold','light','fruity','earthy')
+// Chooses random question from array when passed a flavorElement ('bold','light','fruity','earthy')
 function questionGenerator(flavorElement) {
  var x = Math.floor((Math.random() * 1));
   var question = questions[flavorElement][x].question;

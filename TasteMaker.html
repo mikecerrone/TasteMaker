@@ -2,10 +2,11 @@
   <title>TasteMaker</title>
 </head>
 <body>
+  {{#if currentUser}}
   <div class="off-canvas-wrap" data-offcanvas>
     <div class="inner-wrap">
       <nav class="tab-bar">
-        <div class="left-small"><a role="button" href="#idOfRightMenu" class="left-off-canvas-toggle menu-icon" ><span></span></a>
+        <div class="left-small"><a role="button" href="#idOfLeftMenu" class="left-off-canvas-toggle menu-icon" ><span></span></a>
         </div>
         <div class='text-center'>
           <h4 class='.text_white'>Taste Maker</h4>
@@ -14,7 +15,7 @@
       <aside class="left-off-canvas-menu">
         <button id='tasteProfile' class="button left-off-canvas-toggle">Taste Profile</button><br>
         <button class="button left-off-canvas-toggle">About TasteMaker</button><br>
-        <button class="button left-off-canvas-toggle">Logout</button><br>
+        <button id='logOut' class="button left-off-canvas-toggle">Logout</button><br>
       </aside>
       <div id='pageDisplay' class='content hide'>
       </div>
@@ -40,4 +41,14 @@
       </div>
     </div>
   </div>
+  {{else}}
+    <div class='loggedOut'>
+       <nav class="tab-bar">
+        <div class='text-center'>
+          <h4 class='.text_white'>Taste Maker</h4>
+          {{> loginButtons}}
+        </div>
+      </nav>
+    </div>
+  {{/if}}
 </body>

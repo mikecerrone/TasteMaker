@@ -1,4 +1,5 @@
-Taste = new Mongo.Collection("taste");
+// Taste = new Mongo.Collection("taste");
+// UserHistory = new Mongo.Collection("userHistory");
 
 Template.body.events ({
     'click #tasteProfile': function(event) {
@@ -30,22 +31,21 @@ if (Meteor.isClient){
     });
 
 Template.tasteProfile.rendered = function(){
-    seedData();
+    // seedData();
     makeChart();
     // findTaste();
-    console.log("rendering a template")
 };
 
     function makeChart(){
-      console.log("making a chart")
       var context = document.getElementById("myChart").getContext("2d");
+     var contextr = document.getElementById("myRadarChart").getContext("2d");
 
       var tastes = Taste.find({user:1})
-      // console.log(tastes)
       var splitUpTheTasteArrays = []
-      tastes.forEach(function(taste){splitUpTheTasteArrays.push(taste.taste)})
+      tastes.forEach(function(taste){splitUpTheTasteArrays.push(taste.tasteCoords)})
+      console.log("TASTE ARRAYS")
       console.log(splitUpTheTasteArrays)
-      console.log("TASTE ZERO: "+splitUpTheTasteArrays[0][0])
+      // console.log("TASTE ZERO: "+splitUpTheTasteArrays[0][0])
 
       var bold = 0;
       var fruity = 0;
@@ -54,21 +54,27 @@ Template.tasteProfile.rendered = function(){
 
       for (i=0; i<splitUpTheTasteArrays.length;i++){
         if (splitUpTheTasteArrays[i][0] > 0) {
-            bold += splitUpTheTasteArrays[i][0];
+            earthy += splitUpTheTasteArrays[i][0];
         }else if(splitUpTheTasteArrays[i][0] < 0){
-            light += -(splitUpTheTasteArrays[i][0]);
+            fruity += -(splitUpTheTasteArrays[i][0]);
         }
         if (splitUpTheTasteArrays[i][1] > 0) {
-            fruity += splitUpTheTasteArrays[i][1];
+            bold += splitUpTheTasteArrays[i][1];
         }else if(splitUpTheTasteArrays[i][1] < 0){
-            earthy += -(splitUpTheTasteArrays[i][1]);
+            light += -(splitUpTheTasteArrays[i][1]);
         }
       }
 
-      console.log("BOLD: " + bold)
-      console.log("LIGHT: " + light)
-      console.log("FRUITY: " + fruity)
-      console.log("EARTHY: " + earthy)
+      var bold = bold/splitUpTheTasteArrays.length;
+      var fruity = fruity/splitUpTheTasteArrays.length;
+      var earthy = earthy/splitUpTheTasteArrays.length;
+      var light = light/splitUpTheTasteArrays.length;
+
+      // console.log("BOLD: " + bold)
+      // console.log("LIGHT: " + light)
+      // console.log("FRUITY: " + fruity)
+      // console.log("EARTHY: " + earthy)
+
 
       var data = [
         {
@@ -98,8 +104,66 @@ Template.tasteProfile.rendered = function(){
 
       ];
 
-      var myNewChart = new Chart(context).PolarArea(data);
+      var histTastes = UserHistory.find({user: 1})
+      var splitUpTheHistoryArrays = []
+      histTastes.forEach(function(taste){splitUpTheHistoryArrays.push(taste.tasteCoords)})
+      console.log("HISTARRAYS")
+      console.log(splitUpTheHistoryArrays)
 
+      var histBold = 0;
+      var histFruity = 0;
+      var histEarthy = 0;
+      var histLight = 0;
+
+      for (i=0; i<splitUpTheHistoryArrays.length;i++){
+        if (splitUpTheHistoryArrays[i][0] > 0) {
+            histEarthy += splitUpTheHistoryArrays[i][0];
+        }else if(splitUpTheHistoryArrays[i][0] < 0){
+            histFruity += -(splitUpTheHistoryArrays[i][0]);
+        }
+        if (splitUpTheHistoryArrays[i][1] > 0) {
+            histBold += splitUpTheHistoryArrays[i][1];
+        }else if(splitUpTheHistoryArrays[i][1] < 0){
+            histLight += -(splitUpTheHistoryArrays[i][1]);
+        }
+      }
+
+      var histBold = histBold/splitUpTheHistoryArrays.length;
+      var histFruity = histFruity/splitUpTheHistoryArrays.length;
+      var histEarthy = histEarthy/splitUpTheHistoryArrays.length;
+      var histLight = histLight/splitUpTheHistoryArrays.length;
+
+      var datar = {
+    labels: ["Bold", "Earthy", "Light", "Fruity"],
+    datasets: [
+        {
+            label: "wines done drank",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: [histBold, histEarthy, histLight, histFruity]
+        },
+        {
+            label: "taste likes",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [bold, earthy, light, fruity]
+        }
+    ]
+};
+
+var options = {legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=red%>\">hi hello</span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"}
+
+
+      var myNewChart = new Chart(context).PolarArea(data);
+      var myRadarChart = new Chart(contextr).Radar(datar, options);
     }
 
     // function findTaste(){
@@ -107,21 +171,35 @@ Template.tasteProfile.rendered = function(){
 
 }
 
-function seedData(){
-    // test data
-Taste.insert({
-    taste: [30, 35],
-    user: 1
-});
-Taste.insert({
-    taste: [6, -35],
-    user: 1
-});
-Taste.insert({
-    taste: [55, 10],
-    user: 1
-});
-}
+// function seedData(){
+//   console.log("SEEDS")
+//     // test data
+// Taste.insert({
+//     tasteCoords: [30, 35],
+//     user: 1
+// });
+// Taste.insert({
+//     tasteCoords: [-6, -35],
+//     user: 1
+// });
+// Taste.insert({
+//     tasteCoords: [55, 10],
+//     user: 1
+// });
+
+// UserHistory.insert({
+//     tasteCoords: [5, 18],
+//     user: 1
+// });
+// UserHistory.insert({
+//     tasteCoords: [-50, -16],
+//     user: 1
+// });
+// UserHistory.insert({
+//     tasteCoords: [11, 9],
+//     user: 1
+// });
+// }
 
 function wineTasteCoordinates(varietal, wineStyle) {
 

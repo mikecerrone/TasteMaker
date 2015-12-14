@@ -4,6 +4,8 @@ Meteor.startup(function () {
       if (Meteor.isCordova){
         cordova.plugins.barcodeScanner.scan(
           function (result) {
+            console.log("heheheheheh")
+            console.log(result);
             Meteor.call('upcDecoder', result, function(error, results){
               result = null
             });

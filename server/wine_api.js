@@ -7,7 +7,6 @@ Meteor.methods({
   },
 
   wineApiLookupSorting: function(results, wineName) {
-    console.log('hit')
     var wines = {}
     var wineNoYears = {}
     var parsedResponse = JSON.parse(results.content);
@@ -60,5 +59,14 @@ Meteor.methods({
   wineApiRecommendation: function() {
     this.unblock()
     return Meteor.http.call("GET", 'https://services.wine.com/api/beta2/service.svc/json/catalog?search=apothic%20red&apikey=f6569a177b45d11f2e5dc5fee4bf9e82')
-  }
+  },
+
+
+
+// This is being used for now to get a single response
+  wineApiLookupTemp: function(name) {
+    this.unblock()
+    return Meteor.http.call("GET", 'https://services.wine.com/api/beta2/service.svc/json/catalog?search=' + name + '&apikey=f6569a177b45d11f2e5dc5fee4bf9e82')
+  },
+
 })

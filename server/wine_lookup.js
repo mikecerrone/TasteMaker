@@ -16,7 +16,7 @@ Meteor.methods({
           Meteor.call('wineApiLookup', wineName, function(err, res){
           })
         } else {
-          //render manual search page...
+          // Render search field...
           console.log("saved")
         }
       });

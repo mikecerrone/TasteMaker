@@ -13,7 +13,6 @@ Template.body.events ({
 
     'scan': function() {
         historyInsert();
-
     }
 })
 

@@ -11,7 +11,8 @@ Meteor.methods({
         console.log(res);
         console.log(error);
         if (res.data.length > 0){
-          var wineName = res.data[0].brand
+          var wineName = res.data[0].brand + " " + res.data[0].product_name
+
           Meteor.call('wineApiLookup', wineName, function(err, res){
           })
         } else {

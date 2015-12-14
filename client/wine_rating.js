@@ -13,10 +13,22 @@ Template.rateWine.events ({
     'click button': function(event) {
         event.preventDefault();
         var answer = event.target.id;
-        var convertedAnswer = getAnswer(answer)
+        convertedAnswer = getAnswer(answer)
         Blaze.remove(render)
         render = Blaze.render(Template.wineQuestions, document.querySelector('#pageDisplay'))
         $(document).foundation();
+    }
+})
+
+Template.wineQuestions.events ({
+    'click button': function(event) {
+        event.preventDefault();
+        debugger;
+        questionOne = $('.range-slider input')[0].value
+        questionTwo = $('.range-slider input')[1].value
+        $('#pageHome').toggleClass('hide');
+        $('#pageDisplay').toggleClass('hide')
+        Blaze.remove(render)
     }
 })
 

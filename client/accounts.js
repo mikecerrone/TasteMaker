@@ -6,7 +6,7 @@ Template.accountBox.events ({
 
     'click #logIn': function(event) {
         $('.signUp').addClass('hide');
-        $('.logIn').removeClass('hide');   
+        $('.logIn').removeClass('hide');
     }
 })
 

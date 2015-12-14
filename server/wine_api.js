@@ -1,3 +1,5 @@
+UserHistory = new Mongo.Collection("history");
+
 Meteor.methods({
   wineApiLookup: function(name) {
     var uriName = encodeURI(name);
@@ -55,6 +57,8 @@ Meteor.methods({
       }
     }
     console.log(highest);
+    UserHistory.insert(resultObject[highest.name]);
+    console.log('worked')
   },
 
   wineApiRecommendation: function() {

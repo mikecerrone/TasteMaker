@@ -218,7 +218,6 @@ var wineApiLookupSorting = function(results, wineName) {
       }
       wines[name] = {name: name, year: year, price: price, style: style, region: region, varietal: varietal, type: type, rating: rating}
     }
-    console.log(wines)
     return similar(wineName, wines)
     // Meteor.call('similar', wineName, wines);
   }
@@ -245,11 +244,9 @@ var wineApiLookupSorting = function(results, wineName) {
     }
     var sortedNames = _.sortBy(results, 'score').reverse()
     var sortedWineObjects = []
-    // for(v)
-     _.map(sortedNames, function(value, key){
-      sortedWineObjects.push(resultObject[value])
-    })
-    console.log(sortedWineObjects)
-    console.log(sortedNames)
+    for(i = 0; i < sortedNames.length; i++){
+      sortedWineObjects.push(resultObject[sortedNames[i].name])
+    }
+
     return resultObject[sortedNames[0].name]
   }

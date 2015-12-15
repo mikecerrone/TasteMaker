@@ -3,7 +3,7 @@ Template.notFound.events({
         event.preventDefault();
         var searchText = $('input').val();
          Meteor.call("wineApiLookupTemp", searchText, function(err, res){
-            console.log(err)
+            // console.log(err)
             var wineName = res.data.Products.List[0].Name
             var wineUrl =  res.data.Products.List[0].Labels[0].Url
             var wineType =  res.data.Products.List[0].ProductAttributes[0].Name
@@ -68,6 +68,8 @@ function wineTasteCoordinates(varietal, wineStyle, callback) {
 
   // Creates wines specific taste profile coordinates
   var wineTC = [wineStyleX+wineVariatalX, wineStyleY+wineVariatalY]
+
+  // NEED TO ADD TO SAVE TO DB: userHistory.insert({userTaste: wineTC, user: Meteor.userId})
   return wineTC
   // callback()
 
@@ -84,7 +86,8 @@ function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evalu
      // add the userTaste array to user DB, n number of times depending on like(10x) or love(50x)
      var step;
       for (step = 0; step < evaluationWine; step++) {
-       // console.log(userTaste);
+        // console.log(userTaste)
+       Taste.insert({userTaste: userTaste, user: Meteor.userId})
      }
 
     } else {
@@ -98,7 +101,7 @@ function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evalu
       // add the inverted userTaste array to user DB, 2 times (hardcoded) due to 'dislike'
      var step;
       for (step = 0; step < 2; step++) {
-        console.log(userTaste);
+      Taste.insert({userTaste: userTaste, user: Meteor.userId})
        }
      }
 }
@@ -116,13 +119,11 @@ function questionServer(wineCoordinates, callback) {
   if (wineCoordinates[0] >= 0) {
     if (wineCoordinates[1] >= 0){
       // return array with both question generators(earthy, bold)
-     console.log("return array with both question generators(earthy, bold)")
       questionsFinal.push(questionGenerator("earthy"))
       questionsFinal.push(questionGenerator("bold"))
        return questionsFinal
     } else {
      // return array with both question generators (earthy, light)
-     console.log("return array with both question generators (earthy, light)")
       questionsFinal.push(questionGenerator("earthy"))
       questionsFinal.push(questionGenerator("light"))
        return questionsFinal
@@ -130,13 +131,11 @@ function questionServer(wineCoordinates, callback) {
  } else {
       if (wineCoordinates[1] >= 0){
      // return array with both question generators(fruity, bold)
-     console.log("return array with both question generators(fruity, bold)")
       questionsFinal.push(questionGenerator("fruity"))
       questionsFinal.push(questionGenerator("bold"))
        return questionsFinal
     } else {
      // return array with both question generators (fruity, light)
-     console.log("return array with both question generators (fruity, light)")
       questionsFinal.push(questionGenerator("fruity"))
       questionsFinal.push(questionGenerator("light"))
        return questionsFinal

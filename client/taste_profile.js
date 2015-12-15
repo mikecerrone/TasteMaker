@@ -1,15 +1,23 @@
-// Taste = new Mongo.Collection("taste");
-// UserHistory = new Mongo.Collection("userHistory");
-
 Template.body.events ({
     'click #tasteProfile': function(event) {
         event.preventDefault();
         $('#pageHome').toggleClass('hide');
         $('#pageDisplay').toggleClass('hide')
-        // Blaze.renderWithData(Template.recReturned, {results: results}, document.querySelector('#recResult'))
         render = Blaze.render(Template.tasteProfile, document.querySelector('#pageDisplay'))
     }
 });
+
+Template.tasteProfile.helpers({
+  history: function(){
+    return UserHistory.find({user: Meteor.userId()})
+  },
+  varietalPercentage: function(){
+    var hist = UserHistory.find({user: Meteror.userId()})
+    wines = []
+    hist.forEach(function(wine){wine.push(wine.varietal)})
+    wine
+  }
+})
 
 Template.tasteProfile.events ({
     'click button': function(event) {
@@ -23,27 +31,16 @@ Template.tasteProfile.events ({
 
 
 Template.tasteProfile.rendered = function(){
-    // seedData();
     makeChart();
-    // findTaste();
 };
 
-    function makeChart(){
+  function makeChart(){
       var context = document.getElementById("myChart").getContext("2d");
      var contextr = document.getElementById("myRadarChart").getContext("2d");
 
-      var tastes = Taste.find({user:Meteor.userId})
+      var tastes = Taste.find({user:Meteor.userId()})
       var splitUpTheTasteArrays = []
-      Taste.find({user: Meteor.userId()}).forEach(function(taste){splitUpTheTasteArrays.push(taste.userTaste)})
-      console.log(splitUpTheTasteArrays)
-      // for(var element in tastes){
-      //   splitUpTheTasteArrays.push(element.userTaste)
-      //   debugger
-      // }
-      // tastes.forEach(function(taste){splitUpTheTasteArrays.push(taste.userTaste)})
-      // debugger;
-      // console.log(tastes)
-      // console.log("TASTE ZERO: "+splitUpTheTasteArrays[0][0])
+      tastes.forEach(function(taste){splitUpTheTasteArrays.push(taste.userTaste)})
 
       var bold = 0;
       var fruity = 0;
@@ -67,11 +64,6 @@ Template.tasteProfile.rendered = function(){
       var fruity = fruity/splitUpTheTasteArrays.length;
       var earthy = earthy/splitUpTheTasteArrays.length;
       var light = light/splitUpTheTasteArrays.length;
-
-      // console.log("BOLD: " + bold)
-      // console.log("LIGHT: " + light)
-      // console.log("FRUITY: " + fruity)
-      // console.log("EARTHY: " + earthy)
 
 
       var data = [
@@ -102,11 +94,9 @@ Template.tasteProfile.rendered = function(){
 
       ];
 
-      var histTastes = UserHistory.find({user: Meteor.userId})
+      var histTastes = UserHistory.find({user: Meteor.userId()})
       var splitUpTheHistoryArrays = []
-      histTastes.forEach(function(taste){splitUpTheHistoryArrays.push(taste.userTaste)})
-      console.log("HISTARRAYS")
-      console.log(splitUpTheHistoryArrays)
+      histTastes.forEach(function(wine){splitUpTheHistoryArrays.push(wine.wineCoords)})
 
       var histBold = 0;
       var histFruity = 0;
@@ -157,11 +147,8 @@ Template.tasteProfile.rendered = function(){
     ]
 };
 
-var options = {legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=red%>\">hi hello</span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"}
-
-
       var myNewChart = new Chart(context).PolarArea(data);
-      var myRadarChart = new Chart(contextr).Radar(datar, options);
+      var myRadarChart = new Chart(contextr).Radar(datar);
     }
 
     // function findTaste(){

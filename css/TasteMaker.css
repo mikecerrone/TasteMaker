@@ -89,6 +89,7 @@
 
 .col-7 {
     height: 70vh;
+    overflow: scroll;
 }
 
 .col-8 {

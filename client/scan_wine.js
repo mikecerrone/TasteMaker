@@ -7,9 +7,23 @@ Template.body.events ({
               Meteor.call('barcodeScan', function(err, res) {
             })
         } else {
+              if (typeof render !== 'undefined') {
+                Blaze.remove(render);
+              }
               $('#pageHome').addClass('hide');
               $('#pageDisplay').removeClass('hide');
               render = Blaze.render(Template.notFound, document.querySelector('#pageDisplay'))
         }
     }
 })
+
+
+// Template.body.events({ 
+//     "click #aboutUs": function(event) {
+//         event.preventDefault;
+        
+//         $('#pageHome').addClass('hide');
+//         $('#pageDisplay').removeClass('hide');
+//         render = Blaze.render(Template.notFound, document.querySelector('#pageDisplay'))
+//     }
+// })

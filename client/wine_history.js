@@ -14,8 +14,8 @@ Template.body.events ({
 Template.wineHistory.events ({
     'click button': function(event) {
         event.preventDefault();
-        $('#pageHome').toggleClass('hide');
-        $('#pageDisplay').toggleClass('hide')
+        $('#pageHome').removeClass('hide');
+        $('#pageDisplay').addClass('hide')
         Blaze.remove(render)
     }
 })

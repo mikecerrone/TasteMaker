@@ -1,8 +1,8 @@
 Template.body.events ({
     'click #wineRec': function(event) {
         event.preventDefault();
-        $('#pageHome').toggleClass('hide');
-        $('#pageDisplay').toggleClass('hide')
+        $('#pageHome').addClass('hide');
+        $('#pageDisplay').removeClass('hide')
         // Blaze.renderWithData(Template.recReturned, {results: results}, document.querySelector('#recResult'))
         render = Blaze.render(Template.recWine, document.querySelector('#pageDisplay'))
     }
@@ -12,8 +12,8 @@ Template.body.events ({
 Template.recWine.events ({
     'click button': function(event) {
         event.preventDefault();
-        $('#pageHome').toggleClass('hide');
-        $('#pageDisplay').toggleClass('hide')
+        $('#pageHome').removeClass('hide');
+        $('#pageDisplay').addClass('hide')
         Blaze.remove(render)
     }
 })

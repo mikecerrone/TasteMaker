@@ -5,9 +5,11 @@ Template.notFound.events({
          Meteor.call("wineApiLookup", searchText, function(err, res){
             wineResults = wineApiLookupSorting(res, searchText)
             Blaze.remove(render)
-            debugger;
             wineCoords = wineTasteCoordinates(wineResults.varietal, wineResults.style);
             wineQuestions = questionServer(wineCoords)
+            wineResults['user_id'] = Meteor.userId
+            wineResults['wineCoords'] = wineCoords
+            UserHistory.insert(wineResults);
             render = Blaze.renderWithData(Template.rateWine, {name: wineResults.name, style: wineResults.style}, document.querySelector('#pageDisplay'))
         })
     }
@@ -65,6 +67,8 @@ function wineTasteCoordinates(varietal, wineStyle, callback) {
 
   // Creates wines specific taste profile coordinates
   var wineTC = [wineStyleX+wineVariatalX, wineStyleY+wineVariatalY]
+
+  // NEED TO ADD TO SAVE TO DB:
   return wineTC
   // callback()
 
@@ -81,7 +85,8 @@ function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evalu
      // add the userTaste array to user DB, n number of times depending on like(10x) or love(50x)
      var step;
       for (step = 0; step < evaluationWine; step++) {
-       // console.log(userTaste);
+        // console.log(userTaste)
+       Taste.insert({userTaste: userTaste, user: Meteor.userId})
      }
 
     } else {
@@ -95,7 +100,7 @@ function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evalu
       // add the inverted userTaste array to user DB, 2 times (hardcoded) due to 'dislike'
      var step;
       for (step = 0; step < 2; step++) {
-        console.log(userTaste);
+      Taste.insert({userTaste: userTaste, user: Meteor.userId})
        }
      }
 }
@@ -113,13 +118,11 @@ function questionServer(wineCoordinates, callback) {
   if (wineCoordinates[0] >= 0) {
     if (wineCoordinates[1] >= 0){
       // return array with both question generators(earthy, bold)
-     console.log("return array with both question generators(earthy, bold)")
       questionsFinal.push(questionGenerator("earthy"))
       questionsFinal.push(questionGenerator("bold"))
        return questionsFinal
     } else {
      // return array with both question generators (earthy, light)
-     console.log("return array with both question generators (earthy, light)")
       questionsFinal.push(questionGenerator("earthy"))
       questionsFinal.push(questionGenerator("light"))
        return questionsFinal
@@ -127,13 +130,11 @@ function questionServer(wineCoordinates, callback) {
  } else {
       if (wineCoordinates[1] >= 0){
      // return array with both question generators(fruity, bold)
-     console.log("return array with both question generators(fruity, bold)")
       questionsFinal.push(questionGenerator("fruity"))
       questionsFinal.push(questionGenerator("bold"))
        return questionsFinal
     } else {
      // return array with both question generators (fruity, light)
-     console.log("return array with both question generators (fruity, light)")
       questionsFinal.push(questionGenerator("fruity"))
       questionsFinal.push(questionGenerator("light"))
        return questionsFinal
@@ -213,7 +214,6 @@ var wineApiLookupSorting = function(results, wineName) {
       }
     }
     console.log(highest);
-    UserHistory.insert(resultObject[highest.name]);
     return resultObject[highest.name]
     console.log('worked')
   }

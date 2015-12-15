@@ -19,3 +19,16 @@ Template.wineHistory.events ({
     }
 })
 
+// if (Meteor.isClient){
+
+//     var scanWine = {name: 'Apothic Red Blend 2012',
+//                     year: '2012',
+//                     price: 11.99,
+//                     style: 'Smooth &amp; Supple',
+//                     region: 'California',
+//                     varietal: 'Other Red Blends',
+//                     type: 'Red Wines',
+//                     rating: 88
+//     };
+
+// };

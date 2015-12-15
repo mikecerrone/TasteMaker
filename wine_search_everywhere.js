@@ -1,6 +1,3 @@
-Meteor.subscribe("taste")
-Meteor.subscribe("userHistory")
-
 Template.notFound.events({
     "click #manualSearch": function(event) {
         event.preventDefault();
@@ -256,3 +253,13 @@ var wineApiLookupSorting = function(results, wineName) {
     return resultObject[highest.name]
     console.log('worked')
   }
+
+
+
+Meteor.methods({
+  addTaste: function(){
+    console.log("METEOR METHOD")
+    Taste.insert({user: Meteor.userId(), test: "Fuck this"})
+  }
+})
+

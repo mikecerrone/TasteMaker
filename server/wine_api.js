@@ -2,8 +2,8 @@ Meteor.methods({
   wineApiLookup: function(name) {
     var uriName = encodeURI(name);
     this.unblock();
-    var results = Meteor.http.call("GET", 'https://services.wine.com/api/beta2/service.svc/json/catalog?search=' + uriName + '&apikey=f6569a177b45d11f2e5dc5fee4bf9e82');
-    Meteor.call('wineApiLookupSorting', results, name);
+    return Meteor.http.call("GET", 'https://services.wine.com/api/beta2/service.svc/json/catalog?search=' + uriName + '&apikey=f6569a177b45d11f2e5dc5fee4bf9e82');
+    // Meteor.call('wineApiLookupSorting', results, name);
   },
 
   wineApiLookupSorting: function(results, wineName) {

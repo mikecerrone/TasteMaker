@@ -3,9 +3,7 @@ Template.body.events ({
         event.preventDefault();
         if (Meteor.isCordova) {
             Meteor.call('barcodeScan', function(err, res) {
-                $('#pageHome').toggleClass('hide');
-                $('#pageDisplay').toggleClass('hide');
-                render = Blaze.render(Template.rateWine, document.querySelector('#pageDisplay'))
+                // render = Blaze.render(Template.rateWine, document.querySelector('#pageDisplay'))
             })
         } else {
             $('#pageHome').toggleClass('hide');

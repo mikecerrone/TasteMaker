@@ -89,6 +89,7 @@
 
 .col-7 {
     height: 70vh;
+    overflow: scroll;
 }
 
 .col-8 {
@@ -105,6 +106,10 @@ ul .button {
     margin-top: 7.5vh;
     height: 10vh;
     width: 20vh;
+}
+
+.scanner {
+    font-size: 40vw;
 }
 
 /*Atomic Colors*/
@@ -128,3 +133,13 @@ ul .button {
     width: 100;
 }
 
+.sidebarfield {
+    box-sizing: border-box;
+    border-bottom: 1px solid #cfc39b;
+}
+
+.sidebarText {
+    color: #dee1f0;   
+    font-size: 1.5em;
+    ;
+}

@@ -21,14 +21,6 @@ Template.tasteProfile.events ({
 })
 
 
-if (Meteor.isClient){
-    Meteor.subscribe("Taste");
-
-    Template.tasteProfile.helpers({
-        tastes: function(){
-            return Taste.find({user:1})
-        }
-    });
 
 Template.tasteProfile.rendered = function(){
     // seedData();
@@ -175,7 +167,6 @@ var options = {legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><%
     // function findTaste(){
     // }
 
-}
 
 // function seedData(){
 //   console.log("SEEDS")

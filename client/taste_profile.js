@@ -40,9 +40,9 @@ Template.tasteProfile.rendered = function(){
       var context = document.getElementById("myChart").getContext("2d");
      var contextr = document.getElementById("myRadarChart").getContext("2d");
 
-      var tastes = Taste.find({user:1})
+      var tastes = Taste.find({user:Meteor.userId})
       var splitUpTheTasteArrays = []
-      tastes.forEach(function(taste){splitUpTheTasteArrays.push(taste.tasteCoords)})
+      tastes.forEach(function(taste){splitUpTheTasteArrays.push(taste.userTaste)})
       console.log("TASTE ARRAYS")
       console.log(splitUpTheTasteArrays)
       // console.log("TASTE ZERO: "+splitUpTheTasteArrays[0][0])
@@ -104,9 +104,9 @@ Template.tasteProfile.rendered = function(){
 
       ];
 
-      var histTastes = UserHistory.find({user: 1})
+      var histTastes = UserHistory.find({user: Meteor.userId})
       var splitUpTheHistoryArrays = []
-      histTastes.forEach(function(taste){splitUpTheHistoryArrays.push(taste.tasteCoords)})
+      histTastes.forEach(function(taste){splitUpTheHistoryArrays.push(taste.userTaste)})
       console.log("HISTARRAYS")
       console.log(splitUpTheHistoryArrays)
 

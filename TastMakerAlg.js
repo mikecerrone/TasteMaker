@@ -8,7 +8,7 @@ function wineTasteCoordinates(varietal, wineStyle) {
    // Should be DB Collection or we can create static list since none of these numbers change
   var varietalTaste = {
   //Reds
-    'Cabernet_Franc':[30,30],
+    'Cabernet Franc':[30,30],
     'Syrah/Shiraz':[50,18],
     'Pinot Noir':[-7,10],
     'Cabernet Sauvignon':[40,5],
@@ -69,7 +69,8 @@ function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evalu
      // add the userTaste array to user DB, n number of times depending on like(10x) or love(50x)
      var step;
       for (step = 0; step < evaluationWine; step++) {
-       // console.log(userTaste);
+      console.log(Taste.insert({userTaste: userTaste, user: Meteor.userId}))
+      console.log(Meteor.userId)
      }
 
     } else {
@@ -83,7 +84,8 @@ function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evalu
       // add the inverted userTaste array to user DB, 2 times (hardcoded) due to 'dislike'
      var step;
       for (step = 0; step < 2; step++) {
-        console.log(userTaste);
+      console.log(Taste.insert({userTaste: userTaste, user: Meteor.userId}))
+      console.log(Meteor.userId)
        }
      }
 }

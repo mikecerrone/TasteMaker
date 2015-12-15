@@ -24,8 +24,8 @@ Template.wineQuestions.events ({
     'click button': function(event) {
         event.preventDefault();
         //convertedAnswer is still here, stores the like/dislike/hate
-        questionOne = $('.range-slider input')[0].value
-        questionTwo = $('.range-slider input')[1].value
+        questionOne = parseInt($('.range-slider input')[0].value)
+        questionTwo = parseInt($('.range-slider input')[1].value)
         userEvaluation(wineCoords, convertedAnswer, questionOne, questionTwo)
         $('#pageHome').toggleClass('hide');
         $('#pageDisplay').toggleClass('hide')
@@ -56,7 +56,8 @@ function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evalu
      // add the userTaste array to user DB, n number of times depending on like(10x) or love(50x)
      var step;
       for (step = 0; step < evaluationWine; step++) {
-       // console.log(userTaste);
+        console.log(userTaste)
+       Taste.insert({userTaste: userTaste, user: Meteor.userId})
      }
 
     } else {
@@ -70,7 +71,7 @@ function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evalu
       // add the inverted userTaste array to user DB, 2 times (hardcoded) due to 'dislike'
      var step;
       for (step = 0; step < 2; step++) {
-        console.log(userTaste);
+      Taste.insert({userTaste: userTaste, user: Meteor.userId})
        }
      }
 }

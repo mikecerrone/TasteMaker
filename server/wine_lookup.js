@@ -6,19 +6,23 @@ Factual.configure({
 
 Meteor.methods({
   upcDecoder: function (upcCode) {
-    Factual.get('/t/products-cpg',{q:upcCode.text},
-      function (error, res) {
-        console.log(res);
-        console.log(error);
-        if (res.data.length > 0){
-          var wineName = res.data[0].brand + " " + res.data[0].product_name
+    Future = Npm.require('fibers/future');
+    var myFuture = new Future();
 
-          Meteor.call('wineApiLookup', wineName, function(err, res){
-          })
-        } else {
-          // Render search field...
-          console.log("saved")
+    Factual.get('/t/products-cpg',{q:upcCode.text},function (error, res) {
+      console.log(res);
+      console.log(error);
+
+      if(error){
+          myFuture.throw(error);
+        }else{
+        //     var wineName = res.data[0].brand + " " + res.data[0].product_name
+        console.log('hit')
+        //     Meteor.call('wineApiLookup', wineName, function(err, res){})
+        // console.log(res)
+          myFuture.return(res);
         }
-      });
+    });
+    return myFuture.wait();
   }
 });

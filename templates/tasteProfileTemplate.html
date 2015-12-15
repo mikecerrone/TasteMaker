@@ -1,10 +1,15 @@
 <template name='tasteProfile'>
   <row>
     <div class='col-7 columns small-12 bg_cream'>
-      <h1>Your Taste Profile is is...</h1>
-      <canvas id="myChart" width="350 " height="400">{{makeChart}}</canvas>
-      <canvas id="myRadarChart" width="350 " height="400">{{makeChart}}</canvas>
-      <p> Varietal info here</p>
+      <h1>Taste Profile</h1>
+      <canvas id="myChart" width="350 " height="400"></canvas>
+      <br><br><br>
+      <h1>History</h1>
+      <canvas id="myRadarChart" width="350 " height="400"></canvas>
+      <h1>Preferred Varietals</h1>
+      {{#each history}}
+        {{wine.varietal}}
+      {{/each}}
 
     </div>
   </row>

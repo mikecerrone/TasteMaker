@@ -108,6 +108,10 @@ ul .button {
     width: 20vh;
 }
 
+.scanner {
+    font-size: 40vw;
+}
+
 /*Atomic Colors*/
 .bg_cream {
     background-color: #cfc39b;
@@ -129,3 +133,13 @@ ul .button {
     width: 100;
 }
 
+.sidebarfield {
+    box-sizing: border-box;
+    border-bottom: 1px solid #cfc39b;
+}
+
+.sidebarText {
+    color: #dee1f0;   
+    font-size: 1.5em;
+    ;
+}

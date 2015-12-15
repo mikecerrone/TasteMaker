@@ -5,7 +5,6 @@ Template.body.events ({
               $('#pageHome').addClass('hide');
               $('#pageDisplay').removeClass('hide');
               Meteor.call('barcodeScan', function(err, res) {
-                // render = Blaze.render(Template.rateWine, document.querySelector('#pageDisplay'))
             })
         } else {
               $('#pageHome').addClass('hide');

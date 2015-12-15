@@ -46,7 +46,6 @@ function showWineResults(results){
   render = Blaze.renderWithData(Template.rateWine, {name: wineResults.name, style: wineResults.style}, document.querySelector('#pageDisplay'))
 }
 
-
 function wineTasteCoordinates(varietal, wineStyle, callback) {
    // Should be DB Collection or we can create static list since none of these numbers change
   var varietalTaste = {

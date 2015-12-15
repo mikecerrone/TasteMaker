@@ -55,7 +55,7 @@ Meteor.startup(function () {
 
 
 function wineTasteCoordinates(varietal, wineStyle, callback) {
-
+  debugger;
    // Should be DB Collection or we can create static list since none of these numbers change
   var varietalTaste = {
   //Reds

@@ -16,9 +16,9 @@ Meteor.methods({
       if(error){
           myFuture.throw(error);
         }else{
-        //     var wineName = res.data[0].brand + " " + res.data[0].product_name
         console.log('hit')
         //     Meteor.call('wineApiLookup', wineName, function(err, res){})
+        //     var wineName = res.data[0].brand + " " + res.data[0].product_name
         // console.log(res)
           myFuture.return(res);
         }

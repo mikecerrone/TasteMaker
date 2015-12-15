@@ -23,7 +23,7 @@ Meteor.methods({
             myFuture.throw('API 2 FAILED!')
           } else {
             console.log(res)
-            myFuture.return(res);
+            myFuture.return([res, wineName]);
           }
         })
         // console.log(res)

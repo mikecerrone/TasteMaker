@@ -5,10 +5,8 @@ Template.notFound.events({
     "click #manualSearch": function(event) {
         event.preventDefault();
         var searchText = $('input').val();
-        alert('here')
          Meteor.call("wineApiLookup", searchText, function(err, res){
             var results = [res, searchText]
-            alert('here')
             showWineResults(results);
         })
     }

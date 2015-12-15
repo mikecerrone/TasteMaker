@@ -5,15 +5,11 @@ Template.notFound.events({
     "click #manualSearch": function(event) {
         event.preventDefault();
         var searchText = $('input').val();
+        alert('here')
          Meteor.call("wineApiLookup", searchText, function(err, res){
-            wineResults = wineApiLookupSorting(res, searchText)
-            Blaze.remove(render)
-            wineCoords = wineTasteCoordinates(wineResults.varietal, wineResults.style);
-            wineQuestions = questionServer(wineCoords)
-            wineResults['user_id'] = Meteor.userId()
-            wineResults['wineCoords'] = wineCoords
-            Meteor.call("addHistory", wineResults);
-            render = Blaze.renderWithData(Template.rateWine, {name: wineResults.name, style: wineResults.style}, document.querySelector('#pageDisplay'))
+            var results = [res, searchText]
+            alert('here')
+            showWineResults(results);
         })
     }
 })
@@ -24,23 +20,8 @@ Meteor.startup(function () {
       if (Meteor.isCordova){
         cordova.plugins.barcodeScanner.scan(
           function (result) {
-            console.log("heheheheheh")
-            console.log(result);
             Meteor.call('upcDecoder', result, function(error, results){
-              $('#pageHome').addClass('hide');
-              $('#pageDisplay').removeClass('hide');
-              wineResults = wineApiLookupSorting(results[0], results[1])
-              alert(wineResults.style)
-              alert(wineResults.varietal)
-              wineCoords = wineTasteCoordinates(wineResults.varietal, wineResults.style);
-              alert("here")
-              wineQuestions = questionServer(wineCoords)
-              wineResults['user_id'] = Meteor.userId()
-              wineResults['wineCoords'] = wineCoords
-              Meteor.call("addHistory", wineResults);
-              alert('stop 2')
-              render = Blaze.renderWithData(Template.rateWine, {name: wineResults.name, style: wineResults.style}, document.querySelector('#pageDisplay'))
-              alert('stop 3')
+               showWineResults(results);
             });
           },
           function (error) {
@@ -52,6 +33,18 @@ Meteor.startup(function () {
   })
 })
 
+function showWineResults(results){
+  if (!Meteor.isCordova){
+    Blaze.remove(render);
+  }
+  wineResults = wineApiLookupSorting(results[0], results[1])
+  wineCoords = wineTasteCoordinates(wineResults.varietal, wineResults.style);
+  wineQuestions = questionServer(wineCoords)
+  wineResults['user_id'] = Meteor.userId()
+  wineResults['wineCoords'] = wineCoords
+  Meteor.call("addHistory", wineResults);
+  render = Blaze.renderWithData(Template.rateWine, {name: wineResults.name, style: wineResults.style}, document.querySelector('#pageDisplay'))
+}
 
 function wineTasteCoordinates(varietal, wineStyle, callback) {
    // Should be DB Collection or we can create static list since none of these numbers change
@@ -225,15 +218,15 @@ var wineApiLookupSorting = function(results, wineName) {
       } else {
         var rating = null
       }
-      wines[responseArray[i].Name] = {name: name, year: year, price: price, style: style, region: region, varietal: varietal, type: type, rating: rating}
-      wineNoYears[name] = 'test'
+      wines[name] = {name: name, year: year, price: price, style: style, region: region, varietal: varietal, type: type, rating: rating}
     }
+    console.log(wines)
     return similar(wineName, wines)
     // Meteor.call('similar', wineName, wines);
   }
 
   var similar = function(searchWord, resultObject){
-    var highest = {score: 0}
+    var results = []
     for (var name in resultObject){
       var lengthsearchWord = searchWord.length;
       var lengthResult = name.length - 5;
@@ -245,14 +238,20 @@ var wineApiLookupSorting = function(results, wineName) {
               equivalency++;
           }
       }
+
       var weight = equivalency / maxLength;
       var alikeness = weight * 100
-      if (alikeness > highest.score){
-        highest.name = name
-        highest.score = alikeness
-      }
+      results.push({name: name, score: alikeness})
+
+
     }
-    console.log(highest);
-    return resultObject[highest.name]
-    console.log('worked')
+    var sortedNames = _.sortBy(results, 'score').reverse()
+    var sortedWineObjects = []
+    // for(v)
+     _.map(sortedNames, function(value, key){
+      sortedWineObjects.push(resultObject[value])
+    })
+    console.log(sortedWineObjects)
+    console.log(sortedNames)
+    return resultObject[sortedNames[0].name]
   }

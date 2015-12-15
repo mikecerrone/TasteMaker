@@ -15,6 +15,41 @@ Template.notFound.events({
     }
 })
 
+Meteor.startup(function () {
+  Meteor.methods({
+    barcodeScan: function(){
+      if (Meteor.isCordova){
+        cordova.plugins.barcodeScanner.scan(
+          function (result) {
+            console.log("heheheheheh")
+            console.log(result);
+            Meteor.call('upcDecoder', result, function(error, results){
+              $('#pageHome').addClass('hide');
+              $('#pageDisplay').removeClass('hide');
+              wineResults = wineApiLookupSorting(results[0], results[1])
+              alert(wineResults.style)
+              alert(wineResults.varietal)
+              wineCoords = wineTasteCoordinates(wineResults.varietal, wineResults.style);
+              alert("here")
+              wineQuestions = questionServer(wineCoords)
+              wineResults['user_id'] = Meteor.userId
+              wineResults['wineCoords'] = wineCoords
+              UserHistory.insert(wineResults);
+              alert('stop 2')
+              render = Blaze.renderWithData(Template.rateWine, {name: wineResults.name, style: wineResults.style}, document.querySelector('#pageDisplay'))
+              alert('stop 3')
+            });
+          },
+          function (error) {
+            alert("Scanning failed: " + error);
+          }
+        )
+      }
+    }
+  })
+})
+
+
 
 function wineTasteCoordinates(varietal, wineStyle, callback) {
 

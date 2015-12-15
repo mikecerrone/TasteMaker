@@ -1,8 +1,8 @@
 Template.body.events ({
     'click #tasteProfile': function(event) {
         event.preventDefault();
-        $('#pageHome').toggleClass('hide');
-        $('#pageDisplay').toggleClass('hide')
+        $('#pageHome').addClass('hide');
+        $('#pageDisplay').removeClass('hide')
         render = Blaze.render(Template.tasteProfile, document.querySelector('#pageDisplay'))
     }
 });
@@ -22,8 +22,8 @@ Template.tasteProfile.helpers({
 Template.tasteProfile.events ({
     'click button': function(event) {
         event.preventDefault();
-        $('#pageHome').toggleClass('hide');
-        $('#pageDisplay').toggleClass('hide')
+        $('#pageHome').removeClass('hide');
+        $('#pageDisplay').addClass('hide')
         Blaze.remove(render)
     }
 })

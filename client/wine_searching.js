@@ -7,6 +7,7 @@ Template.notFound.events({
         var searchText = $('input').val();
          Meteor.call("wineApiLookup", searchText, function(err, res){
             var results = [res, searchText]
+            console.log('hit')
             showWineResults(results);
         })
     }
@@ -41,6 +42,8 @@ function showWineResults(results){
   wineResults['user_id'] = Meteor.userId()
   wineResults['wineCoords'] = wineCoords
   Meteor.call("addHistory", wineResults);
+  console.log(wineResults.name)
+  console.log(wineResults.style)
   render = Blaze.renderWithData(Template.rateWine, {name: wineResults.name, style: wineResults.style}, document.querySelector('#pageDisplay'))
 }
 

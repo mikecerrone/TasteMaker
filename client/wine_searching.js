@@ -2,16 +2,13 @@ Template.notFound.events({
     "click #manualSearch": function(event) {
         event.preventDefault();
         var searchText = $('input').val();
-         Meteor.call("wineApiLookupTemp", searchText, function(err, res){
-            console.log(err)
-            var wineName = res.data.Products.List[0].Name
-            var wineUrl =  res.data.Products.List[0].Labels[0].Url
-            var wineType =  res.data.Products.List[0].ProductAttributes[0].Name
-            var wineVarietal = res.data.Products.List[0].Varietal.Name
+         Meteor.call("wineApiLookup", searchText, function(err, res){
+            wineResults = wineApiLookupSorting(res, searchText)
             Blaze.remove(render)
-            wineCoords = wineTasteCoordinates(wineVarietal, wineType)
+            debugger;
+            wineCoords = wineTasteCoordinates(wineResults.varietal, wineResults.style);
             wineQuestions = questionServer(wineCoords)
-            render = Blaze.renderWithData(Template.rateWine, {name: wineName, url: wineUrl, type: wineType}, document.querySelector('#pageDisplay'))
+            render = Blaze.renderWithData(Template.rateWine, {name: wineResults.name, style: wineResults.style}, document.querySelector('#pageDisplay'))
         })
     }
 })
@@ -22,7 +19,7 @@ function wineTasteCoordinates(varietal, wineStyle, callback) {
    // Should be DB Collection or we can create static list since none of these numbers change
   var varietalTaste = {
   //Reds
-    'Cabernet_Franc':[30,30],
+    'Cabernet Franc':[30,30],
     'Syrah/Shiraz':[50,18],
     'Pinot Noir':[-7,10],
     'Cabernet Sauvignon':[40,5],
@@ -164,3 +161,59 @@ function questionGenerator(flavorElement, callback) {
 
 // Driver test code
  // userEvaluation(wineTasteCoordinates("Cabernet_Franc", "Big_&_Bold"),50,4,-5)
+
+
+
+var wineApiLookupSorting = function(results, wineName) {
+    var wines = {}
+    var wineNoYears = {}
+    var parsedResponse = JSON.parse(results.content);
+    var responseArray = parsedResponse.Products.List
+    for (i = 0; i < responseArray.length; i++) {
+      var nameSplit = responseArray[i].Name.split(" ");
+      var year = nameSplit.pop();
+      var name = nameSplit.join(" ")
+      var region = responseArray[i].Appellation.Region.Name
+      if (responseArray[i].ProductAttributes.length > 0) {
+        var style = responseArray[i].ProductAttributes[0].Name
+      }
+      var varietal = responseArray[i].Varietal.Name
+      var type = responseArray[i].Varietal.WineType.Name
+      var price = responseArray[i].PriceMax
+      if(responseArray[i].Ratings.HighestScore > 0) {
+        var rating = responseArray[i].Ratings.HighestScore
+      } else {
+        var rating = null
+      }
+      wines[responseArray[i].Name] = {name: name, year: year, price: price, style: style, region: region, varietal: varietal, type: type, rating: rating}
+      wineNoYears[name] = 'test'
+    }
+    return similar(wineName, wines)
+    // Meteor.call('similar', wineName, wines);
+  }
+
+  var similar = function(searchWord, resultObject){
+    var highest = {score: 0}
+    for (var name in resultObject){
+      var lengthsearchWord = searchWord.length;
+      var lengthResult = name.length - 5;
+      var equivalency = 0;
+      var minLength = (lengthsearchWord > lengthResult) ? lengthResult : lengthsearchWord;
+      var maxLength = (lengthsearchWord < lengthResult) ? lengthResult : lengthsearchWord;
+      for(var i = 0; i < minLength; i++) {
+          if(lengthsearchWord[i] == lengthResult[i]) {
+              equivalency++;
+          }
+      }
+      var weight = equivalency / maxLength;
+      var alikeness = weight * 100
+      if (alikeness > highest.score){
+        highest.name = name
+        highest.score = alikeness
+      }
+    }
+    console.log(highest);
+    UserHistory.insert(resultObject[highest.name]);
+    return resultObject[highest.name]
+    console.log('worked')
+  }

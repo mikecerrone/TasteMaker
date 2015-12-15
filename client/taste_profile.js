@@ -42,9 +42,15 @@ Template.tasteProfile.rendered = function(){
 
       var tastes = Taste.find({user:Meteor.userId})
       var splitUpTheTasteArrays = []
-      tastes.forEach(function(taste){splitUpTheTasteArrays.push(taste.userTaste)})
-      console.log("TASTE ARRAYS")
+      Taste.find({user: Meteor.userId()}).forEach(function(taste){splitUpTheTasteArrays.push(taste.userTaste)})
       console.log(splitUpTheTasteArrays)
+      // for(var element in tastes){
+      //   splitUpTheTasteArrays.push(element.userTaste)
+      //   debugger
+      // }
+      // tastes.forEach(function(taste){splitUpTheTasteArrays.push(taste.userTaste)})
+      // debugger;
+      // console.log(tastes)
       // console.log("TASTE ZERO: "+splitUpTheTasteArrays[0][0])
 
       var bold = 0;

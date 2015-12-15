@@ -7,7 +7,7 @@ Template.notFound.events({
             Blaze.remove(render)
             wineCoords = wineTasteCoordinates(wineResults.varietal, wineResults.style);
             wineQuestions = questionServer(wineCoords)
-            wineResults['user_id'] = Meteor.userId
+            wineResults['user_id'] = Meteor.userId()
             wineResults['wineCoords'] = wineCoords
             UserHistory.insert(wineResults);
             render = Blaze.renderWithData(Template.rateWine, {name: wineResults.name, style: wineResults.style}, document.querySelector('#pageDisplay'))
@@ -32,7 +32,7 @@ Meteor.startup(function () {
               wineCoords = wineTasteCoordinates(wineResults.varietal, wineResults.style);
               alert("here")
               wineQuestions = questionServer(wineCoords)
-              wineResults['user_id'] = Meteor.userId
+              wineResults['user_id'] = Meteor.userId()
               wineResults['wineCoords'] = wineCoords
               UserHistory.insert(wineResults);
               alert('stop 2')
@@ -121,7 +121,8 @@ function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evalu
      var step;
       for (step = 0; step < evaluationWine; step++) {
         // console.log(userTaste)
-       Taste.insert({userTaste: userTaste, user: Meteor.userId})
+       Taste.insert({userTaste: userTaste, someshit: 'test', user: Meteor.userId()})
+
      }
 
     } else {
@@ -135,7 +136,7 @@ function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evalu
       // add the inverted userTaste array to user DB, 2 times (hardcoded) due to 'dislike'
      var step;
       for (step = 0; step < 2; step++) {
-      Taste.insert({userTaste: userTaste, user: Meteor.userId})
+      Taste.insert({userTaste: userTaste, someshit: 'test', user: Meteor.userId()})
        }
      }
 }

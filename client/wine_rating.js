@@ -56,8 +56,7 @@ function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evalu
      // add the userTaste array to user DB, n number of times depending on like(10x) or love(50x)
      var step;
       for (step = 0; step < evaluationWine; step++) {
-        console.log(userTaste)
-       Taste.insert({userTaste: userTaste, user: Meteor.userId})
+        Meteor.call("addTaste", userTaste)
      }
 
     } else {
@@ -71,7 +70,7 @@ function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evalu
       // add the inverted userTaste array to user DB, 2 times (hardcoded) due to 'dislike'
      var step;
       for (step = 0; step < 2; step++) {
-      Taste.insert({userTaste: userTaste, user: Meteor.userId})
+      Meteor.call("addTaste", userTaste)
        }
      }
 }

@@ -37,15 +37,16 @@ Template.recWine.events ({
 //         return (splitUpTheTasteArrays)
 //     // })
 //     }
+Template.body.rendered = function() {
+var splitUpTheTasteArrays1 = []
+    var tastes = Taste.find({})
+    tastes.forEach(function(tastes){splitUpTheTasteArrays1.push(tastes.userTaste)})
+    // .forEach(function(taste){splitUpTheTasteArrays1.push(taste.userTaste)})
+       console.log(splitUpTheTasteArrays1)
+       console.log(something);
 
-
-// var arrayOfTasteArrays = [[10,11],[20,21],[30,31]]
-     var splitUpTheTasteArrays = []
-      // UserTasteProfile being created here: )does not currently work
-     var tastes =  Taste.find({user: Meteor.userId()}).forEach(function(taste){splitUpTheTasteArrays.push(taste.userTaste)})
-        console.log(splitUpTheTasteArrays)
-        console.log(something);
-
+   tasteAverage(splitUpTheTasteArrays1)
+}
 
 function tasteAverage(arrayOfTasteArrays) {
 
@@ -54,29 +55,25 @@ var tastesX = []
 var tastesY = []
 
 var step;
-   for (step = 0; step < arrayOfTasteArrays.length; step++) {
-    tastesX.push(arrayOfTasteArrays[step][0])
-    }
-    var myAvgX = 0;
-    for(var i = 0, len = tastesX.length; i < len; i++) {
-    myAvgX += tastesX[i];
- }
-   tastesX = myAvgX / tastesX.length
+  for (step = 0; step < arrayOfTasteArrays.length; step++) {
+   tastesX.push(arrayOfTasteArrays[step][0])
+   }
+   var myAvgX = 0;
+   for(var i = 0, len = tastesX.length; i < len; i++) {
+   myAvgX += tastesX[i];
+}
+  tastesX = myAvgX / tastesX.length
 
 
 var step1;
-   for (step1 = 0; step1 < arrayOfTasteArrays.length; step1++) {
-    tastesY.push(arrayOfTasteArrays[step1][1])
-    }
-    var myAvgY = 0;
-    for(var i = 0, len = tastesY.length; i < len; i++) {
-    myAvgY += tastesY[i];
- }
-   tastesY = myAvgY / tastesY.length
-
-   return [tastesX, tastesY]
+  for (step1 = 0; step1 < arrayOfTasteArrays.length; step1++) {
+   tastesY.push(arrayOfTasteArrays[step1][1])
+   }
+   var myAvgY = 0;
+   for(var i = 0, len = tastesY.length; i < len; i++) {
+   myAvgY += tastesY[i];
 }
+  tastesY = myAvgY / tastesY.length
 
-console.log(tasteAverage(splitUpTheTasteArrays))
-// console.log(tasteStager())
-
+  [tastesX, tastesY]
+}

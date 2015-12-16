@@ -157,3 +157,8 @@ ul .button {
 .wine_search_box > p {
     color: #dee1f0;
 }
+
+ul > li {
+    box-sizing: border-box;
+    outline: 2px solid black;
+}

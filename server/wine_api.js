@@ -10,11 +10,11 @@ Meteor.methods({
   wineApiRecommendation: function(recommendation) {
       var uriSearchTerm = varietalIds['Gamay'];
       this.unblock()
+      console.log('in api')
       console.log(recommendation)
       console.log(varietalIds[recommendation])
       console.log(uriSearchTerm)
-      recommendationResults = Meteor.http.call("GET", "https://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(" + uriSearchTerm + ")&Wine&sortBy=popularity&apikey=f6569a177b45d11f2e5dc5fee4bf9e82")
-// /catalog?filter=categories(490+124)&offset=10&size=5&apikey=key
+      recommendationResults = Meteor.http.call("GET", "https://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(" + uriSearchTerm + ")&type=Basket&apikey=f6569a177b45d11f2e5dc5fee4bf9e82")
       console.log(recommendationResults)
       return recommendationResults
     }
@@ -47,20 +47,19 @@ varietalIds = {'Primitivo':10084,
   'Viognier':162,
   'Bordeaux White Blends':221,
   'Rhône White Blends':10113,
-  'Cabernet Franc': 197 ,
-  'Syrah/Shiraz': 124 ,
-  'Syrah/Shiraz': 146 ,
+  'Rhône Blends':10082,
+  'Cabernet Franc': 197,
+  'Syrah/Shiraz': 146,
   'Pinot Noir': 143,
-  'Cabernet Sauvignon': 139 ,
-  'Sangiovese': 163 ,
-  'Barbera': 172 ,
-  'Grenache': 10080 ,
-  'Malbec': 10079 ,
+  'Cabernet Sauvignon': 139,
+  'Sangiovese': 163,
+  'Barbera': 172,
+  'Grenache': 10080,
+  'Malbec': 10079,
   'Merlot':138,
-  "Nero d'Avola": 10086 ,
+  "Nero d'Avola": 10086,
   'Petite Sirah': 176,
-  'Pinotage': 10085 ,
-  'Pinotage': 124 ,
+  'Pinotage': 10085,
   'Zinfandel': 141
 }
 

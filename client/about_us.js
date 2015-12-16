@@ -6,6 +6,16 @@ Template.body.events({
         }
         $('#pageHome').addClass('hide');
         $('#pageDisplay').removeClass('hide');
-        render = Blaze.render(Template.notFound, document.querySelector('#pageDisplay'))
+        render = Blaze.render(Template.aboutUs, document.querySelector('#pageDisplay'))
+    }
+})
+
+
+Template.aboutUs.events ({
+    'click button': function(event) {
+        event.preventDefault();
+        $('#pageHome').removeClass('hide');
+        $('#pageDisplay').addClass('hide')
+        Blaze.remove(render)
     }
 })

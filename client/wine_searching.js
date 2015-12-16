@@ -1,6 +1,7 @@
 Meteor.subscribe("taste");
 Meteor.subscribe("userHistory");
 
+
 Template.notFound.events({
     "click #manualSearch": function(event) {
         event.preventDefault();

@@ -45,7 +45,7 @@ function getRecommendation( tasteProfile, varietalsObject ){
     }
     console.log(closest);
 }
->>>>>>> master
+
 
 Template.body.events ({
     'click #wineRec': function(event) {

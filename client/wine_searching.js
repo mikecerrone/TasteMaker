@@ -70,6 +70,9 @@ function showWineResults(results){
 
 function wineTasteCoordinates(varietal, wineStyle, callback) {
    // Should be DB Collection or we can create static list since none of these numbers change
+var wineVariatalX = 15
+var wineVariatalY = 15
+
 var varietalTaste = {
   //Reds
     'Cabernet Franc':[30,30],
@@ -132,8 +135,12 @@ var varietalTaste = {
 
   // Varietal default coordinates from our wine taste mapping work
 
-  var wineVariatalX = varietalTaste[varietal][0]
-  var wineVariatalY = varietalTaste[varietal][1]
+for(var wine in varietalTaste){
+  if(wine === varietal){
+    wineVariatalX = varietalTaste[wine][0]
+    wineVariatalY = varietalTaste[wine][1]
+  }
+}
 
   // Wine.com's style preferences added to more accurately position wine within varietal's mapped range
    if (wineStyle === 'Big &amp; Bold' || wineStyle === 'Earthy &amp; Spicy' || wineStyle === 'Light &amp; Fruity' || wineStyle === 'Smooth &amp; Supple'|| wineStyle === 'Rich &amp; Creamy' || wineStyle === 'Light &amp; Crisp' || wineStyle === 'Fruity &amp; Smooth') {
@@ -147,8 +154,8 @@ var varietalTaste = {
   var wineTC = [wineStyleX+wineVariatalX, wineStyleY+wineVariatalY]
   return wineTC
   // callback()
-
 }
+
 
 
  // evalutaionWine= 'dislike' 10(like) or 50(love), evaluationX= fruit/earth, evaluationY is bold/light

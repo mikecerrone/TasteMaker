@@ -1,4 +1,4 @@
-UserHistory = new Mongo.Collection("history");
+// UserHistory = new Mongo.Collection("history");
 
 Meteor.methods({
   wineApiLookup: function(name) {

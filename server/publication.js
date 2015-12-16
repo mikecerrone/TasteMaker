@@ -25,7 +25,8 @@ Meteor.methods({
   addHistory: function(wine){
     UserHistory.insert({
       user: Meteor.userId(),
-      wine: wine
+      wine: wine,
+      date: new Date()
     })
   }
 })

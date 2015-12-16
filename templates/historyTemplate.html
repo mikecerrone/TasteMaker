@@ -1,13 +1,22 @@
 <template name="wineHistory">
   <row>
     <div class='col-7 columns small-12 bg_cream'>
-      <h1>Your Wine History:</h1>
+      <h1>Your Journey Through Wines...</h1>
+
+      <canvas id="histChart" width="350 " height="400"></canvas>
+
       {{#if Template.subscriptionsReady}}
         {{#each history}}
-          <p>{{wine.rating}} - {{wine.name}}</p>
+          <div class="wineLog {{wine.name}}">
+            <h3> {{wine.name}} </h3>
+            <!-- <img src="{{wine.img}}"> -->
+            <p>Varietal - {{wine.varietal}}</p>
+            <p>Rating - {{wine.rating}}</p>
+            <p></p>
+          </div>
         {{/each}}
       {{else}}
-        <p>Loading...</p>
+        <p>Something's not right</p>
       {{/if}}
     </div>
   </row>

@@ -1,5 +1,7 @@
 
 var varietalsObject = {
+
+
   //Reds
     'Cabernet Franc':[30,30],
     'Syrah/Shiraz':[50,18],
@@ -45,6 +47,7 @@ function getRecommendation(tasteProfile){
     }
     console.log(closest);
 }
+
 
 Template.body.events ({
     'click #wineRec': function(event) {

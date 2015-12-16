@@ -24,7 +24,6 @@ Template.tasteProfile.helpers({
       wineTally[wine.wine.varietal] ? wineTally[wine.wine.varietal]++ : wineTally[wine.wine.varietal] = 1
     })
 
-    // put each varietal/percentage into an object
     var varietals = []
     for (var wine in wineTally) {
       varietals.push(wine)
@@ -41,15 +40,12 @@ Template.tasteProfile.helpers({
     }
 
     // make object with varietal and percentage properties
-
-    results = _.object(varietals, percentages)
-    var finalAnswer = []
+    var results = []
     for (var i=0; i<wineTallyLength; i++){
-      finalAnswer.push({varietal: varietals[i], percentage: percentages[i]})
+      results.push({varietal: varietals[i], percentage: percentages[i]})
     }
 
-
-    return finalAnswer
+    return results
   }
 })
 

@@ -4,8 +4,12 @@ Template.body.events ({
         if (Meteor.isCordova) {
               $('#pageHome').addClass('hide');
               $('#pageDisplay').removeClass('hide');
-              Meteor.call('barcodeScan', function(err, res) {
-            })
+              Meteor.call('barcodeScan')
+            //     , function(err, res) {
+            //     console.log(err);
+            //     console.log(res);
+            // }
+
         } else {
               if (typeof render !== 'undefined') {
                 Blaze.remove(render);

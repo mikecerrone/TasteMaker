@@ -22,9 +22,9 @@ Meteor.startup(function() {
           function (result) {
             alert('hit')
             Meteor.call('upcDecoder', result, function(error, results){
-              // var sorted = wineApiLookupSorting(res, searchText)
-              // var results = [sorted, searchText]
-              // narrowDownSearch(results);
+              var sorted = wineApiLookupSorting(res, searchText)
+              var results = [sorted, searchText]
+              narrowDownSearch(results);
               // herpewwjfpasca
             });
           },

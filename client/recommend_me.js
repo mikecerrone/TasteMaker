@@ -1,3 +1,21 @@
+Template.body.events ({
+    'click #wineRec': function(event) {
+        event.preventDefault();
+        $('#pageHome').addClass('hide');
+        $('#pageDisplay').removeClass('hide')
+        closest = spiltTastes();
+        render = Blaze.render(Template.recWine, document.querySelector('#pageDisplay'))
+    }
+});
+
+Template.recWine.events ({
+    'click button': function(event) {
+        event.preventDefault();
+        $('#pageHome').removeClass('hide');
+        $('#pageDisplay').addClass('hide')
+        Blaze.remove(render)
+    }
+})
 
 var varietalsObject = {
 
@@ -45,28 +63,18 @@ function getRecommendation(tasteProfile){
             closest = varietalCoordinate;
         }
     }
-    console.log(closest);
+    console.log('here')
+    console.log(closest)
+    Meteor.call('wineApiRecommendation', 'closest', function(err, res){
+      console.log(res);
+      wineApiLookupSorting(res, 'recommendation', function(err, res){
+        console.log(res);
+        console.log(err);
+      })
+    });
 }
 
 
-Template.body.events ({
-    'click #wineRec': function(event) {
-        event.preventDefault();
-        $('#pageHome').addClass('hide');
-        $('#pageDisplay').removeClass('hide')
-        render = Blaze.render(Template.recWine, document.querySelector('#pageDisplay'))
-    }
-});
-
-
-Template.recWine.events ({
-    'click button': function(event) {
-        event.preventDefault();
-        $('#pageHome').removeClass('hide');
-        $('#pageDisplay').addClass('hide')
-        Blaze.remove(render)
-    }
-})
 spiltTastes = function() {
   var splitUpTheTasteArrays1 = []
   var tastes = Taste.find({})

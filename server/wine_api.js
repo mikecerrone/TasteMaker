@@ -8,19 +8,21 @@ Meteor.methods({
     // Meteor.call('wineApiLookupSorting', results, name);
   },
 
+  wineApiRecommendation: function(recommendation) {
+      var uriSearchTerm = encodeURI(recommendation);
+      this.unblock()
 
-
-  wineApiRecommendation: function() {
-    this.unblock()
-    return Meteor.http.call("GET", 'https://services.wine.com/api/beta2/service.svc/json/catalog?search=apothic%20red&apikey=f6569a177b45d11f2e5dc5fee4bf9e82')
-  },
-
-
-
-// This is being used for now to get a single response
-  wineApiLookupTemp: function(name) {
-    this.unblock()
-    return Meteor.http.call("GET", 'https://services.wine.com/api/beta2/service.svc/json/catalog?search=' + name + '&apikey=f6569a177b45d11f2e5dc5fee4bf9e82')
-  },
-
+      console.log('uriSearchTerm')
+      recommendationResults = Meteor.http.call("GET", "https://services.wine.com/api/beta2/service.svc/json/catalog?filter=product(135001)&apikey=f6569a177b45d11f2e5dc5fee4bf9e82")
+// /catalog?filter=categories(490+124)&offset=10&size=5&apikey=key
+      console.log(recommendationResults)
+      return recommendationResults
+    }
 })
+
+
+
+
+
+
+

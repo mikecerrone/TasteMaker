@@ -221,7 +221,7 @@ function questionGenerator(flavorElement, callback) {
 
 
 
-var wineApiLookupSorting = function(results, wineName) {
+  wineApiLookupSorting = function(results, wineName) {
     var wines = {}
     var wineNoYears = {}
     var parsedResponse = JSON.parse(results.content);
@@ -250,30 +250,34 @@ var wineApiLookupSorting = function(results, wineName) {
   }
 
   var similar = function(searchWord, resultObject){
-    var results = []
-    for (var name in resultObject){
-      var lengthsearchWord = searchWord.length;
-      var lengthResult = name.length - 5;
-      var equivalency = 0;
-      var minLength = (lengthsearchWord > lengthResult) ? lengthResult : lengthsearchWord;
-      var maxLength = (lengthsearchWord < lengthResult) ? lengthResult : lengthsearchWord;
-      for(var i = 0; i < minLength; i++) {
-          if(lengthsearchWord[i] == lengthResult[i]) {
-              equivalency++;
-          }
+    if (searchWord === "recommendation") {
+      return resultObject
+    } else {
+      var results = []
+      for (var name in resultObject){
+        var lengthsearchWord = searchWord.length;
+        var lengthResult = name.length - 5;
+        var equivalency = 0;
+        var minLength = (lengthsearchWord > lengthResult) ? lengthResult : lengthsearchWord;
+        var maxLength = (lengthsearchWord < lengthResult) ? lengthResult : lengthsearchWord;
+        for(var i = 0; i < minLength; i++) {
+            if(lengthsearchWord[i] == lengthResult[i]) {
+                equivalency++;
+            }
+        }
+
+        var weight = equivalency / maxLength;
+        var alikeness = weight * 100
+        results.push({name: name, score: alikeness})
+
+
+      }
+      var sortedNames = _.sortBy(results, 'score').reverse()
+      var sortedWineObjects = []
+      for(i = 0; i < sortedNames.length; i++){
+        sortedWineObjects.push(resultObject[sortedNames[i].name])
       }
 
-      var weight = equivalency / maxLength;
-      var alikeness = weight * 100
-      results.push({name: name, score: alikeness})
-
-
+      return sortedWineObjects
     }
-    var sortedNames = _.sortBy(results, 'score').reverse()
-    var sortedWineObjects = []
-    for(i = 0; i < sortedNames.length; i++){
-      sortedWineObjects.push(resultObject[sortedNames[i].name])
-    }
-
-    return sortedWineObjects
   }

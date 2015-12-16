@@ -100,6 +100,11 @@
     height: 90vh;
 }
 
+.col-10 {
+    height: 100vh;
+    overflow: scroll;
+}
+
 ul .button {
     margin: auto;
     margin-left: 15%;
@@ -141,5 +146,14 @@ ul .button {
 .sidebarText {
     color: #dee1f0;   
     font-size: 1.5em;
-    ;
+}
+
+.wine_search_box {
+    margin-top: .5em;
+    box-sizing: border-box;
+    outline: 3px solid black;
+}
+
+.wine_search_box > p {
+    color: #dee1f0;
 }

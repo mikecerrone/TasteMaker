@@ -92,7 +92,6 @@ var splitUpTheTasteArrays1 = []
     tastes.forEach(function(tastes){splitUpTheTasteArrays1.push(tastes.userTaste)})
     // .forEach(function(taste){splitUpTheTasteArrays1.push(taste.userTaste)})
        console.log(splitUpTheTasteArrays1)
-       console.log(something);
 
    tasteAverage(splitUpTheTasteArrays1)
 }

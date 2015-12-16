@@ -55,7 +55,7 @@ Template.body.events ({
         $('#pageHome').addClass('hide');
         $('#pageDisplay').removeClass('hide')
         // Blaze.renderWithData(Template.recReturned, {results: results}, document.querySelector('#recResult'))
-        render = Blaze.render(Template.recWine, document.querySelector('#pageDisplay'))
+        render = Blaze.render(Template.recWine, document.querySelector('#renderHere'))
     }
 });
 

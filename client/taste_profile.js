@@ -3,7 +3,7 @@ Template.body.events ({
     event.preventDefault();
     $('#pageHome').addClass('hide');
     $('#pageDisplay').removeClass('hide')
-    render = Blaze.render(Template.tasteProfile, document.querySelector('#pageDisplay'))
+    render = Blaze.render(Template.tasteProfile, document.querySelector('#renderHere'))
   }
 });
 

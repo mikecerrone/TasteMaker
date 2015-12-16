@@ -38,7 +38,7 @@ Meteor.startup(function () {
 function narrowDownSearch(wines) {
   Blaze.remove(render);
   wineArray = wines
-  render = Blaze.renderWithData(Template.searchSelection, {wines: wines[0]}, document.querySelector('#pageDisplay'))
+  render = Blaze.renderWithData(Template.searchSelection, {wines: wines[0]}, document.querySelector('#renderHere'))
 }
 
 
@@ -65,7 +65,7 @@ function showWineResults(results){
   results['user_id'] = Meteor.userId()
   results['wineCoords'] = wineCoords
   Meteor.call("addHistory", results);
-  render = Blaze.renderWithData(Template.rateWine, {name: results.name, style: results.style}, document.querySelector('#pageDisplay'))
+  render = Blaze.renderWithData(Template.rateWine, {name: results.name, style: results.style}, document.querySelector('#renderHere'))
 }
 
 function wineTasteCoordinates(varietal, wineStyle, callback) {

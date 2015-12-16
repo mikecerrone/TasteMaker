@@ -5,11 +5,10 @@ Template.notFound.events({
     "click #manualSearch": function(event) {
         event.preventDefault();
         var searchText = $('input').val();
-        alert('here')
          Meteor.call("wineApiLookup", searchText, function(err, res){
-            var results = [res, searchText]
-            alert('here')
-            showWineResults(results);
+            var sorted = wineApiLookupSorting(res, searchText)
+            var results = [sorted, searchText]
+            narrowDownSearch(results);
         })
     }
 })
@@ -21,7 +20,9 @@ Meteor.startup(function () {
         cordova.plugins.barcodeScanner.scan(
           function (result) {
             Meteor.call('upcDecoder', result, function(error, results){
-               showWineResults(results);
+              var sorted = wineApiLookupSorting(res, searchText)
+              var results = [sorted, searchText]
+              narrowDownSearch(results);
             });
           },
           function (error) {
@@ -33,17 +34,37 @@ Meteor.startup(function () {
   })
 })
 
+function narrowDownSearch(wines) {
+  Blaze.remove(render);
+  wineArray = wines
+  render = Blaze.renderWithData(Template.searchSelection, {wines: wines[0]}, document.querySelector('#pageDisplay'))
+}
+
+
+Template.searchSelection.events({
+    "click .wine_search_box": function(event) {
+        event.preventDefault();
+        var clickedId = event.target.parentElement.id;
+        if (clickedId === "") {
+          clickedId = event.target.parentElement.parentElement.id;
+        }
+        Blaze.remove(render);
+        wineArray = wineArray[0][clickedId];
+        showWineResults(wineArray);
+    }
+})
+
 function showWineResults(results){
-  if (!Meteor.isCordova){
-    Blaze.remove(render);
-  }
-  wineResults = wineApiLookupSorting(results[0], results[1])
-  wineCoords = wineTasteCoordinates(wineResults.varietal, wineResults.style);
+  // if (!Meteor.isCordova){
+  //   Blaze.remove(render);
+  // }
+  // wineResults = wineApiLookupSorting(results[0], results[1])
+  wineCoords = wineTasteCoordinates(results.varietal, results.style);
   wineQuestions = questionServer(wineCoords)
-  wineResults['user_id'] = Meteor.userId()
-  wineResults['wineCoords'] = wineCoords
-  Meteor.call("addHistory", wineResults);
-  render = Blaze.renderWithData(Template.rateWine, {name: wineResults.name, style: wineResults.style}, document.querySelector('#pageDisplay'))
+  results['user_id'] = Meteor.userId()
+  results['wineCoords'] = wineCoords
+  Meteor.call("addHistory", results);
+  render = Blaze.renderWithData(Template.rateWine, {name: results.name, style: results.style}, document.querySelector('#pageDisplay'))
 }
 
 function wineTasteCoordinates(varietal, wineStyle, callback) {
@@ -247,11 +268,9 @@ var wineApiLookupSorting = function(results, wineName) {
     }
     var sortedNames = _.sortBy(results, 'score').reverse()
     var sortedWineObjects = []
-    // for(v)
-     _.map(sortedNames, function(value, key){
-      sortedWineObjects.push(resultObject[value])
-    })
-    console.log(sortedWineObjects)
-    console.log(sortedNames)
-    return resultObject[sortedNames[0].name]
+    for(i = 0; i < sortedNames.length; i++){
+      sortedWineObjects.push(resultObject[sortedNames[i].name])
+    }
+
+    return sortedWineObjects
   }

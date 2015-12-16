@@ -19,11 +19,13 @@ Meteor.startup(function () {
       if (Meteor.isCordova){
         cordova.plugins.barcodeScanner.scan(
           function (result) {
-            Meteor.call('upcDecoder', result, function(error, results){
-              var sorted = wineApiLookupSorting(res, searchText)
-              var results = [sorted, searchText]
-              narrowDownSearch(results);
-            });
+            alert(result.text)
+            // Meteor.call('upcDecoder', result, function(error, results){
+              alert('here')
+              // var sorted = wineApiLookupSorting(res, searchText)
+              // var results = [sorted, searchText]
+              // narrowDownSearch(results);
+            // });
           },
           function (error) {
             alert("Scanning failed: " + error);

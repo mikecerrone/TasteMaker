@@ -14,7 +14,6 @@ Template.tasteProfile.helpers({
   varietalPercentage: function(){
     var hist = UserHistory.find({user: Meteor.userId()})
     wineTally = {}
-    console.log(hist)
     hist.forEach(function(wine){
       wineTally[wine.wine.varietal] ? wineTally[wine.wine.varietal]++ : wineTally[wine.wine.varietal] = 1
     })

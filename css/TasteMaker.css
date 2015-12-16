@@ -1,11 +1,16 @@
-/* CSS declarations go here */
+ CSS declarations go here */
 * {
     padding: 0px;
     margin: 0px;
 }
 
-.body {
+html, body {
     max-height: 100vh;
+    overflow: hidden;
+}
+
+.full-length {
+    height: 75vh;
 }
 
 .hide {
@@ -13,16 +18,24 @@
 }
 
 .tab-bar {
-    height: 7vh;
+    height: 15vh;
+}
+
+#pageDisplay>.tab-bar {
+    height: 10vh;
 }
 
 .content {
     width: 100%;
-    height: 93vh;
-    overflow: hidden;
+    height: 100vh;
+    /*overflow: hidden;*/
 }
 
 /* Row Reights */
+.col-1half {
+    height: 5vh;
+}
+
 .col-1 {
     height: 10vh;
 }
@@ -35,6 +48,9 @@
     height: 30vh;
 }
 
+.col-3 {
+    height: 30vh;
+}
 
 /*.col-3>.single {
     margin-top: 3em;
@@ -105,6 +121,11 @@
     overflow: scroll;
 }
 
+#pageDisplay + .icon-bar {
+    position: fixed;
+    bottom: 0px;
+}
+
 ul .button {
     margin: auto;
     margin-left: 15%;
@@ -156,4 +177,53 @@ ul .button {
 
 .wine_search_box > p {
     color: #dee1f0;
+}
+
+ul > li {
+    box-sizing: border-box;
+    /*outline: 1px solid black;*/
+    min-height: 100%;
+}
+
+.scan {
+    background-image: url('/images/camera-48.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.recommend {
+    background-image: url('/images/wine_glass-48.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.search { 
+    background-image: url('/images/search-48.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0em .25em;
+
+}
+
+.taste {
+    background-image: url('/images/statistics-48.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.overflow_hidden {
+    overflow: hidden;
+}
+
+.overflow_scroll {
+    overflow: scroll;
+}
+
+#myChart {
+    width: 300px;
+    height: 300px;
+}
+
+#myRadarChart {
+
 }

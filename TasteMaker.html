@@ -3,16 +3,8 @@
 </head>
 <body>
   {{#if currentUser}}
-  <div class="off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
-      <nav class="tab-bar">
-        {{>hamburgerBar}}
-        <div class='text-center'>
-          <h4 class='.text_white'>Taste Maker</h4>
-        </div>
-      </nav>
-      <aside class="left-off-canvas-menu">
-        <div id='wineHistory' class='col-1 sidebarfield left-off-canvas-toggle text-center'>
+      <!-- <aside class="left-off-canvas-menu">
+        <div id='wine' class='col-1 sidebarfield left-off-canvas-toggle text-center'>
         <span class='sidebarText'>Wine History </span>
         </div>
         <div id='aboutUs' class='col-1 sidebarfield left-off-canvas-toggle text-center'>
@@ -20,78 +12,120 @@
         </div>
         <div id='logOut' class='col-1 sidebarfield left-off-canvas-toggle text-center'>
         <span class='sidebarText'>Log Out </span>
-        </div>
-        <div class='col-1 sidebarfield'>
-        </div>
-        <div class='col-1 sidebarfield'>
-        </div>
-        <div class='col-1 sidebarfield'>
-        </div>
-        <div class='col-1 sidebarfield'>
-        </div>
-        <div class='col-1 sidebarfield'>
-        </div>
-        <div class='col-1 sidebarfield'>
-        </div>
-        <div class='col-1 sidebarfield'>
-        </div>
+      </div> -->
         <!-- <ul class='small-block-grid-1'>
           <li><button id='wineHistory' class='button left-off-canvas-toggle'>Wine History</button><br></li>
           <li><button id='aboutUs' class="button left-off-canvas-toggle">About TasteMaker</button><br></li>
           <li><button id='logOut' class="button left-off-canvas-toggle">Logout</button><br></li>
         </ul> -->
-      </aside>
-      <div id='pageDisplay' class='content hide'>
-      </div>
-      <div id='pageHome' class='content'>
-        <row class=''>
+        <!-- <div id='pageHome' class='content'>
+        </div> -->
+        <div id='pageDisplay' class='content hide'>
+          <nav class='tab-bar'>
+            <ul class="title-area">
+              <h1 class='text-center'>Taste Maker</h1>
+            </ul>
+          </nav>
+          <div id='renderHere'>
+          </div>
+          <div class="icon-bar three-up">
+            <a class="item backArrow">
+              <img src="images/left_arrow-48.png" >
+              <label>Home</label>
+            </a>
+          </div>
+        </div>
+        
+       <!--  <row class=''>
           <div class='col-2 columns small-12 bg_purple'>
+          </div>
+        </row> -->
+      <div id='pageHome' class='content'>
+          <nav class='tab-bar'>
+            <ul class="title-area">
+              <h1 class='text-center'>Taste Maker</h1>
+            </ul>
+          </nav>
+        <row class=''>
+          <div class='col-1half column small-12 bg_cream'>
           </div>
         </row>
         <row>
-          <div id='scanIt' class='col-5 centered columns small-12 bg_cream'>
-            <!-- <span class='scanner'>Scan</span> -->
-            <button id='scanIt' class='scanIt button expand radius'>Scan It</button>
+          <div class='col-3 columns small-12 bg_cream'>
+            <ul class='small-block-grid-2 col-3 top-row-buttons'>
+              <li id='scanIt' class='scan text-center'>Scan</li>
+              <li id='manSearch' class='search text-center'>Search</li>
+            </ul>
           </div>
         </row>
-
+        <row>
+          <div class='col-3 columns small-12 bg_cream'>
+            <ul class='small-block-grid-2 col-3 bottom-row-buttons'>
+              <li id='wineRec' class='recommend text-center'>Recommend</li>
+              <li id='tasteProfile' class='taste text-center'>Profile</li>
+            </ul>
+          </div>
+        </row>
         <row class=''>
-          <!-- <ul class="button-group radius"> -->
+          <div class='col-1half columns small-12 bg_cream'>
+          </div>
+        </row>
+        <div class="icon-bar three-up">
+          <a id='wineHistory' class="item">
+            <img src="images/calendar-48.png" >
+            <label>History</label>
+          </a>
+          <a id='aboutUs' class="item">
+            <img src="images/calendar-48.png" >
+            <label>About</label>
+          </a>
+          <a id='logOut' class="item">
+            <img src="images/calendar-48.png" >
+            <label>Logout</label>
+          </a>
+        </div>
+      </div>
+        <!-- <div id='scanIt' class='col-5 centered columns small-12 bg_cream'> -->
+        <!-- <span class='scanner'>Scan</span> -->
+        <!-- <button id='scanIt' class='scanIt button expand radius'>Scan It</button> -->
+        <!-- </div> -->
+        
+
+        <!-- <row class=''> -->
+        <!-- <ul class="button-group radius"> -->
             <!-- <li><a id="wineRec" class="button large">Recommendation</a></li>
             <li><a id="tasteProfile" class="button">Taste Profile</a></li> -->
-          <!-- </ul> -->
-          <div class='col-3 bottom_row columns small-6 bg_purple'>
+            <!-- </ul> -->
+          <!-- <div class='col-3 bottom_row columns small-6 bg_purple'>
             <button id='wineRec' class='button expand radius'>Recommend Me</button>
           </div>
           <div class='col-3 bottom_row columns small-6 bg_purple'>
             <button id='tasteProfile' class="button expand radius">Taste Profile</button><br>
+          </div> -->
+          <!-- </row> -->
+
+        {{else}}
+        <div class='loggedOut'>
+         <nav class="tab-bar">
+          <div class='text-center'>
+            <h4 class='.text_white'>Taste Maker</h4>
+            <row>
+              <div class='col-2 columns small-12 bg_purple'>
+              </div>
+            </row>
+            <row>
+              <div id='userBox' class='col-5 columns small-12 bg_cream'>
+                <div class='signUp'>
+                  {{> signUp}}
+                </div>
+                <div class='logIn hide'>
+                  {{> logIn}}
+                </div>
+              </div>
+            </row>
+            {{> accountBox}}
           </div>
-        </row>
+        </nav>
       </div>
-    </div>
-  </div>
-  {{else}}
-    <div class='loggedOut'>
-       <nav class="tab-bar">
-        <div class='text-center'>
-          <h4 class='.text_white'>Taste Maker</h4>
-          <row>
-            <div class='col-2 columns small-12 bg_purple'>
-            </div>
-          </row>
-          <row>
-            <div id='userBox' class='col-5 columns small-12 bg_cream'>
-              <div class='signUp'>
-              {{> signUp}}
-              </div>
-              <div class='logIn hide'>
-              {{> logIn}}
-              </div>
-            </div>
-          </row>
-          {{> accountBox}}
-        </div>
-      </nav>
-    </div>
-  {{/if}}
-</body>
+      {{/if}}
+    </body>

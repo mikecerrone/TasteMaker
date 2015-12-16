@@ -15,7 +15,7 @@ Template.rateWine.events ({
         var answer = event.target.id;
         convertedAnswer = getAnswer(answer)
         Blaze.remove(render)
-        render = Blaze.renderWithData(Template.wineQuestions, {q1: wineQuestions[0][0], q2: wineQuestions[1][0]}, document.querySelector('#pageDisplay'))
+        render = Blaze.renderWithData(Template.wineQuestions, {q1: wineQuestions[0][0], q2: wineQuestions[1][0]}, document.querySelector('#renderHere'))
         $(document).foundation();
     }
 })
@@ -28,7 +28,7 @@ Template.wineQuestions.events ({
         questionTwo = parseInt($('.range-slider input')[1].value)
         userEvaluation(wineCoords, convertedAnswer, questionOne, questionTwo)
         Blaze.remove(render)
-        render = Blaze.renderWithData(Template.finalWineEval, {wineCoords: 0, tasteProfile: 0 }, document.querySelector('#pageDisplay'))
+        render = Blaze.renderWithData(Template.finalWineEval, {wineCoords: 0, tasteProfile: 0 }, document.querySelector('#renderHere'))
     }
 })
 

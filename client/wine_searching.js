@@ -1,6 +1,7 @@
 Meteor.subscribe("taste");
 Meteor.subscribe("userHistory");
 
+
 Template.notFound.events({
     "click #manualSearch": function(event) {
         event.preventDefault();
@@ -13,19 +14,19 @@ Template.notFound.events({
     }
 })
 
-Meteor.startup(function () {
+Meteor.startup(function() {
   Meteor.methods({
     barcodeScan: function(){
       if (Meteor.isCordova){
         cordova.plugins.barcodeScanner.scan(
           function (result) {
-            alert(result.text)
-            // Meteor.call('upcDecoder', result, function(error, results){
-              alert('here')
+            alert('hit')
+            Meteor.call('upcDecoder', result, function(error, results){
               // var sorted = wineApiLookupSorting(res, searchText)
               // var results = [sorted, searchText]
               // narrowDownSearch(results);
-            // });
+              // herpewwjfpasca
+            });
           },
           function (error) {
             alert("Scanning failed: " + error);

@@ -125,7 +125,7 @@ Template.finalWineEval.rendered = function(){
     labels: ["Bold", "Earthy", "Light", "Fruity"],
     datasets: [
         {
-            label: "This Wine",
+            label : 'ThisWine',
             fillColor: "rgba(151,187,205,0.2)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
@@ -135,7 +135,7 @@ Template.finalWineEval.rendered = function(){
             data: [20, 10, 15, -5]
         },
         {
-            label: "Your Taste Profile",
+            label : 'TasteProfile',
             fillColor: "rgba(220,220,220,0.2)",
             strokeColor: "rgba(151,187,205,1)",
             pointColor: "rgba(151,187,205,1)",

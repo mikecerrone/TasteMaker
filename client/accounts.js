@@ -1,4 +1,4 @@
-Template.accountBox.events ({
+Template.body.events ({
     'click #signUp': function(event) {
         $('.signUp').removeClass('hide');
         $('.logIn').addClass('hide');

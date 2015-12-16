@@ -21,12 +21,12 @@ Template.tasteProfile.helpers({
     wineTally = {}
     console.log(hist)
     hist.forEach(function(wine){
-      wineTally[wine.wine.name] ? wineTally[wine.wine.name]++ : wineTally[wine.wine.name] = 1
+      wineTally[wine.wine.varietal] ? wineTally[wine.wine.varietal]++ : wineTally[wine.wine.varietal] = 1
     })
 
     // put each varietal/percentage into an object
     var varietals = []
-    for (wine in wineTally) {
+    for (var wine in wineTally) {
       varietals.push(wine)
     }
 
@@ -37,12 +37,20 @@ Template.tasteProfile.helpers({
 
     var percentages = []
     for (var wine in wineTally){
-      percentages.push(wine/wineTallyLength*100)
+      percentages.push(wineTally[wine]/wineTallyLength*100)
     }
 
-    results = _.object(varietals, percentages)
+    // make object with varietal and percentage properties
 
-    return results
+    results = _.object(varietals, percentages)
+    var finalAnswer = []
+    for (var i=0; i<wineTallyLength; i++){
+      finalAnswer.push({varietal: varietals[i], percentage: percentages[i]})
+    }
+
+
+    return finalAnswer
+  }
 })
 
 Template.tasteProfile.events ({

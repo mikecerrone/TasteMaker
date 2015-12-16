@@ -1,8 +1,8 @@
 <template name='tasteProfile'>
   <row>
-    <div class='col-7 columns small-12 bg_cream'>
+    <div class='full-length overflow-scroll columns small-12 bg_cream'>
       <h1>Taste Profile</h1>
-      <canvas id="myChart" width="350 " height="400"></canvas>
+      <canvas id="myChart" width="350" height="400"></canvas>
       <br><br><br>
       <h1>History</h1>
       <canvas id="myRadarChart" width="350 " height="400"></canvas>
@@ -11,11 +11,6 @@
         {{wine.varietal}}
       {{/each}}
       {{varietalPercentage}}
-    </div>
-  </row>
-  <row>
-    <div class='col-3 columns small-12 bg_purple'>
-      <button class='button radial expand'>Home</button>
     </div>
   </row>
 </template>

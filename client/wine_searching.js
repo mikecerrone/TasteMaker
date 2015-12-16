@@ -14,16 +14,18 @@ Template.notFound.events({
     }
 })
 
-Meteor.startup(function () {
+Meteor.startup(function() {
   Meteor.methods({
     barcodeScan: function(){
       if (Meteor.isCordova){
         cordova.plugins.barcodeScanner.scan(
           function (result) {
+            alert('hit')
             Meteor.call('upcDecoder', result, function(error, results){
-              var sorted = wineApiLookupSorting(res, searchText)
-              var results = [sorted, searchText]
-              narrowDownSearch(results);
+              // var sorted = wineApiLookupSorting(res, searchText)
+              // var results = [sorted, searchText]
+              // narrowDownSearch(results);
+              // herpewwjfpasca
             });
           },
           function (error) {

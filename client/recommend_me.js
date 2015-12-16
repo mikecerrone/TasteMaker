@@ -65,7 +65,8 @@ function getRecommendation(tasteProfile){
     }
     console.log('here')
     console.log(closest)
-    Meteor.call('wineApiRecommendation', 'closest', function(err, res){
+    Meteor.call('wineApiRecommendation', closest, function(err, res){
+      console.log('gotresult')
       console.log(res);
       wineApiLookupSorting(res, 'recommendation', function(err, res){
         console.log(res);

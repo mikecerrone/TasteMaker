@@ -5,20 +5,65 @@ Meteor.methods({
     var uriName = encodeURI(name);
     this.unblock();
     return Meteor.http.call("GET", 'https://services.wine.com/api/beta2/service.svc/json/catalog?search=' + uriName + '&apikey=f6569a177b45d11f2e5dc5fee4bf9e82');
-    // Meteor.call('wineApiLookupSorting', results, name);
   },
 
   wineApiRecommendation: function(recommendation) {
-      var uriSearchTerm = encodeURI(recommendation);
+      var uriSearchTerm = varietalIds['Gamay'];
       this.unblock()
-
-      console.log('uriSearchTerm')
-      recommendationResults = Meteor.http.call("GET", "https://services.wine.com/api/beta2/service.svc/json/catalog?filter=product(135001)&apikey=f6569a177b45d11f2e5dc5fee4bf9e82")
+      console.log(recommendation)
+      console.log(varietalIds[recommendation])
+      console.log(uriSearchTerm)
+      recommendationResults = Meteor.http.call("GET", "https://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(" + uriSearchTerm + ")&Wine&sortBy=popularity&apikey=f6569a177b45d11f2e5dc5fee4bf9e82")
 // /catalog?filter=categories(490+124)&offset=10&size=5&apikey=key
       console.log(recommendationResults)
       return recommendationResults
     }
 })
+
+varietalIds = {'Primitivo':10084,
+  'Tempranillo':169,
+  'Other Red Wine':195,
+  'Mourvedre':10083,
+  'Nebbiolo':170,
+  'Carmenere':10081,
+  'Dolcetto':183,
+  'Gamay':150,
+  'Other Red Blends':145,
+  'Bordeaux Blends':144,
+  'Chardonnay':140,
+  'Sauvignon Blanc':151,
+  'Pinot Gris/Grigio':194,
+  'Albarino':136,
+  'Chenin Blanc':165,
+  'Gewurztraminer':166,
+  'Gruner Veltliner':10087,
+  'Muscat':173,
+  'Other White Blends':148,
+  'Other White Wine':196,
+  'Pinot Blanc':168,
+  'Riesling':153,
+  'Semillon':177,
+  'Torrontes':209,
+  'Viognier':162,
+  'Bordeaux White Blends':221,
+  'Rhône White Blends':10113,
+  'Cabernet Franc': 197 ,
+  'Syrah/Shiraz': 124 ,
+  'Syrah/Shiraz': 146 ,
+  'Pinot Noir': 143,
+  'Cabernet Sauvignon': 139 ,
+  'Sangiovese': 163 ,
+  'Barbera': 172 ,
+  'Grenache': 10080 ,
+  'Malbec': 10079 ,
+  'Merlot':138,
+  "Nero d'Avola": 10086 ,
+  'Petite Sirah': 176,
+  'Pinotage': 10085 ,
+  'Pinotage': 124 ,
+  'Zinfandel': 141
+}
+
 
 
 

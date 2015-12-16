@@ -8,14 +8,9 @@ Meteor.methods({
   },
 
   wineApiRecommendation: function(recommendation) {
-      var uriSearchTerm = varietalIds['Gamay'];
+      var uriSearchTerm = varietalIds[recommendation];
       this.unblock()
-      console.log('in api')
-      console.log(recommendation)
-      console.log(varietalIds[recommendation])
-      console.log(uriSearchTerm)
       recommendationResults = Meteor.http.call("GET", "https://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(" + uriSearchTerm + ")&type=Basket&apikey=f6569a177b45d11f2e5dc5fee4bf9e82")
-      console.log(recommendationResults)
       return recommendationResults
     }
 })

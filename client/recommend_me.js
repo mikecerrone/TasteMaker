@@ -1,3 +1,5 @@
+// Taste = new Mongo.Collection('taste');
+
 Template.body.events ({
     'click #wineRec': function(event) {
         event.preventDefault();
@@ -17,3 +19,64 @@ Template.recWine.events ({
         Blaze.remove(render)
     }
 })
+
+
+
+
+// find closest number in an array
+
+
+// function tasteStager(){
+//     // gets each tasteProfile array and adds into and array
+//     // Meteor.subscribe("Taste", function(){
+//       var splitUpTheTasteArrays = []
+//       // UserTasteProfile being created here: )does not currently work
+//      var tastes =  Taste.find({user: Meteor.userId()}).forEach(function(taste){splitUpTheTasteArrays.push(taste.userTaste)})
+//         console.log(splitUpTheTasteArrays)
+//         console.log(something);
+//         return (splitUpTheTasteArrays)
+//     // })
+//     }
+
+
+// var arrayOfTasteArrays = [[10,11],[20,21],[30,31]]
+     var splitUpTheTasteArrays = []
+      // UserTasteProfile being created here: )does not currently work
+     var tastes =  Taste.find({user: Meteor.userId()}).forEach(function(taste){splitUpTheTasteArrays.push(taste.userTaste)})
+        console.log(splitUpTheTasteArrays)
+        console.log(something);
+
+
+function tasteAverage(arrayOfTasteArrays) {
+
+
+var tastesX = []
+var tastesY = []
+
+var step;
+   for (step = 0; step < arrayOfTasteArrays.length; step++) {
+    tastesX.push(arrayOfTasteArrays[step][0])
+    }
+    var myAvgX = 0;
+    for(var i = 0, len = tastesX.length; i < len; i++) {
+    myAvgX += tastesX[i];
+ }
+   tastesX = myAvgX / tastesX.length
+
+
+var step1;
+   for (step1 = 0; step1 < arrayOfTasteArrays.length; step1++) {
+    tastesY.push(arrayOfTasteArrays[step1][1])
+    }
+    var myAvgY = 0;
+    for(var i = 0, len = tastesY.length; i < len; i++) {
+    myAvgY += tastesY[i];
+ }
+   tastesY = myAvgY / tastesY.length
+
+   return [tastesX, tastesY]
+}
+
+console.log(tasteAverage(splitUpTheTasteArrays))
+// console.log(tasteStager())
+

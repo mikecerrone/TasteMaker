@@ -88,12 +88,22 @@ Template.finalWineEval.rendered = function(){
     makefinalEvalChart();
 };
 
+  // var splitUpTheTasteArrays1 = []
+
+  //    var tastes = Taste.find({})
+  //    tastes.forEach(function(chicken){splitUpTheTasteArrays1.push(chicken[2].userTaste)})
+  //    // .forEach(function(taste){splitUpTheTasteArrays1.push(taste.userTaste)})
+  //       console.log(splitUpTheTasteArrays1)
+  //       console.log(something);
+
+
     function makefinalEvalChart(){
      var contextr = document.getElementById("finalEvalChart").getContext("2d");
       // var tastes = Taste.find({user:Meteor.userId})
       var splitUpTheTasteArrays = []
       Taste.find({}).forEach(function(taste){splitUpTheTasteArrays.push(taste.userTaste)})
       // console.log(splitUpTheTasteArrays)
+
 
       var bold = 0;
       var fruity = 0;

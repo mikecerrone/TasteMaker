@@ -7,7 +7,7 @@ Template.notFound.events({
         var searchText = $('input').val();
          Meteor.call("wineApiLookup", searchText, function(err, res){
             var results = [res, searchText]
-            console.log('hit')
+            console.log('hit');
             showWineResults(results);
         })
     }
@@ -221,6 +221,7 @@ var wineApiLookupSorting = function(results, wineName) {
       }
       wines[name] = {name: name, year: year, price: price, style: style, region: region, varietal: varietal, type: type, rating: rating}
     }
+    console.log(wines)
     return similar(wineName, wines)
     // Meteor.call('similar', wineName, wines);
   }

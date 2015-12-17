@@ -51,9 +51,25 @@ function histChart(){
             value: wineTally[varietal],
             color: '#'+Math.floor(Math.random()*16777215).toString(16),
             highlight: '#'+Math.floor(Math.random()*16777215).toString(16),
-            label: varietal
+            label: varietal,
+            labelColor: "green",
+            labelFontSize: "8"
         })
     }
 
-  var histChart = new Chart(context).Doughnut(data);
+    var options =
+{
+        tooltipTemplate: "<%= label %>",
+
+    onAnimationComplete: function()
+    {
+        this.showTooltip(this.segments, true);
+    },
+
+    tooltipEvents: [],
+
+    showTooltips: true
+}
+
+  var histChart = new Chart(context).Doughnut(data, options);
 }

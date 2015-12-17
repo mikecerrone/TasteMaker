@@ -9,6 +9,7 @@ Template.notFound.events({
          Meteor.call("wineApiLookup", searchText, function(err, res){
             var sorted = wineApiLookupSorting(res, searchText)
             var results = [sorted, searchText]
+            console.log(results)
             narrowDownSearch(results);
         })
     }
@@ -22,9 +23,12 @@ Meteor.startup(function() {
           function (result) {
             alert('hit')
             Meteor.call('upcDecoder', result, function(error, results){
-              var sorted = wineApiLookupSorting(res, searchText)
-              var results = [sorted, searchText]
-              narrowDownSearch(results);
+              alert(results[0])
+              var sorted = wineApiLookupSorting(results[0], results[1])
+              alert(results[1])
+              console.log(sorted)
+              var stuff = [sorted, results[1]]
+              narrowDownSearch(stuff);
             });
           },
           function (error) {
@@ -37,9 +41,11 @@ Meteor.startup(function() {
 })
 
 function narrowDownSearch(wines) {
-  Blaze.remove(render);
+  if (typeof render !== 'undefined') {
+    Blaze.remove(render);
+  }
   wineArray = wines
-  render = Blaze.renderWithData(Template.searchSelection, {wines: wines[0]}, document.querySelector('#pageDisplay'))
+  render = Blaze.renderWithData(Template.searchSelection, {wines: wineArray[0]}, document.querySelector('#pageDisplay'))
 }
 
 

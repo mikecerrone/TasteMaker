@@ -246,6 +246,7 @@ ul > li {
 }
 
 
+
 .borderwine{
     position: relative;
     box-sizing: border-box;
@@ -271,4 +272,14 @@ margin-top: 50px;
 .home_background{
   background-color: #5d0234;
 
+
+#over {
+    font-size: 2em;
+    text-align: center;
+    background-color: black;
+    width: 100%;
+    color: white;
+    position: absolute;
+    top: 250px;
+    z-index: 2;
 }

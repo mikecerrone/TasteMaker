@@ -27,7 +27,7 @@ Template.logIn.events({
         event.preventDefault();
         var emailVar = event.target.loginEmail.value;
         var passwordVar = event.target.loginPassword.value;
-        Meteor.loginWithPassword(emailVar, passwordVar)
+        Meteor.loginWithPassword(emailVar, passwordVar, function(error){console.log(error.reason)})
     }
 });
 
@@ -39,7 +39,7 @@ Template.facebook.events({
             }
         });
     },
- 
+
     'click #logout': function(event) {
         Meteor.logout(function(err){
             if (err) {

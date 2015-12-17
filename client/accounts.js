@@ -1,4 +1,4 @@
-Template.accountBox.events ({
+Template.body.events ({
     'click #signUp': function(event) {
         $('.signUp').removeClass('hide');
         $('.logIn').addClass('hide');
@@ -28,5 +28,23 @@ Template.logIn.events({
         var emailVar = event.target.loginEmail.value;
         var passwordVar = event.target.loginPassword.value;
         Meteor.loginWithPassword(emailVar, passwordVar)
+    }
+});
+
+Template.facebook.events({
+    'click #facebook-login': function(event) {
+        Meteor.loginWithFacebook({}, function(err){
+            if (err) {
+                throw new Meteor.Error("Facebook login failed");
+            }
+        });
+    },
+ 
+    'click #logout': function(event) {
+        Meteor.logout(function(err){
+            if (err) {
+                throw new Meteor.Error("Logout failed");
+            }
+        })
     }
 });

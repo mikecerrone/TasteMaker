@@ -218,16 +218,3 @@ ul > li {
 .overflow_scroll {
     overflow: scroll;
 }
-
-#myChart {
-    width: 300px;
-    height: 300px;
-}
-
-/*#myRadarChart {
-
-}*/
-
-.wineLog {
-    border-bottom: 1px solid black;
-}

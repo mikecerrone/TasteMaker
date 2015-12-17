@@ -35,7 +35,7 @@
             </a>
           </div>
         </div>
-        
+
        <!--  <row class=''>
           <div class='col-2 columns small-12 bg_purple'>
           </div>
@@ -51,6 +51,8 @@
           </div>
         </row>
         <row>
+         <!--   <div class='col-5 centered columns small-12 bg_cream'>
+-            <button id='scanIt' class='scanIt button expand'>Scan It</button> -->
           <div class='col-3 columns small-12 bg_cream'>
             <ul class='small-block-grid-2 col-3 top-row-buttons'>
               <li id='scanIt' class='scan text-center'>Scan</li>
@@ -89,7 +91,7 @@
         <!-- <span class='scanner'>Scan</span> -->
         <!-- <button id='scanIt' class='scanIt button expand radius'>Scan It</button> -->
         <!-- </div> -->
-        
+
 
         <!-- <row class=''> -->
         <!-- <ul class="button-group radius"> -->
@@ -106,26 +108,39 @@
 
         {{else}}
         <div class='loggedOut'>
-         <nav class="tab-bar">
-          <div class='text-center'>
-            <h4 class='.text_white'>Taste Maker</h4>
+         <nav class='tab-bar'>
+            <ul class="title-area">
+              <h1 class='text-center'>Taste Maker</h1>
+            </ul>
+         </nav>
             <row>
-              <div class='col-2 columns small-12 bg_purple'>
-              </div>
-            </row>
-            <row>
-              <div id='userBox' class='col-5 columns small-12 bg_cream'>
+              <div id='userBox' class='col-7 columns small-12 bg_cream'>
+              {{>facebook}}
                 <div class='signUp'>
                   {{> signUp}}
-                </div>
+                      </div>
                 <div class='logIn hide'>
                   {{> logIn}}
-                </div>
+                      </div>
               </div>
+
             </row>
-            {{> accountBox}}
+            <div class="icon-bar two-up">
+              <!-- <a id='' class="item">
+                
+               </a> -->
+              <a id='signUp' class="item">
+                <img src="images/calendar-48.png" >
+                <label>Register</label>
+              </a>
+              <a id='logIn' class="item">
+                <img src="images/calendar-48.png" >
+                <label>Log In</label>
+              </a>
+              <!-- <a id='' class="item">
+                
+               </a> -->
+            </div>
           </div>
-        </nav>
-      </div>
       {{/if}}
     </body>

@@ -38,7 +38,9 @@ Template.tasteProfile.helpers({
     for (var i=0; i<wineTallyLength; i++){
       results.push({varietal: varietals[i], percentage: percentages[i]})
     }
-
+    results.sort(function(a, b) {
+      return b.percentage - a.percentage
+    })
     return results
   }
 })

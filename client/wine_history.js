@@ -25,7 +25,8 @@ Template.wineHistory.onCreated(function () {
 
 Template.wineHistory.helpers({
     history: function(){
-        return UserHistory.find({})
+        var history = UserHistory.find({}, {sort: {date: -1}})
+        return history
     }
 })
 

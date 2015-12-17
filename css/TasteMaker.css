@@ -165,7 +165,7 @@ ul .button {
 }
 
 .sidebarText {
-    color: #dee1f0;   
+    color: #dee1f0;
     font-size: 1.5em;
 }
 
@@ -197,7 +197,7 @@ ul > li {
     background-size: cover;
 }
 
-.search { 
+.search {
     background-image: url('/images/search-48.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -224,6 +224,10 @@ ul > li {
     height: 300px;
 }
 
-#myRadarChart {
+/*#myRadarChart {
 
+}*/
+
+.wineLog {
+    border-bottom: 1px solid black;
 }

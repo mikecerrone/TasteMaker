@@ -71,6 +71,16 @@ html, body {
     font-size: 6vw;
 }
 
+.col-lg-header {
+    height: 15vh;
+    background-image: url("/images/header_360.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    /*background-size: cover;*/
+    /*background-height: 15vh;*/
+}
+
+
 .col-4 {
     height: 40vh;
     font-size: 6vw;
@@ -202,27 +212,27 @@ ul > li {
 }
 
 .scan {
-    background-image: url('/images/camera-48.png');
+    background-image: url('/images/barcode.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .recommend {
-    background-image: url('/images/wine_glass-48.png');
+    background-image: url('/images/layer_32_360.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .search {
-    background-image: url('/images/search-48.png');
+    background-image: url('/images/search_360.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 0em .25em;
+    /*background-position: 0em .25em;*/
 
 }
 
 .taste {
-    background-image: url('/images/statistics-48.png');
+    background-image: url('/images/chart_360.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -255,5 +265,10 @@ margin-top: 50px;
 .questions {
  margin-top: 50px;
  margin-bottom:75px ;
+
+}
+
+.home_background{
+  background-color: #5d0234;
 
 }

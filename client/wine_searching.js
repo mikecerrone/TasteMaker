@@ -21,6 +21,7 @@ Meteor.startup(function() {
       if (Meteor.isCordova){
         cordova.plugins.barcodeScanner.scan(
           function (result) {
+
             alert('hit')
             Meteor.call('upcDecoder', result, function(error, results){
               alert(results[0])

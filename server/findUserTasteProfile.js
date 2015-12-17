@@ -89,6 +89,7 @@ Meteor.methods({
               closest = varietalCoordinate;
           }
       }
+      console.log(closest)
       return closest
     }
   })

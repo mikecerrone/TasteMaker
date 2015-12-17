@@ -33,7 +33,7 @@ html, body {
 
 /* Row Reights */
 .col-1half {
-    height: 5vh;
+    height: 2.5vh;
 }
 
 .col-1 {
@@ -72,7 +72,7 @@ html, body {
 }
 
 .col-lg-header {
-    height: 15vh;
+    height: 20vh;
     background-image: url("/images/header_360.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -167,7 +167,7 @@ ul .button {
 }
 
 .text_white {
-    color: #be0000;
+    color: #fff8dd;
 }
 
 .text_red1 {
@@ -212,21 +212,28 @@ ul > li {
 }
 
 .scan {
-    background-image: url('/images/barcode.png');
+    background-image: url('/images/barcode_360.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 95%;
+    background-position: center;
+}
+
+.scan>p {
+
 }
 
 .recommend {
     background-image: url('/images/layer_32_360.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 95%;
+    background-position: center;
 }
 
 .search {
     background-image: url('/images/search_360.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 95%;
+    background-position: center;
     /*background-position: 0em .25em;*/
 
 }
@@ -234,7 +241,8 @@ ul > li {
 .taste {
     background-image: url('/images/chart_360.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 95%;
+    background-position: center;
 }
 
 .overflow_hidden {
@@ -271,7 +279,7 @@ margin-top: 50px;
 
 .home_background{
   background-color: #5d0234;
-
+}
 
 #over {
     font-size: 2em;
@@ -282,4 +290,42 @@ margin-top: 50px;
     position: absolute;
     top: 250px;
     z-index: 2;
+}
+
+.plus_button {
+    background-image: url('/images/layer_42_360.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    top: -40px;
+}
+
+.top_row_text {
+    position: relative;
+    top: -20px;
+}
+
+.bottom_row_text {
+    position: relative;
+    top: 0px;
+}
+
+.span_search {
+    position: relative;
+    left: -50px;
+}
+
+.span_scan {
+    position: relative;
+    left: 50px;
+}
+
+.span_rec {
+    position: relative;
+    left: 50px;
+}
+
+.span_profile {
+    position: relative;
+    left: -70px;
 }

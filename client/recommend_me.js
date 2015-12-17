@@ -20,5 +20,3 @@ Template.recWine.events ({
         Blaze.remove(render)
     }
 })
-
-

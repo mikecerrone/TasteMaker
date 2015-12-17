@@ -23,11 +23,6 @@ Template.tasteProfile.helpers({
       varietals.push(wine)
     }
 
-    // var wineTallyLength = 0
-    // for (wine in wineTally) {
-    //   wineTallyLength++;
-    // }
-
     var histCount = UserHistory.find({}).count()
 
     var percentages = []
@@ -37,12 +32,13 @@ Template.tasteProfile.helpers({
 
     // make object with varietal and percentage properties
     var results = []
-    for (var i=0; i<histCount; i++){
+    for (var i=0; i<varietals.length; i++){
       results.push({varietal: varietals[i], percentage: percentages[i]})
     }
     results.sort(function(a, b) {
       return b.percentage - a.percentage
     })
+    // debugger
     return results
   }
 })

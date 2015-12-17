@@ -14,7 +14,6 @@ Template.tasteProfile.helpers({
   varietalPercentage: function(){
     var hist = UserHistory.find({user: Meteor.userId()})
     wineTally = {}
-    console.log(hist)
     hist.forEach(function(wine){
       wineTally[wine.wine.varietal] ? wineTally[wine.wine.varietal]++ : wineTally[wine.wine.varietal] = 1
     })
@@ -39,7 +38,9 @@ Template.tasteProfile.helpers({
     for (var i=0; i<wineTallyLength; i++){
       results.push({varietal: varietals[i], percentage: percentages[i]})
     }
-
+    results.sort(function(a, b) {
+      return b.percentage - a.percentage
+    })
     return results
   }
 })
@@ -116,6 +117,29 @@ function makeChart(){
   }
 
   ];
+      var pOptions =
+{
+        tooltipTemplate: "<%= label %>",
+
+    onAnimationComplete: function()
+    {
+        this.showTooltip(this.segments, true);
+    },
+
+    tooltipEvents: [],
+
+    showTooltips: true,
+
+    legendTemplate : '<ul>'
+                  +'<% for (var i=0; i<datasets.length; i++) { %>'
+                    +'<li>'
+                    +'<span style=\"background-color:<%=datasets[i].lineColor%>\"></span>'
+                    +'<% if (datasets[i].label) { %><%= datasets[i].label %><% } %>'
+                  +'</li>'
+                +'<% } %>'
+              +'</ul>'
+  }
+}
 
   var histTastes = UserHistory.find({user: Meteor.userId()})
   var splitUpTheHistoryArrays = []
@@ -170,8 +194,22 @@ function makeChart(){
     ]
   };
 
-  var myNewChart = new Chart(context).PolarArea(data);
-  var myRadarChart = new Chart(contextr).Radar(datar);
+    var rOptions =
+{
+        tooltipTemplate: "<%= label %>",
+
+    onAnimationComplete: function()
+    {
+        this.showTooltip(this.segments, true);
+    },
+
+    tooltipEvents: [],
+
+    showTooltips: true
+}
+
+  var myNewChart = new Chart(context).PolarArea(data, pOptions);
+  var myRadarChart = new Chart(contextr).Radar(datar, rOptions);
 }
 
 function wineTasteCoordinates(varietal, wineStyle) {

@@ -4,15 +4,18 @@
       <h1>Your Journey Through Wines...</h1>
 
       <canvas id="histChart" width="350 " height="400"></canvas>
+      <div id="js-legend" class="chart-legend"></div>
+      <br>
 
       {{#if Template.subscriptionsReady}}
         {{#each history}}
           <div class="wineLog {{wine.name}}">
             <h3> {{wine.name}} </h3>
             <!-- <img src="{{wine.img}}"> -->
-            <p>Varietal - {{wine.varietal}}</p>
-            <p>Rating - {{wine.rating}}</p>
-            <p></p>
+            <ul>
+              <li>Varietal - {{wine.varietal}}</li>
+              <li>Rating - {{wine.rating}}</li>
+            </ul>
           </div>
         {{/each}}
       {{else}}

@@ -33,7 +33,7 @@ html, body {
 
 /* Row Reights */
 .col-1half {
-    height: 5vh;
+    height: 2.5vh;
 }
 
 .col-1 {
@@ -42,6 +42,10 @@ html, body {
 
 .col-2 {
     height: 20vh;
+}
+
+.col-2-half {
+    height: 25vh;
 }
 
 .col-3 {
@@ -66,6 +70,16 @@ html, body {
     height: 17vh;
     font-size: 6vw;
 }
+
+.col-lg-header {
+    height: 20vh;
+    background-image: url("/images/header_360.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    /*background-size: cover;*/
+    /*background-height: 15vh;*/
+}
+
 
 .col-4 {
     height: 40vh;
@@ -140,19 +154,24 @@ ul .button {
 
 /*Atomic Colors*/
 .bg_cream {
-    background-color: #cfc39b;
+    background-color: #fff8dd;
 }
 
 .bg_purple {
     background-color: #580a31;
 }
 
+
 .bg_white {
-    background-color: #dee1f0;
+    background-color: #fff8dd;
 }
 
 .text_white {
-    color: #dee1f0;
+    color: #fff8dd;
+}
+
+.text_red1 {
+    color: #be0000;
 }
 
 .radius {
@@ -171,12 +190,19 @@ ul .button {
 
 .wine_search_box {
     margin-top: .5em;
+    margin-bottom: 15px;
     box-sizing: border-box;
-    outline: 3px solid black;
+    outline: 1.5px solid #5d0234;
 }
 
+/**{
+    border: 1px dotted red;
+}*/
+
 .wine_search_box > p {
-    color: #dee1f0;
+    display: inline-block;
+    vertical-align: middle;
+    color: #be0000;
 }
 
 ul > li {
@@ -186,29 +212,37 @@ ul > li {
 }
 
 .scan {
-    background-image: url('/images/camera-48.png');
+    background-image: url('/images/barcode_360.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 95%;
+    background-position: center;
+}
+
+.scan>p {
+
 }
 
 .recommend {
-    background-image: url('/images/wine_glass-48.png');
+    background-image: url('/images/layer_32_360.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 95%;
+    background-position: center;
 }
 
 .search {
-    background-image: url('/images/search-48.png');
+    background-image: url('/images/search_360.png');
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0em .25em;
+    background-size: 95%;
+    background-position: center;
+    /*background-position: 0em .25em;*/
 
 }
 
 .taste {
-    background-image: url('/images/statistics-48.png');
+    background-image: url('/images/chart_360.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 95%;
+    background-position: center;
 }
 
 .overflow_hidden {
@@ -217,4 +251,81 @@ ul > li {
 
 .overflow_scroll {
     overflow: scroll;
+}
+
+
+
+.borderwine{
+    position: relative;
+    box-sizing: border-box;
+    outline: 2px solid #5d0234;
+}
+
+.borderwine > h2 {
+   position: absolute;
+   top: 40%;
+
+}
+
+.buttonpush{
+margin-top: 50px;
+
+}
+.questions {
+ margin-top: 50px;
+ margin-bottom:75px ;
+
+}
+
+.home_background{
+  background-color: #5d0234;
+}
+
+#over {
+    font-size: 2em;
+    text-align: center;
+    background-color: black;
+    width: 100%;
+    color: white;
+    position: absolute;
+    top: 250px;
+    z-index: 2;
+}
+
+.plus_button {
+    background-image: url('/images/layer_42_360.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    top: -40px;
+}
+
+.top_row_text {
+    position: relative;
+    top: -20px;
+}
+
+.bottom_row_text {
+    position: relative;
+    top: 0px;
+}
+
+.span_search {
+    position: relative;
+    left: -50px;
+}
+
+.span_scan {
+    position: relative;
+    left: 50px;
+}
+
+.span_rec {
+    position: relative;
+    left: 50px;
+}
+
+.span_profile {
+    position: relative;
+    left: -70px;
 }

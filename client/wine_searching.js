@@ -47,7 +47,11 @@ function narrowDownSearch(wines) {
   }
   wineArray = wines
 
+  if (wineArray[0].length === 0){
+    Blaze.render(Template.noResults, document.querySelector('#renderHere'))
+  }else{
   render = Blaze.renderWithData(Template.searchSelection, {wines: wines[0]}, document.querySelector('#renderHere'))
+  }
 }
 
 

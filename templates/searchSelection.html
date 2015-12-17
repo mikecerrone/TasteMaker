@@ -1,13 +1,13 @@
 <template name='searchSelection'>
     <row>
         <div class='full-length overflow_scroll columns small-12 bg_cream'>
-            <h1>Narrowing Down your Search...</h1>            
+            <h1>Narrowing Down your Search...</h1>
             {{#each wines}}
             <div id='{{@index}}' class='search_result'>
-                <div class='col-2 small-9 columns bg_purple text-white wine_search_box'>
+                <div class='col-2 small-9 columns bg_white text-white wine_search_box'>
                     <p>{{name}}</p>
                 </div>
-                <div class='col-2 small-3 columns bg_purple text-white wine_search_box'>
+                <div class='col-2 small-3 columns bg_white text-white wine_search_box'>
                     <p>pic here</p>
                 </div>
             </div>

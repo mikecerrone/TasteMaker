@@ -23,24 +23,22 @@ Template.tasteProfile.helpers({
       varietals.push(wine)
     }
 
-    var wineTallyLength = 0
-    for (wine in wineTally) {
-      if (wineTally.hasOwnProperty(wine)) wineTallyLength++;
-    }
+    var histCount = UserHistory.find({}).count()
 
     var percentages = []
     for (var wine in wineTally){
-      percentages.push(wineTally[wine]/wineTallyLength*100)
+      percentages.push((wineTally[wine]/histCount)*100)
     }
 
     // make object with varietal and percentage properties
     var results = []
-    for (var i=0; i<wineTallyLength; i++){
+    for (var i=0; i<varietals.length; i++){
       results.push({varietal: varietals[i], percentage: percentages[i]})
     }
     results.sort(function(a, b) {
       return b.percentage - a.percentage
     })
+    // debugger
     return results
   }
 })
@@ -205,7 +203,16 @@ var datar = {
 
     tooltipEvents: [],
 
-    showTooltips: true
+    showTooltips: true,
+    // legendTemplate:'<ul>'
+    //               +'<% for (var i=0; i<datasets.length; i++) { %>'
+    //                 +'<li>'
+    //                 +'<span style=\"background-color:<%=datasets[i].lineColor%>\"></span>'
+    //                 +'<% if (datasets[i].label) { %><%= datasets[i].label %><% } %>'
+    //               +'</li>'
+    //             +'<% } %>'
+    //           +'</ul>'
+
   }
 
   var myNewChart = new Chart(context).PolarArea(data, pOptions);

@@ -1,18 +1,15 @@
 Template.body.events({ 
     "click #aboutUs": function(event) {
         event.preventDefault;
-        if (typeof render !== 'undefined') {
-            Blaze.remove(render);
-        }
         $('#pageHome').addClass('hide');
         $('#pageDisplay').removeClass('hide');
-        render = Blaze.render(Template.aboutUs, document.querySelector('#pageDisplay'))
+        render = Blaze.render(Template.aboutUs, document.querySelector('#renderHere'))
     }
 })
 
 
 Template.aboutUs.events ({
-    'click button': function(event) {
+    'click #aboutUs': function(event) {
         event.preventDefault();
         $('#pageHome').removeClass('hide');
         $('#pageDisplay').addClass('hide')

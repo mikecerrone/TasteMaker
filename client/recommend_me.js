@@ -7,7 +7,8 @@ Template.body.events ({
           return res
         })
         console.log(searchTerm)
-        render = Blaze.render(Template.recWine, document.querySelector('#pageDisplay'))
+
+        render = Blaze.render(Template.recWine, document.querySelector('#renderHere'))
     }
 });
 
@@ -19,4 +20,5 @@ Template.recWine.events ({
         Blaze.remove(render)
     }
 })
+
 

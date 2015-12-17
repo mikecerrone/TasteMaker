@@ -3,7 +3,7 @@ Template.body.events ({
     event.preventDefault();
     $('#pageHome').addClass('hide');
     $('#pageDisplay').removeClass('hide')
-    render = Blaze.render(Template.tasteProfile, document.querySelector('#pageDisplay'))
+    render = Blaze.render(Template.tasteProfile, document.querySelector('#renderHere'))
   }
 });
 
@@ -13,12 +13,34 @@ Template.tasteProfile.helpers({
   },
   varietalPercentage: function(){
     var hist = UserHistory.find({user: Meteor.userId()})
-    wines = {}
+    wineTally = {}
     console.log(hist)
     hist.forEach(function(wine){
-      wines[wine.wine.name] ? wines[wine.wine.name]++ : wines[wine.wine.name] = 1
+      wineTally[wine.wine.varietal] ? wineTally[wine.wine.varietal]++ : wineTally[wine.wine.varietal] = 1
     })
 
+    var varietals = []
+    for (var wine in wineTally) {
+      varietals.push(wine)
+    }
+
+    var wineTallyLength = 0
+    for (wine in wineTally) {
+      if (wineTally.hasOwnProperty(wine)) wineTallyLength++;
+    }
+
+    var percentages = []
+    for (var wine in wineTally){
+      percentages.push(wineTally[wine]/wineTallyLength*100)
+    }
+
+    // make object with varietal and percentage properties
+    var results = []
+    for (var i=0; i<wineTallyLength; i++){
+      results.push({varietal: varietals[i], percentage: percentages[i]})
+    }
+
+    return results
   }
 })
 

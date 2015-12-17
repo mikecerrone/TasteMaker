@@ -1,9 +1,18 @@
-Template.hamburgerBar.events({
-    'click #ham': function(event){
-        event.preventDefault();
+// Template.hamburgerBar.events({
+//     'click #ham': function(event){
+//         event.preventDefault();
+//     }
+// })
+
+// Template.hamburgerBar.onRendered(()=>{
+//     $(document).foundation();
+// })
+
+Template.body.events({
+    'click .backArrow': function(event) {
+    Blaze.remove(render);
+    $('#pageHome').removeClass('hide');
+    $('#pageDisplay').addClass('hide');
     }
 })
 
-Template.hamburgerBar.onRendered(()=>{
-    $(document).foundation();
-})

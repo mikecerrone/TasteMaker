@@ -117,96 +117,96 @@ function makeChart(){
   }
 
   ];
-      var pOptions =
-{
-        tooltipTemplate: "<%= label %>",
+  var pOptions =
+  {
+    tooltipTemplate: "<%= label %>",
 
     onAnimationComplete: function()
     {
-        this.showTooltip(this.segments, true);
+      this.showTooltip(this.segments, true);
     },
 
     tooltipEvents: [],
 
     showTooltips: true,
 
-    legendTemplate : '<ul>'
-                  +'<% for (var i=0; i<datasets.length; i++) { %>'
-                    +'<li>'
-                    +'<span style=\"background-color:<%=datasets[i].lineColor%>\"></span>'
-                    +'<% if (datasets[i].label) { %><%= datasets[i].label %><% } %>'
-                  +'</li>'
-                +'<% } %>'
-              +'</ul>'
+    // legendTemplate : '<ul>'
+    // +'<% for (var i=0; i<datasets.length; i++) { %>'
+    // +'<li>'
+    // +'<span style=\"background-color:<%=datasets[i].lineColor%>\"></span>'
+    // +'<% if (datasets[i].label) { %><%= datasets[i].label %><% } %>'
+    // +'</li>'
+    // +'<% } %>'
+    // +'</ul>'
+  // }
+}
+
+var histTastes = UserHistory.find({user: Meteor.userId()})
+var splitUpTheHistoryArrays = []
+histTastes.forEach(function(wine){splitUpTheHistoryArrays.push(wine.wine.wineCoords)})
+
+var histBold = 0;
+var histFruity = 0;
+var histEarthy = 0;
+var histLight = 0;
+
+for (i=0; i<splitUpTheHistoryArrays.length;i++){
+  if (splitUpTheHistoryArrays[i][0] > 0) {
+    histEarthy += splitUpTheHistoryArrays[i][0];
+  }else if(splitUpTheHistoryArrays[i][0] < 0){
+    histFruity += -(splitUpTheHistoryArrays[i][0]);
+  }
+  if (splitUpTheHistoryArrays[i][1] > 0) {
+    histBold += splitUpTheHistoryArrays[i][1];
+  }else if(splitUpTheHistoryArrays[i][1] < 0){
+    histLight += -(splitUpTheHistoryArrays[i][1]);
   }
 }
 
-  var histTastes = UserHistory.find({user: Meteor.userId()})
-  var splitUpTheHistoryArrays = []
-  histTastes.forEach(function(wine){splitUpTheHistoryArrays.push(wine.wine.wineCoords)})
+var histBold = histBold/splitUpTheHistoryArrays.length;
+var histFruity = histFruity/splitUpTheHistoryArrays.length;
+var histEarthy = histEarthy/splitUpTheHistoryArrays.length;
+var histLight = histLight/splitUpTheHistoryArrays.length;
 
-  var histBold = 0;
-  var histFruity = 0;
-  var histEarthy = 0;
-  var histLight = 0;
-
-  for (i=0; i<splitUpTheHistoryArrays.length;i++){
-    if (splitUpTheHistoryArrays[i][0] > 0) {
-      histEarthy += splitUpTheHistoryArrays[i][0];
-    }else if(splitUpTheHistoryArrays[i][0] < 0){
-      histFruity += -(splitUpTheHistoryArrays[i][0]);
-    }
-    if (splitUpTheHistoryArrays[i][1] > 0) {
-      histBold += splitUpTheHistoryArrays[i][1];
-    }else if(splitUpTheHistoryArrays[i][1] < 0){
-      histLight += -(splitUpTheHistoryArrays[i][1]);
-    }
+var datar = {
+  labels: ["Bold", "Earthy", "Light", "Fruity"],
+  datasets: [
+  {
+    label: "wines done drank",
+    fillColor: "rgba(151,187,205,0.2)",
+    strokeColor: "rgba(220,220,220,1)",
+    pointColor: "rgba(220,220,220,1)",
+    pointStrokeColor: "#fff",
+    pointHighlightFill: "#fff",
+    pointHighlightStroke: "rgba(220,220,220,1)",
+    data: [histBold, histEarthy, histLight, histFruity]
+  },
+  {
+    label: "taste likes",
+    fillColor: "rgba(220,220,220,0.2)",
+    strokeColor: "rgba(151,187,205,1)",
+    pointColor: "rgba(151,187,205,1)",
+    pointStrokeColor: "#fff",
+    pointHighlightFill: "#fff",
+    pointHighlightStroke: "rgba(151,187,205,1)",
+    data: [bold, earthy, light, fruity]
   }
+  ]
+};
 
-  var histBold = histBold/splitUpTheHistoryArrays.length;
-  var histFruity = histFruity/splitUpTheHistoryArrays.length;
-  var histEarthy = histEarthy/splitUpTheHistoryArrays.length;
-  var histLight = histLight/splitUpTheHistoryArrays.length;
-
-  var datar = {
-    labels: ["Bold", "Earthy", "Light", "Fruity"],
-    datasets: [
-    {
-      label: "wines done drank",
-      fillColor: "rgba(151,187,205,0.2)",
-      strokeColor: "rgba(220,220,220,1)",
-      pointColor: "rgba(220,220,220,1)",
-      pointStrokeColor: "#fff",
-      pointHighlightFill: "#fff",
-      pointHighlightStroke: "rgba(220,220,220,1)",
-      data: [histBold, histEarthy, histLight, histFruity]
-    },
-    {
-      label: "taste likes",
-      fillColor: "rgba(220,220,220,0.2)",
-      strokeColor: "rgba(151,187,205,1)",
-      pointColor: "rgba(151,187,205,1)",
-      pointStrokeColor: "#fff",
-      pointHighlightFill: "#fff",
-      pointHighlightStroke: "rgba(151,187,205,1)",
-      data: [bold, earthy, light, fruity]
-    }
-    ]
-  };
-
-    var rOptions =
-{
-        tooltipTemplate: "<%= label %>",
+  var rOptions =
+  {
+    tooltipTemplate: "<%= label %>",
 
     onAnimationComplete: function()
-    {
+      {
         this.showTooltip(this.segments, true);
-    },
+      },
 
     tooltipEvents: [],
 
     showTooltips: true
-}
+  }
 
   var myNewChart = new Chart(context).PolarArea(data, pOptions);
   var myRadarChart = new Chart(contextr).Radar(datar, rOptions);

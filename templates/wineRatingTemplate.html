@@ -1,12 +1,19 @@
 <template name='rateWine'>
 <row>
   <div class='full-length columns small-12 bg_cream'>
-    <h1>You Just Scanned...</h1>
-    <h3> {{name}}</h3>
-    <p>It is... {{style}}</p>
-    <button id='love' class='button expand radial'>Loved It</button>
-    <button id='like' class='button expand radial'>Liked It</button>
-    <button id='dislike' class='button expand radial'>Disliked It</button>
+    <h1>What did you think ?</h1>
+
+    <div class= "col-2-half columns small-11 bg_cream borderwine small-centered">
+      <h2> {{name}}</h2>
+    </div>
+    <!--     <p>It is... {{style}}</p> -->
+
+    <div class="buttonpush" >
+
+    <button id='love' class='button expand radial'>absolutely loved it!</button>
+    <button id='like' class='button expand radial'>i enjoyed it</button>
+    <button id='dislike' class='button expand radial'>not my style</button>
+    </div>
   </div>
 </row>
 </template>

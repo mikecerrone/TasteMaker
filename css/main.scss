@@ -3,7 +3,7 @@
 @include foundation-slider;
 
 .button {
-    background-color: green;
+    background-color: #be0000;
     width: 100%;
 }
 
@@ -14,4 +14,9 @@
 .button-group.radius a {
     width: 100%;
     font-size: 2.5em;
+}
+
+
+.slider-handle {
+  background-color: #5d0234;
 }

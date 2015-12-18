@@ -23,10 +23,9 @@ Template.signUp.events ({
         event.preventDefault();
         var emailVar = event.target.signupEmail.value;
         var passwordVar = event.target.signupPassword.value;
-        Accounts.createUser({
-            email: emailVar,
-            password: passwordVar
-        });
+        Meteor.call('addUser', [emailVar, passwordVar], function(err, res){
+            Meteor.loginWithPassword(emailVar, passwordVar);
+        })
     }
 });
 

@@ -28,5 +28,11 @@ Meteor.methods({
       wine: wine,
       date: new Date()
     })
+  },
+  addUser: function(data){
+    Accounts.createUser({
+      email: data[0],
+      password: data[1]
+    });
   }
 })

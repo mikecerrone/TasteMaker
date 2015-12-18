@@ -24,7 +24,7 @@
         <div id='clickArrow' class="col-lg-header-render home_background"></div>
           <div id='renderHere'>
           </div>
-          
+
         </div>
 
        <!--  <row class=''>
@@ -70,14 +70,14 @@
           </div>
         </row>
         <row>
-          <div id='logout' class='small-3 columns plus_button col-2'>
-          
+          <div id='logout' class='small-3 columns logout_button col-2'>
+
           </div>
           <div class='small-6 columns col-2'>
-          
+
           </div>
-          <div id='wineHistory' class='small-3 columns plus_button col-2'>
-          
+          <div id='wineHistory' class='small-3 columns history_button col-2'>
+
           </div>
         </row>
 <!--         <div class="icon-bar three-up">
@@ -116,13 +116,9 @@
 
         {{else}}
         <div class='loggedOut'>
-         <nav class='tab-bar'>
-            <ul class="title-area">
-              <h1 class='text-center'>Taste Maker</h1>
-            </ul>
-         </nav>
+         <div class="header_logo col-lg-header bg_purple"></div>
             <row>
-              <div id='userBox' class='col-7 columns small-12 bg_cream'>
+              <div id='userBox' class='col-6 columns small-12 bg_cream'>
               {{>facebook}}
                 <div class='signUp'>
                   {{> signUp}}
@@ -133,22 +129,12 @@
               </div>
 
             </row>
-            <div class="icon-bar two-up">
-              <!-- <a id='' class="item">
-
-               </a> -->
-              <a id='signUp' class="item">
-                <img src="images/calendar-48.png" >
-                <label>Register</label>
-              </a>
-              <a id='logIn' class="item">
-                <img src="images/calendar-48.png" >
-                <label>Log In</label>
-              </a>
-              <!-- <a id='' class="item">
-
-               </a> -->
-            </div>
+            <row>
+              <div class='col-3 bg_cream columns small-12 center-text'>
+              <p class='text-center'><a id='signUp'>Not Registered? Sign up now!</a></p>
+              <p class='text-center'><a id='logIn'>Existing Users Log In</a></p>
+              </div>
+            </row>
           </div>
       {{/if}}
     </body>

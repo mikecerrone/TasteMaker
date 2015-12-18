@@ -1,8 +1,22 @@
 <template name="recWine">
   <row>
     <div class='full-length columns small-12 bg_picture'>
-      <h1>Your Recommended Wine is...</h1>
+
+      <div class='col-6 columns small-1 push_down'></div>
+      <div class= "col-6 columns small-10 bg_cream recBox push_down">
+        <p>{{wine.name}}</p>
+        <p>{{wine.varietal}}</p>
+      </div>
+      <div class='col-6 columns small-1 push_down'></div>
+      <div class='col-1 columns small-12'></div>
+      <button class='button expand'>Back</button>
     </div>
+
+  </row>
+  <row>
+  <div class='columns small-12'>
+
+  </div>
   </row>
 </template>
 

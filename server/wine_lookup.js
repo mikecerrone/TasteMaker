@@ -10,27 +10,19 @@ Meteor.methods({
     var myFuture = new Future();
 
     Factual.get('/t/products-cpg',{q:upcCode.text},function (error, res) {
-      // console.log(res);
-      // console.log(error);
-
       if(error){
           myFuture.throw(error);
       }else{
-        console.log('hit')
         var wineName = res.data[0].brand + " " + res.data[0].product_name
         Meteor.call('wineApiLookup', wineName, function(err, res){
           if(err) {
             myFuture.throw('API 2 FAILED!')
           } else {
-            console.log(res)
             myFuture.return([res, wineName]);
           }
         })
-        // console.log(res)
-          // myFuture.return(res);
-        }
+      }
     });
     return myFuture.wait();
-
   }
 });

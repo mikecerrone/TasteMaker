@@ -8,6 +8,7 @@
     </template>
 
     <template name="logIn">
+      {{> flashMessages}}
       <h2>Log in</h2>
       <form>
         <input type="email" name="loginEmail" placeholder="Email">
@@ -15,7 +16,7 @@
         <button type="submit" class='button expand'>Log In</button>
       </form>
     </template>
-    
+
     <template name='accountBox'>
           <row>
             <div class='col-3 columns small-6 bg_purple'>

@@ -17,16 +17,15 @@ Template.body.events ({
         })
     }
 })
- 
+
 Template.signUp.events ({
     'submit form': function(event) {
         event.preventDefault();
         var emailVar = event.target.signupEmail.value;
         var passwordVar = event.target.signupPassword.value;
-        Accounts.createUser({
-            email: emailVar,
-            password: passwordVar
-        });
+        Meteor.call('addUser', [emailVar, passwordVar], function(err, res){
+            Meteor.loginWithPassword(emailVar, passwordVar);
+        })
     }
 });
 
@@ -35,7 +34,7 @@ Template.logIn.events({
         event.preventDefault();
         var emailVar = event.target.loginEmail.value;
         var passwordVar = event.target.loginPassword.value;
-        Meteor.loginWithPassword(emailVar, passwordVar, function(error){console.log(error.reason)})
+        Meteor.loginWithPassword(emailVar, passwordVar, function(){FlashMessages.sendWarning("error loggin in"), {autoHide: false}})
     }
 });
 

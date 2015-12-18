@@ -56,16 +56,6 @@ html, body {
     height: 30vh;
 }
 
-/*.col-3>.single {
-    margin-top: 3em;
-    font-size: 6vw;
-}*/
-
-.col-3>.button:first-child {
-    margin-top: 1em;
-    font-size: 6vw;
-}
-
 .bottom_row>.button {
     height: 17vh;
     font-size: 6vw;
@@ -82,9 +72,10 @@ html, body {
 
 .col-lg-header-render {
     height: 15vh;
-    background-image: url("/images/small_header_with_arrow_360.png");
+    background-image: url("/images/new_small_header_720.png");
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
     /*background-size: cover;*/
     /*background-height: 15vh;*/
 }
@@ -101,11 +92,11 @@ html, body {
 .col-5 {
     height: 50vh;
 }
-
+/*
 .col-5 input {
     margin: auto;
     width: 90%;
-}
+}*/
 
 .col-5 h3 {
     margin:auto;
@@ -265,8 +256,6 @@ ul > li {
     overflow: scroll;
 }
 
-
-
 .borderwine{
     position: relative;
     box-sizing: border-box;
@@ -276,7 +265,17 @@ ul > li {
 .borderwine > h2 {
    position: absolute;
    top: 40%;
+}
 
+.recWine {
+    position: relative;
+    box-sizing: border-box;
+    outline: 2px solid #5d0234;
+}
+
+.recWine > p {
+    position: absolute;
+    top: 30%;
 }
 
 .buttonpush{
@@ -304,8 +303,16 @@ margin-top: 50px;
     z-index: 2;
 }
 
-.plus_button {
-    background-image: url('/images/layer_42_360.png');
+.logout_button {
+    background-image: url('/images/logout_360.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    top: -40px;
+}
+
+.history_button {
+    background-image: url('/images/history_360.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 50%;
@@ -342,6 +349,11 @@ margin-top: 50px;
     left: -70px;
 }
 
+
+.push_down {
+    margin-top: 2em;
+}
+
 .chart_headers {
     font-weight: bolder;
     font-family: PT seif;
@@ -357,7 +369,29 @@ margin-top: 50px;
     font-weight: bolder;
     font-family: PT seif;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 25px;
+}
+
+/*#recExitButton {
+    position: relative;
+    left: -1.5em;
+*/
+/*}*/
+
+#search_bar {
+   margin-top: 4vh;
+   height: 75px;
+}
+
+.final_done_bn {
+ margin-top: 200px;
+}
+
+.plain_text_header {
+    font-weight: bolder;
+    font-family: PT seif;
+    text-align: center;
+    margin-top: 10px;
 }
 
 #mike {
@@ -376,6 +410,7 @@ margin-top: 50px;
     border-radius: 100%;
 }
 
+
 #paul {
     background-repeat: no-repeat;
     background-size: 95%;
@@ -391,3 +426,11 @@ margin-top: 50px;
     border-radius: 100%;
     background-image: url('/images/rsinclairchin.jpeg');
 }
+
+.plain_text_p {
+/*    font-weight: bolder;*/
+    margin-top: 10px;
+    font-family: PT seif;
+    text-align: center;
+}
+

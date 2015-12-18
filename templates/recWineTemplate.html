@@ -11,7 +11,11 @@
         <hr>
         <h3 class='recco_wine_spec' >{{wine.varietal}}</h3>
         <h3 class='recco_wine_spec'>{{wine.region}}</h3>
+        {{#if wine.rating}}
         <h3 class='recco_wine_spec'> Rating: {{wine.rating}}</h3>
+        {{else}}
+           <h3></h3>
+         {{/if}}
 
 
       </div>

@@ -4,9 +4,7 @@ Meteor.methods({
         var newFuture = new Future();
         Meteor.call('spiltTastes', function(err ,res){
           console.log(res);
-          if(res.length === 0){
-            newFuture.throw(err);
-          }else if(err){
+          if(err){
             newFuture.throw(err);
           }else{
             Meteor.call('tasteAverage', res, function(err, res){

@@ -80,7 +80,7 @@ function showWineResults(results){
   results['user_id'] = Meteor.userId()
   results['wineCoords'] = wineCoords
   Meteor.call("addHistory", results);
-  render = Blaze.renderWithData(Template.rateWine, {name: results.name, style: results.style}, document.querySelector('#renderHere'))
+  render = Blaze.renderWithData(Template.rateWine, {name: results.name, style: results.style, img: results.img}, document.querySelector('#renderHere'))
 }
 
 function wineTasteCoordinates(varietal, wineStyle, callback) {

@@ -206,10 +206,10 @@ function userEvaluation(wineTasteCoordinates, evaluationWine, evaluationX, evalu
 
 // Sample questions for the 2nd and 3rd user questions.
 var questions = {
-    "bold": [{"question": "Did you like that this wine had bold flavors?", "values":[-5,5]}, {"question": "Did you think the wines flavors were too bold?", "values":[5,-5]}],
-    "light": [{"question": "Did you like that this wine had a light flavor?", "values":[-5,5]}, {"question": "Did you think the wines flavors were too bold?", "values":[5,-5]}],
-    "fruity": [{"question": "Did you like that this wine had fruity flavors?", "values":[-5,5]}, {"question": "Did you think the wines flavors were too fruity?", "values":[5,-5]}],
-    "earthy": [{"question": "Did you like that this wine had earthy flavors?", "values":[-5,5]}, {"question": "Did you think the wines flavors were too earthy?", "values":[5,-5]}]
+    "bold": [{"question": "Would you have liked this wine more if it had more body?", "values":[-5,5]}, {"question": "How much did you enjoy the full-bodiedness of this wine?", "values":[5,-5]}],
+    "light": [{"question": "How much did you enjoy this wine's light-bodiedness?", "values":[-5,5]}, {"question": "Would you have enjoyed this wine more if it had a lighter flavor?", "values":[5,-5]}],
+    "fruity": [{"question": "How much of your enjoyment of this wine came from its fruit flavors?", "values":[-5,5]}, {"question": "How much did you like this wine's fruitiness", "values":[5,-5]}],
+    "earthy": [{"question": "How much would you have enjoyed an earthier wine?", "values":[-5,5]}, {"question": "How would you rate this wine's earthy flavours?", "values":[5,-5]}]
 }
 
 function questionServer(wineCoordinates, callback) {

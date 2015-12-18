@@ -261,6 +261,7 @@ ul > li {
 }
 
 .borderwine{
+    margin-top: 7%;
     position: relative;
     box-sizing: border-box;
     outline: 2px solid #5d0234;
@@ -461,11 +462,13 @@ padding-bottom: 10px
 
 .history_wine {
 font-family: PT seif;
+text-align: center;
 color: #be0000;
 }
 
 .history_wine_spec {
 font-family: PT seif;
+text-align: center;
 color: #5d0234;
 }
 
@@ -485,3 +488,17 @@ text-align: center
     margin-left: 29%;
     margin-top: 7%;
 }
+
+.rate_img {
+    margin-left: 33%;
+    margin-top: 7%;
+}
+
+.rate_result_text{
+    font-weight: bolder;
+    font-family: PT seif;
+    text-align: center;
+    margin-top: 15px;
+
+}
+

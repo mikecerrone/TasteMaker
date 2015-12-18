@@ -11,11 +11,12 @@
         <hr>
         <h3 class='recco_wine_spec' >{{wine.varietal}}</h3>
         <h3 class='recco_wine_spec'>{{wine.region}}</h3>
+        {{#if wine.rating}}
         <h3 class='recco_wine_spec'> Rating: {{wine.rating}}</h3>
-
-
+        {{else}}
+           <h3></h3>
+         {{/if}}
       </div>
-      <!-- <div class='col-1 columns small-1 push_down'></div> -->
       <div class='col-3 columns small-12 push_down'>
         <button id='recExitButton' class='button'>Back</button>
       </div>

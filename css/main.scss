@@ -30,6 +30,9 @@ user-select: auto !important;
     width: 100%;
 }
 
+#naturalScrolling {
+  -webkit-overflow-scrolling: touch; overflow : scroll;
+}
 .button-group.radius li {
     width: 50%;
 }

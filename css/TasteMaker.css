@@ -394,6 +394,38 @@ margin-top: 50px;
     margin-top: 10px;
 }
 
+#mike {
+    background-image: url('/images/mikecerrone.png');
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position: center;
+    border-radius: 100%;
+}
+
+#shawn {
+    background-image: url('/images/its-swats.jpeg');
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position: center;
+    border-radius: 100%;
+}
+
+
+#paul {
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position: center;
+    background-image: url('/images/petscheit.png');
+    border-radius: 100%;
+}
+
+#roz {
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position: center;
+    border-radius: 100%;
+    background-image: url('/images/rsinclairchin.jpeg');
+}
 
 .plain_text_p {
 /*    font-weight: bolder;*/

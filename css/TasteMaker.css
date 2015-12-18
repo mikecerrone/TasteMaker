@@ -72,9 +72,10 @@ html, body {
 
 .col-lg-header-render {
     height: 15vh;
-    background-image: url("/images/small_header_with_arrow_360.png");
+    background-image: url("/images/small_header_with_spaces.png");
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
     /*background-size: cover;*/
     /*background-height: 15vh;*/
 }
@@ -302,8 +303,16 @@ margin-top: 50px;
     z-index: 2;
 }
 
-.plus_button {
-    background-image: url('/images/layer_42_360.png');
+.logout_button {
+    background-image: url('/images/logout_360.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    top: -40px;
+}
+
+.history_button {
+    background-image: url('/images/history_360.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 50%;

@@ -14,11 +14,16 @@
           <div class="wineLog {{wine.name}}">
             <h3 class= "history_wine" > {{wine.name}} </h3>
             <!-- <img src="{{wine.img}}"> -->
-            <ul>
-              <li class='history_wine_spec'>Varietal - {{wine.varietal}}</li>
-              <li class='history_wine_spec'>Rating - {{wine.rating}}</li>
-            </ul>
+            <p class='history_wine_spec'> {{wine.varietal}} </p>
+            <p class='history_wine_spec'> {{wine.region}} </p>
+           {{#if wine.rating}}
+            <p class='history_wine_spec'>
+              Rating - {{wine.rating}}</p>
+             {{else}}
+              <p></p>
+           {{/if}}
           </div>
+           <hr>
         {{/each}}
       {{else}}
         <p>Something's not right</p>

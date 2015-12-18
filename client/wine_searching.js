@@ -49,8 +49,6 @@ function narrowDownSearch(wines) {
     Blaze.remove(render);
   }
   wineArray = wines
-  alert('here');
-  console.log(wineArray);
   if (wineArray[0].length === 0){
     Blaze.render(Template.noResults, document.querySelector('#renderHere'))
   }else{

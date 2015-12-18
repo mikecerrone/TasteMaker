@@ -373,7 +373,7 @@ margin-top: 50px;
     font-weight: bolder;
     font-family: PT seif;
     text-align: center;
-    margin-top: 25px;
+    margin-top: 12px;
 }
 
 /*#recExitButton {
@@ -457,6 +457,31 @@ padding-bottom: 10px
     font-family: PT seif;
     text-align: left;
     margin-top: 15px;
-
 }
 
+.history_wine {
+font-family: PT seif;
+color: #be0000;
+}
+
+.history_wine_spec {
+font-family: PT seif;
+color: #5d0234;
+}
+
+.recco_wine {
+font-family: PT seif;
+color: #be0000;
+text-align: center;
+}
+
+.recco_wine_spec {
+font-family: PT seif;
+color: #5d0234;
+text-align: center
+}
+
+.recco_img {
+    margin-left: 29%;
+    margin-top: 7%;
+}

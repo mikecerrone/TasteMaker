@@ -4,8 +4,16 @@
 
       <div class='col-1 columns small-1 push_down'></div>
       <div class= "col-6 columns small-10 bg_cream recBox push_down">
-        <p>{{wine.name}}</p>
-        <p>{{wine.varietal}}</p>
+        <img class='recco_img' src= {{wine.img}} alt="Wine Pic" align="middle" height="120" width="120">
+        <br>
+        <br>
+        <h1 class='recco_wine' >{{wine.name}}</h1>
+        <hr>
+        <h3 class='recco_wine_spec' >{{wine.varietal}}</h3>
+        <h3 class='recco_wine_spec'>{{wine.region}}</h3>
+        <h3 class='recco_wine_spec'> Rating: {{wine.rating}}</h3>
+
+
       </div>
       <!-- <div class='col-1 columns small-1 push_down'></div> -->
       <div class='col-3 columns small-12 push_down'>

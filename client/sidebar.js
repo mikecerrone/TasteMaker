@@ -9,7 +9,7 @@
 // })
 
 Template.body.events({
-    'click .backArrow': function(event) {
+    'click #clickArrow': function(event) {
     Blaze.remove(render);
     $('#pageHome').removeClass('hide');
     $('#pageDisplay').addClass('hide');

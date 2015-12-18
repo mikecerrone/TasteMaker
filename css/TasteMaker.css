@@ -72,7 +72,7 @@ html, body {
 
 .col-lg-header-render {
     height: 15vh;
-    background-image: url("/images/small_header_with_spaces.png");
+    background-image: url("/images/new_small_header_720.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -371,6 +371,13 @@ margin-top: 50px;
     text-align: center;
     margin-top: 25px;
 }
+
+/*#recExitButton {
+    position: relative;
+    left: -1.5em;
+*/
+/*}*/
+
 #search_bar {
    margin-top: 4vh;
    height: 75px;
@@ -393,7 +400,5 @@ margin-top: 50px;
     margin-top: 10px;
     font-family: PT seif;
     text-align: center;
-}
-
 }
 

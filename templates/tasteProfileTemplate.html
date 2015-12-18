@@ -1,12 +1,12 @@
 <template name='tasteProfile'>
   <row>
     <div class='full-length overflow_scroll columns small-12 bg_cream'>
-      <h1>Taste Profile</h1>
+      <h1 class='text_red1 chart_headers_top'>Taste Profile</h1>
       <canvas id="myChart" width="350" height="400"></canvas>
       <br><br><br>
-      <h1>History</h1>
+      <h1 class='text_red1 chart_headers' >History</h1>
       <canvas id="myRadarChart" width="350 " height="400"></canvas>
-      <h1>Preferred Varietals</h1>
+      <h1  class='text_red1 chart_headers'>Preferred Varietals</h1>
       <ul>
       {{#each varietalPercentage}}
         <li>

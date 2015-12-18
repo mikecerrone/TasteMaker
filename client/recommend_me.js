@@ -6,10 +6,7 @@ Template.body.events ({
             $('#pageHome').addClass('hide');
             $('#pageDisplay').removeClass('hide')
             render = Blaze.renderWithData(Template.recWine, {wine: wine[0]}, document.querySelector('#renderHere'))
-        })
-        // console.log(searchTerm)
-
-        
+        })    
     }
 });
 

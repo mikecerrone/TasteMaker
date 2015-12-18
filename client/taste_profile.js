@@ -181,13 +181,14 @@ var datar = {
   },
   {
     label: "taste likes",
-    fillColor: "rgba(220,220,220,0.2)",
-    strokeColor: "rgba(151,187,205,1)",
-    pointColor: "rgba(151,187,205,1)",
+    fillColor: "rgba(255,0,0,0.2)",
+    strokeColor: "rgba(255,0,0,0.2)",
+    pointColor: "rgba(255,0,0,0.2)",
     pointStrokeColor: "#fff",
     pointHighlightFill: "#fff",
     pointHighlightStroke: "rgba(151,187,205,1)",
     data: [bold, earthy, light, fruity]
+
   }
   ]
 };
@@ -204,6 +205,7 @@ var datar = {
     tooltipEvents: [],
 
     showTooltips: true,
+    pointLabelFontSize: 15,
     // legendTemplate:'<ul>'
     //               +'<% for (var i=0; i<datasets.length; i++) { %>'
     //                 +'<li>'

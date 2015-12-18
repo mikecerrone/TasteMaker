@@ -99,7 +99,7 @@ Template.finalWineEval.rendered = function(){
       var earthy = 0;
       var light = 0;
 
-      for (i=0; i<splitUpTheTasteArrays.length;i++){
+      for (i=0; i<splitUpTheTasteArrays.length; i++){
         if (splitUpTheTasteArrays[i][0] > 0) {
             earthy += splitUpTheTasteArrays[i][0];
         }else if(splitUpTheTasteArrays[i][0] < 0){
@@ -117,6 +117,7 @@ Template.finalWineEval.rendered = function(){
       var earthy = earthy/splitUpTheTasteArrays.length;
       var light = light/splitUpTheTasteArrays.length;
 
+     var rOptions =   { pointLabelFontSize: 15, pointLabelFontColor : "#5d0234", pointLabelFontFamily : "'PT Serif'", angleLineColor : "rgb(93,2,52)"};
 
       var datar = {
     labels: ["Bold", "Earthy", "Light", "Fruity"],
@@ -126,7 +127,7 @@ Template.finalWineEval.rendered = function(){
             fillColor: "rgba(255,0,0,1)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
+            pointStrokeColor: "rgba(220,220,220,1)",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
             data: [0, 0, 0, 0]
@@ -144,7 +145,7 @@ Template.finalWineEval.rendered = function(){
     ]
 };
 
-  var finalEvalChart = new Chart(contextr).Radar(datar);
+  var finalEvalChart = new Chart(contextr).Radar(datar, rOptions);
     }
 
     // function findTaste(){

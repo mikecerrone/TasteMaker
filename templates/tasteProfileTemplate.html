@@ -11,14 +11,15 @@
       <canvas id="myRadarChart" width="350 " height="400"></canvas>
        <hr>
       <h1  class='text_red1 chart_headers'>Preferred Varietals</h1>
-      <p class='plain_text_p'>Our calculations about your taste preferences lead us to believe that you might enjoy these Varietals</p>
+      <p class='plain_text_p'>Our calculations about your taste preferences lead us to believe that you might enjoy these varietals</p>
       <ul>
       {{#each varietalPercentage}}
-        <li>
+        <li class="textDecoration">
           {{varietal}} - {{percentage}}%
         </li>
       {{/each}}
       </ul>
+
     </div>
   </row>
 </template>

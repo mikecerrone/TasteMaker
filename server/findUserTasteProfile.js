@@ -80,6 +80,14 @@ Meteor.methods({
 
     getRecommendation: function(tasteProfile){
     // distance cant get bigger then 145 by construct...
+      if(isNaN(tasteProfile[0])){
+          tasteProfile[0] = 15
+      }
+
+      if(isNaN(tasteProfile[1])){
+          tasteProfile[1] = 15
+      }
+
       var smallestDistance = 150;
       var closest = null;
       console.log(tasteProfile)

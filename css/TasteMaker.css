@@ -369,11 +369,36 @@ margin-top: 50px;
     font-weight: bolder;
     font-family: PT seif;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
-#recExitButton {
+/*#recExitButton {
     position: relative;
     left: -1.5em;
+*/
+/*}*/
 
+#search_bar {
+   margin-top: 4vh;
+   height: 75px;
 }
+
+.final_done_bn {
+ margin-top: 200px;
+}
+
+.plain_text_header {
+    font-weight: bolder;
+    font-family: PT seif;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+.plain_text_p {
+/*    font-weight: bolder;*/
+    margin-top: 10px;
+    font-family: PT seif;
+    text-align: center;
+}
+

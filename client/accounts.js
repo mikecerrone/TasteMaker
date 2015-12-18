@@ -7,9 +7,17 @@ Template.body.events ({
     'click #logIn': function(event) {
         $('.signUp').addClass('hide');
         $('.logIn').removeClass('hide');
+    },
+
+    'click #logout': function(event) {
+        Meteor.logout(function(err){
+            if (err) {
+                throw new Meteor.Error("Logout failed");
+            }
+        })
     }
 })
-
+ 
 Template.signUp.events ({
     'submit form': function(event) {
         event.preventDefault();

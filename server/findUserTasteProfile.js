@@ -40,44 +40,49 @@ Meteor.methods({
     },
 
     tasteAverage: function(arrayOfTasteArrays) {
+      var myAvgX = 0;
+      var myAvgY = 0;
       console.log('here2')
       var tastesX = []
       var tastesY = []
 
-      var step;
       for (step = 0; step < arrayOfTasteArrays.length; step++) {
         tastesX.push(arrayOfTasteArrays[step][0])
+        if(isNaN(tastesX[step])){
+          tastesX[step] = 0
+        }
       }
-      var myAvgX = 0;
       for(var i = 0, len = tastesX.length; i < len; i++) {
         myAvgX += tastesX[i];
       }
-      tastesX = myAvgX / tastesX.length
+      tastesXAxis = (myAvgX / tastesX.length)
 
-      var step1;
       for (step1 = 0; step1 < arrayOfTasteArrays.length; step1++) {
         tastesY.push(arrayOfTasteArrays[step1][1])
+        if(isNaN(tastesY[step1])){
+          tastesY[step] = 0
+        }
       }
-      var myAvgY = 0;
 
       for(var i = 0, len = tastesY.length; i < len; i++) {
         myAvgY += tastesY[i];
       }
-      tastesY = myAvgY / tastesY.length
+      tastesYAxis = (myAvgY / tastesY.length)
       console.log('_______________________________________________________')
       console.log('Y');
-      console.log(tastesY);
+      console.log(tastesYAxis);
       console.log('X');
-      console.log(tastesX);
+      console.log(tastesXAxis);
       console.log('_______________________________________________________')
 
-      return [tastesX, tastesY]
+      return [tastesXAxis, tastesYAxis]
     },
 
     getRecommendation: function(tasteProfile){
     // distance cant get bigger then 145 by construct...
       var smallestDistance = 150;
       var closest = null;
+      console.log(tasteProfile)
       for (var varietalCoordinate in varietalsObject) {
         var xs = 0;
         var ys = 0;

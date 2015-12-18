@@ -17,7 +17,7 @@ Template.body.events ({
         })
     }
 })
- 
+
 Template.signUp.events ({
     'submit form': function(event) {
         event.preventDefault();
@@ -34,7 +34,7 @@ Template.logIn.events({
         event.preventDefault();
         var emailVar = event.target.loginEmail.value;
         var passwordVar = event.target.loginPassword.value;
-        Meteor.loginWithPassword(emailVar, passwordVar)
+        Meteor.loginWithPassword(emailVar, passwordVar, function(){FlashMessages.sendWarning("error loggin in"), {autoHide: false}})
     }
 });
 

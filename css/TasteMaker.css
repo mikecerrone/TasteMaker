@@ -395,5 +395,10 @@ margin-top: 50px;
     text-align: center;
 }
 
-}
+.page_headers {
+    font-weight: bolder;
+    font-family: PT seif;
+    text-align: center;
+    margin-top: 15px;
 
+}

@@ -1,11 +1,13 @@
 <template name="wineHistory">
   <row>
     <div class='overflow_scroll full-length columns small-12 bg_cream'>
-      <h1>Your Journey Through Wines...</h1>
+      <h1 class='text_red1 page_headers' >Wine History</h1>
+      <p class='plain_text_p'>Your journey through wine</p>
 
       <canvas id="histChart" width="350 " height="400"></canvas>
       <div id="js-legend" class="chart-legend"></div>
       <br>
+      <hr>
 
       {{#if Template.subscriptionsReady}}
         {{#each history}}

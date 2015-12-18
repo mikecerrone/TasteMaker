@@ -12,11 +12,11 @@
       {{#if Template.subscriptionsReady}}
         {{#each history}}
           <div class="wineLog {{wine.name}}">
-            <h3> {{wine.name}} </h3>
+            <h3 class= "history_wine" > {{wine.name}} </h3>
             <!-- <img src="{{wine.img}}"> -->
             <ul>
-              <li>Varietal - {{wine.varietal}}</li>
-              <li>Rating - {{wine.rating}}</li>
+              <li class='history_wine_spec'>Varietal - {{wine.varietal}}</li>
+              <li class='history_wine_spec'>Rating - {{wine.rating}}</li>
             </ul>
           </div>
         {{/each}}

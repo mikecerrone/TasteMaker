@@ -12,4 +12,3 @@ App.launchScreens({
 })
 
 App.accessRule('*');
-App.setPreference('StatusBarStyle', 'lightcontent');

@@ -35,14 +35,12 @@ Meteor.methods({
       var splitUpTheTasteArrays1 = []
       var tastes = Taste.find({})
       tastes.forEach(function(tastes){splitUpTheTasteArrays1.push(tastes.userTaste)})
-      console.log(splitUpTheTasteArrays1);
       return splitUpTheTasteArrays1
     },
 
     tasteAverage: function(arrayOfTasteArrays) {
       var myAvgX = 0;
       var myAvgY = 0;
-      console.log('here2')
       var tastesX = []
       var tastesY = []
 
@@ -68,13 +66,6 @@ Meteor.methods({
         myAvgY += tastesY[i];
       }
       tastesYAxis = (myAvgY / tastesY.length)
-      console.log('_______________________________________________________')
-      console.log('Y');
-      console.log(tastesYAxis);
-      console.log('X');
-      console.log(tastesXAxis);
-      console.log('_______________________________________________________')
-
       return [tastesXAxis, tastesYAxis]
     },
 
@@ -105,7 +96,6 @@ Meteor.methods({
               closest = varietalCoordinate;
           }
       }
-      console.log(closest)
       return closest
     }
   })

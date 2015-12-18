@@ -62,8 +62,8 @@ html, body {
 }*/
 
 .col-3>.button:first-child {
-    margin-top: 1em;
-    font-size: 6vw;
+    /*margin-top: 1em;*/
+    /*font-size: 6vw;*/
 }
 
 .bottom_row>.button {
@@ -101,11 +101,11 @@ html, body {
 .col-5 {
     height: 50vh;
 }
-
+/*
 .col-5 input {
     margin: auto;
     width: 90%;
-}
+}*/
 
 .col-5 h3 {
     margin:auto;

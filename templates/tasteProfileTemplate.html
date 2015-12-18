@@ -1,5 +1,5 @@
 <template name='tasteProfile'>
-  <row>
+  <row id='naturalScrolling'>
     <div class='full-length overflow_scroll columns small-12 bg_cream'>
       <h1 class='text_red1 chart_headers_top'>Taste Profile</h1>
       <p class='plain_text_p'>We've calculated your preferred flavours based on what you've told us about your experiences.</p>
@@ -14,11 +14,12 @@
       <p class='plain_text_p'>Our calculations about your taste preferences lead us to believe that you might enjoy these varietals</p>
       <ul>
       {{#each varietalPercentage}}
-        <li>
+        <li class="textDecoration">
           {{varietal}} - {{percentage}}%
         </li>
       {{/each}}
       </ul>
+
     </div>
   </row>
 </template>

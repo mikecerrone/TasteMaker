@@ -400,7 +400,7 @@ margin-top: 50px;
 }
 
 #mike {
-    background-image: url('/images/mikecerrone.png');
+    background-image: url('/images/profile-mike.png');
     background-repeat: no-repeat;
     background-size: 95%;
     background-position: center;
@@ -408,7 +408,7 @@ margin-top: 50px;
 }
 
 #shawn {
-    background-image: url('/images/its-swats.jpeg');
+    background-image: url('/images/profile-shawn.jpeg');
     background-repeat: no-repeat;
     background-size: 95%;
     background-position: center;
@@ -420,7 +420,7 @@ margin-top: 50px;
     background-repeat: no-repeat;
     background-size: 95%;
     background-position: center;
-    background-image: url('/images/petscheit.png');
+    background-image: url('/images/profile-paul.png');
     border-radius: 100%;
 }
 
@@ -429,7 +429,7 @@ margin-top: 50px;
     background-size: 95%;
     background-position: center;
     border-radius: 100%;
-    background-image: url('/images/rsinclairchin.jpeg');
+    background-image: url('/images/profile-roz.jpeg');
 }
 
 .plain_text_p {
@@ -502,3 +502,10 @@ text-align: center
 
 }
 
+.textDecoration {
+    text-decoration: none;
+}
+
+#faces {
+    margin-top: -1em;
+}

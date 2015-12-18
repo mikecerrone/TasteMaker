@@ -3,12 +3,12 @@ Meteor.methods({
    Future = Npm.require('fibers/future');
         var newFuture = new Future();
         Meteor.call('spiltTastes', function(err ,res){
-          console.log('made it');
-          if(err){
-            console.log(err)
+          console.log(res);
+          if(res.length === 0){
+            newFuture.throw(err);
+          }else if(err){
             newFuture.throw(err);
           }else{
-            console.log(res)
             Meteor.call('tasteAverage', res, function(err, res){
               if(err){
                 newFuture.throw(err);

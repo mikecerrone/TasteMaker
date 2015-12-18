@@ -206,6 +206,7 @@ var datar = {
 
     showTooltips: true,
     pointLabelFontSize: 15,
+    pointLabelFontColor: "#5d0234", pointLabelFontFamily: "'PT Serif'", angleLineColor: "rgb(93,2,52)"
     // legendTemplate:'<ul>'
     //               +'<% for (var i=0; i<datasets.length; i++) { %>'
     //                 +'<li>'

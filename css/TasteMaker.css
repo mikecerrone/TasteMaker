@@ -40,6 +40,10 @@ html, body {
     height: 10vh;
 }
 
+.col-1_and_half {
+    height: 13vh;
+}
+
 .col-2 {
     height: 20vh;
 }
@@ -202,7 +206,7 @@ ul .button {
     border: 1px dotted red;
 }*/
 
-.wine_search_box > p {
+.wine_search_box > h3 {
     display: inline-block;
     vertical-align: middle;
     color: #be0000;
@@ -399,6 +403,20 @@ margin-top: 50px;
     font-weight: bolder;
     font-family: PT seif;
     text-align: center;
+    margin-top: 15px;
+}
+
+.search_padder {
+padding-top: 10px;
+overflow: hidden;
+padding-bottom: 10px
+
+}
+
+.search_result_text{
+    font-weight: bolder;
+    font-family: PT seif;
+    text-align: left;
     margin-top: 15px;
 
 }

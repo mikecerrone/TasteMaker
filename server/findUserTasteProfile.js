@@ -3,7 +3,6 @@ Meteor.methods({
    Future = Npm.require('fibers/future');
         var newFuture = new Future();
         Meteor.call('spiltTastes', function(err ,res){
-          console.log(res);
           if(err){
             newFuture.throw(err);
           }else{
@@ -29,7 +28,6 @@ Meteor.methods({
           })
           }
         })
-        console.log(newFuture.wait())
         return newFuture.wait();
     },
 

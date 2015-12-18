@@ -1,14 +1,12 @@
 Template.body.events ({
     'click #wineRec': function(event) {
         event.preventDefault();
-        $('#pageHome').addClass('hide');
-        $('#pageDisplay').removeClass('hide')
         Meteor.call('methodsController', function(err, res){
-
-        })
-
-
-        render = Blaze.render(Template.recWine, document.querySelector('#renderHere'))
+            wine = _.sample(res)
+            $('#pageHome').addClass('hide');
+            $('#pageDisplay').removeClass('hide')
+            render = Blaze.renderWithData(Template.recWine, {wine: wine[0]}, document.querySelector('#renderHere'))
+        })    
     }
 });
 

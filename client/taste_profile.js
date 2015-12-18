@@ -27,7 +27,7 @@ Template.tasteProfile.helpers({
 
     var percentages = []
     for (var wine in wineTally){
-      percentages.push((wineTally[wine]/histCount)*100)
+      percentages.push(Math.floor((wineTally[wine]/histCount)*100))
     }
 
     // make object with varietal and percentage properties

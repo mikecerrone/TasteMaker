@@ -56,16 +56,6 @@ html, body {
     height: 30vh;
 }
 
-/*.col-3>.single {
-    margin-top: 3em;
-    font-size: 6vw;
-}*/
-
-.col-3>.button:first-child {
-    /*margin-top: 1em;*/
-    /*font-size: 6vw;*/
-}
-
 .bottom_row>.button {
     height: 17vh;
     font-size: 6vw;
@@ -265,8 +255,6 @@ ul > li {
     overflow: scroll;
 }
 
-
-
 .borderwine{
     position: relative;
     box-sizing: border-box;
@@ -276,7 +264,17 @@ ul > li {
 .borderwine > h2 {
    position: absolute;
    top: 40%;
+}
 
+.recWine {
+    position: relative;
+    box-sizing: border-box;
+    outline: 2px solid #5d0234;
+}
+
+.recWine > p {
+    position: absolute;
+    top: 30%;
 }
 
 .buttonpush{
@@ -340,4 +338,8 @@ margin-top: 50px;
 .span_profile {
     position: relative;
     left: -70px;
+}
+
+.push_down {
+    margin-top: 2em;
 }
